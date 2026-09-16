@@ -1,0 +1,2851 @@
+age,gender,marital_status,education_level,annual_income,monthly_income,employment_status,debt_to_income_ratio,credit_score,loan_amount
+25,Female,Married,Master's,484800,40400,Employed,0.62,781,1310000
+58,Female,Married,Bachelor's,268800,22400,Employed,0.19,705,260000
+53,Male,Widowed,Bachelor's,297600,24800,Employed,0.03,617,415000
+42,Male,Single,High School,189600,15800,Employed,0.13,760,295000
+42,Male,Single,Bachelor's,510000,42500,Employed,0.35,689,750000
+63,Male,Married,Bachelor's,340800,28400,Employed,0.46,711,490000
+25,Male,Single,Bachelor's,639600,53300,Self-employed,0.17,689,1880000
+55,Female,Married,High School,554400,46200,Employed,0.3,510,1010000
+30,Male,Married,Master's,987600,82300,Employed,0.2,766,705000
+25,Male,Divorced,High School,180000,15000,Employed,0.21,626,810000
+46,Female,Married,Master's,781200,65100,Employed,0.19,721,270000
+68,Male,Married,PhD,256800,21400,Student,0.07,715,100000
+57,Male,Divorced,High School,290400,24200,Self-employed,0.27,648,985000
+58,Male,Single,Bachelor's,436800,36400,Employed,0.69,761,410000
+56,Female,Married,Bachelor's,572400,47700,Employed,0.28,847,935000
+59,Male,Married,PhD,919200,76600,Employed,0.29,687,1340000
+46,Female,Single,Master's,519600,43300,Self-employed,0.21,666,4830000
+27,Female,Single,Bachelor's,297600,24800,Employed,0.65,686,520000
+62,Male,Married,PhD,912000,76000,Employed,0.34,749,1335000
+43,Female,Married,Diploma,334800,27900,Self-employed,0.34,628,500000
+45,Male,Married,Diploma,183600,15300,Self-employed,0.59,638,220000
+39,Male,Single,Bachelor's,412800,34400,Employed,0.38,683,140000
+29,Male,Single,Master's,1171200,97600,Employed,0.07,639,4370000
+66,Other,Widowed,High School,180000,15000,Employed,0.34,629,70000
+59,Male,Single,Bachelor's,436800,36400,Employed,0.25,729,2240000
+52,Male,Widowed,High School,268800,22400,Employed,0.28,621,345000
+40,Female,Married,High School,307200,25600,Retired,0.06,702,260000
+61,Male,Married,PhD,702000,58500,Employed,0.1,625,1215000
+47,Female,Married,Bachelor's,314400,26200,Employed,0.25,699,1670000
+42,Female,Divorced,Bachelor's,358800,29900,Self-employed,0.58,624,150000
+43,Female,Divorced,Bachelor's,523200,43600,Self-employed,0.06,680,215000
+32,Female,Married,Bachelor's,180000,15000,Unemployed,0.22,743,1120000
+25,Female,Married,High School,180000,15000,Employed,0.3,618,1440000
+48,Male,Married,Bachelor's,180000,15000,Unemployed,0.37,559,50000
+64,Other,Single,PhD,1378800,114900,Employed,0.54,725,9220000
+24,Female,Widowed,High School,193200,16100,Employed,0.35,654,1760000
+63,Female,Single,High School,180000,15000,Unemployed,0.04,850,1640000
+61,Female,Married,Bachelor's,420000,35000,Employed,0.27,564,765000
+34,Female,Married,Bachelor's,256800,21400,Self-employed,0.29,688,210000
+51,Female,Married,Diploma,193200,16100,Self-employed,0.3,850,240000
+29,Male,Married,Bachelor's,186000,15500,Self-employed,0.12,712,100000
+58,Male,Married,Master's,468000,39000,Employed,0.41,718,310000
+55,Female,Single,High School,288000,24000,Employed,0.46,556,515000
+38,Female,Single,High School,267600,22300,Self-employed,0.32,651,2270000
+24,Male,Single,Bachelor's,428400,35700,Employed,0.15,694,170000
+68,Male,Widowed,Bachelor's,290400,24200,Employed,0.43,520,340000
+42,Female,Single,High School,320400,26700,Employed,0.27,754,2530000
+64,Male,Widowed,Bachelor's,214800,17900,Employed,0.08,605,1610000
+54,Female,Single,Bachelor's,310800,25900,Employed,0.16,787,2390000
+59,Female,Divorced,Bachelor's,490800,40900,Employed,0.34,535,265000
+58,Male,Married,Bachelor's,211200,17600,Unemployed,0.29,681,75000
+30,Male,Divorced,Diploma,406800,33900,Employed,0.24,754,430000
+38,Female,Married,Diploma,180000,15000,Self-employed,0.23,591,325000
+43,Male,Married,Master's,456000,38000,Self-employed,0.11,760,310000
+45,Female,Married,Bachelor's,399600,33300,Retired,0.14,673,230000
+23,Male,Single,Diploma,333600,27800,Employed,0.31,590,390000
+47,Male,Divorced,Bachelor's,711600,59300,Self-employed,0.44,602,490000
+28,Male,Married,Diploma,274800,22900,Employed,0.31,669,320000
+57,Female,Single,Master's,235200,19600,Unemployed,0.36,651,170000
+54,Female,Married,Bachelor's,180000,15000,Unemployed,0.14,687,185000
+66,Female,Married,High School,229200,19100,Self-employed,0.19,669,340000
+57,Male,Divorced,High School,180000,15000,Employed,0.23,734,380000
+38,Female,Married,High School,180000,15000,Employed,0.06,697,100000
+68,Male,Married,High School,180000,15000,Unemployed,0.49,626,130000
+41,Female,Married,Bachelor's,265200,22100,Employed,0.27,584,1140000
+36,Female,Single,High School,180000,15000,Employed,0.42,600,120000
+65,Male,Married,Bachelor's,343200,28600,Employed,0.12,696,605000
+39,Female,Divorced,Bachelor's,180000,15000,Employed,0.31,735,540000
+24,Male,Single,High School,196800,16400,Self-employed,0.52,778,870000
+44,Male,Married,High School,205200,17100,Employed,0.29,726,395000
+59,Female,Single,High School,229200,19100,Retired,0.2,738,1240000
+30,Female,Single,Bachelor's,778800,64900,Self-employed,0.16,766,490000
+43,Male,Single,Bachelor's,361200,30100,Retired,0.23,671,400000
+27,Female,Single,Diploma,644400,53700,Employed,0.34,757,460000
+54,Male,Married,High School,180000,15000,Self-employed,0.24,736,305000
+44,Female,Divorced,Master's,493200,41100,Self-employed,0.27,756,330000
+37,Female,Single,Bachelor's,1102800,91900,Self-employed,0.17,706,1940000
+32,Male,Divorced,Bachelor's,364800,30400,Self-employed,0.05,729,465000
+48,Female,Married,Diploma,200400,16700,Employed,0.51,695,225000
+53,Female,Single,High School,321600,26800,Employed,0.37,558,1025000
+67,Male,Single,Bachelor's,405600,33800,Self-employed,0.32,804,660000
+42,Male,Single,Bachelor's,561600,46800,Employed,0.16,769,700000
+28,Male,Married,High School,180000,15000,Unemployed,0.3,642,350000
+61,Female,Married,High School,211200,17600,Self-employed,0.48,742,1710000
+51,Female,Married,Bachelor's,931200,77600,Employed,0.15,647,1300000
+55,Female,Single,Diploma,454800,37900,Self-employed,0.41,625,1070000
+25,Female,Single,PhD,906000,75500,Self-employed,0.15,673,1290000
+36,Female,Married,Bachelor's,996000,83000,Self-employed,0.27,675,695000
+58,Male,Single,Master's,729600,60800,Self-employed,0.22,698,720000
+61,Male,Married,High School,199200,16600,Employed,0.37,574,180000
+42,Female,Married,Bachelor's,441600,36800,Employed,0.31,532,225000
+60,Male,Married,Diploma,273600,22800,Retired,0.43,579,710000
+62,Male,Single,Master's,552000,46000,Employed,0.42,630,1030000
+39,Female,Married,Bachelor's,426000,35500,Employed,0.21,788,190000
+65,Female,Married,Bachelor's,343200,28600,Retired,0.49,534,500000
+35,Female,Divorced,High School,201600,16800,Employed,0.16,734,500000
+32,Male,Married,Bachelor's,966000,80500,Self-employed,0.44,605,1775000
+54,Female,Married,Bachelor's,585600,48800,Employed,0.2,656,390000
+52,Male,Single,Diploma,264000,22000,Employed,0.28,696,330000
+27,Male,Married,Bachelor's,340800,28400,Self-employed,0.08,692,375000
+61,Female,Married,Bachelor's,656400,54700,Employed,0.17,741,3370000
+30,Female,Married,Bachelor's,585600,48800,Retired,0.4,465,4140000
+60,Female,Married,Diploma,556800,46400,Self-employed,0.36,842,370000
+21,Female,Divorced,Bachelor's,331200,27600,Employed,0.1,760,500000
+60,Female,Divorced,High School,180000,15000,Unemployed,0.26,570,330000
+59,Male,Married,Bachelor's,354000,29500,Employed,0.2,746,185000
+59,Male,Single,Master's,710400,59200,Employed,0.3,798,1170000
+53,Female,Divorced,High School,282000,23500,Employed,0.42,850,400000
+44,Female,Married,Master's,434400,36200,Employed,0.38,766,3940000
+55,Male,Widowed,Master's,1280400,106700,Self-employed,0.26,681,2205000
+34,Male,Married,High School,94800,7900,Student,0.38,637,120000
+59,Male,Widowed,High School,266400,22200,Self-employed,0.13,587,340000
+48,Male,Single,Master's,508800,42400,Self-employed,0.54,788,755000
+43,Female,Married,PhD,630000,52500,Employed,0.12,745,930000
+45,Male,Married,High School,248400,20700,Self-employed,0.72,728,120000
+48,Male,Single,Master's,1101600,91800,Employed,0.09,723,3060000
+22,Female,Single,High School,195600,16300,Self-employed,0.15,477,155000
+27,Female,Single,Diploma,256800,21400,Employed,0.25,602,2470000
+33,Male,Single,Master's,362400,30200,Employed,0.29,470,530000
+26,Male,Divorced,Diploma,222000,18500,Employed,0.29,715,340000
+42,Male,Widowed,Bachelor's,270000,22500,Employed,0.6,632,250000
+53,Male,Divorced,High School,180000,15000,Employed,0.46,673,510000
+53,Male,Widowed,Diploma,260400,21700,Employed,0.43,662,220000
+44,Male,Divorced,PhD,658800,54900,Employed,0.48,850,1200000
+62,Male,Divorced,High School,391200,32600,Employed,0.56,636,710000
+48,Male,Single,Bachelor's,715200,59600,Employed,0.11,652,5780000
+24,Male,Single,Master's,1275600,106300,Employed,0.45,616,560000
+58,Female,Divorced,Master's,590400,49200,Employed,0.07,612,5210000
+49,Male,Married,PhD,735600,61300,Self-employed,0.48,675,1465000
+52,Male,Married,PhD,696000,58000,Employed,0.31,666,3330000
+48,Female,Married,High School,300000,25000,Employed,0.16,701,75000
+48,Male,Married,Bachelor's,351600,29300,Self-employed,0.36,556,290000
+25,Male,Single,Bachelor's,265200,22100,Employed,0.1,592,190000
+48,Female,Married,Bachelor's,819600,68300,Employed,0.19,710,4360000
+59,Female,Married,Bachelor's,505200,42100,Employed,0.57,585,720000
+35,Male,Married,High School,379200,31600,Employed,0.43,670,3670000
+50,Female,Married,Master's,565200,47100,Employed,0.18,713,660000
+22,Female,Married,Bachelor's,180000,15000,Retired,0.05,670,740000
+38,Male,Married,Bachelor's,594000,49500,Employed,0.24,663,725000
+42,Male,Married,Bachelor's,194400,16200,Employed,0.21,699,200000
+69,Male,Married,Diploma,180000,15000,Unemployed,0.22,553,85000
+31,Female,Divorced,Bachelor's,312000,26000,Employed,0.41,837,2790000
+34,Male,Married,Bachelor's,531600,44300,Retired,0.48,629,635000
+41,Male,Widowed,Master's,225600,18800,Employed,0.17,771,400000
+69,Male,Divorced,Master's,366000,30500,Self-employed,0.1,753,1820000
+62,Female,Divorced,Master's,196800,16400,Unemployed,0.51,475,250000
+22,Male,Married,Master's,396000,33000,Retired,0.53,599,520000
+32,Male,Married,Master's,793200,66100,Employed,0.43,723,4670000
+61,Male,Married,High School,202800,16900,Employed,0.46,850,1260000
+23,Female,Married,Bachelor's,524400,43700,Employed,0.27,749,360000
+62,Male,Single,High School,272400,22700,Self-employed,0.21,785,1520000
+34,Female,Single,Bachelor's,319200,26600,Employed,0.17,667,550000
+65,Male,Single,Master's,518400,43200,Employed,0.04,823,925000
+35,Male,Married,Bachelor's,252000,21000,Employed,0.35,784,320000
+42,Male,Single,Bachelor's,937200,78100,Employed,0.19,428,6760000
+53,Male,Married,Bachelor's,404400,33700,Unemployed,0.1,596,220000
+27,Male,Single,High School,195600,16300,Employed,0.34,627,340000
+48,Female,Single,Master's,241200,20100,Unemployed,0.32,553,405000
+45,Male,Married,High School,304800,25400,Employed,0.03,697,1800000
+59,Female,Divorced,High School,420000,35000,Self-employed,0.23,805,1460000
+69,Male,Married,High School,412800,34400,Employed,0.71,665,3070000
+53,Female,Divorced,Master's,668400,55700,Employed,0.1,638,1690000
+41,Male,Single,Bachelor's,388800,32400,Self-employed,0.21,709,300000
+40,Female,Married,Bachelor's,429600,35800,Employed,0.43,719,100000
+41,Male,Single,Diploma,180000,15000,Employed,0.1,706,1040000
+60,Female,Married,High School,246000,20500,Retired,0.31,576,635000
+36,Female,Single,High School,314400,26200,Employed,0.16,781,65000
+29,Female,Single,High School,290400,24200,Retired,0.42,552,1520000
+37,Female,Married,Bachelor's,322800,26900,Employed,0.08,599,535000
+22,Male,Married,High School,254400,21200,Employed,0.39,741,470000
+26,Male,Single,Bachelor's,387600,32300,Self-employed,0.16,790,330000
+25,Male,Divorced,Bachelor's,438000,36500,Employed,0.53,649,300000
+58,Female,Married,Bachelor's,603600,50300,Self-employed,0.11,638,435000
+56,Male,Married,Master's,180000,15000,Retired,0.17,644,270000
+55,Male,Married,High School,282000,23500,Employed,0.42,589,140000
+43,Female,Single,Bachelor's,216000,18000,Self-employed,0.18,640,330000
+56,Male,Divorced,High School,184800,15400,Employed,0.44,605,90000
+28,Female,Married,Master's,547200,45600,Self-employed,0.19,620,305000
+65,Male,Single,Master's,1405200,117100,Employed,0.48,668,660000
+45,Female,Single,High School,180000,15000,Employed,0.03,687,260000
+66,Female,Single,High School,282000,23500,Employed,0.2,739,250000
+28,Female,Married,High School,180000,15000,Self-employed,0.23,674,1190000
+45,Male,Married,High School,180000,15000,Employed,0.25,678,75000
+55,Male,Widowed,High School,207600,17300,Employed,0.16,657,1260000
+45,Male,Single,High School,410400,34200,Employed,0.4,607,75000
+42,Male,Married,High School,237600,19800,Employed,0.21,669,130000
+29,Female,Single,High School,180000,15000,Employed,0.1,720,560000
+39,Male,Married,Diploma,231600,19300,Employed,0.44,717,710000
+32,Male,Married,High School,180000,15000,Employed,0.42,625,165000
+35,Male,Widowed,Bachelor's,518400,43200,Employed,0.31,677,2770000
+54,Female,Married,Master's,944400,78700,Employed,0.27,757,730000
+51,Male,Single,Diploma,180000,15000,Self-employed,0.2,705,150000
+50,Male,Divorced,Diploma,224400,18700,Employed,0.13,622,1740000
+38,Male,Divorced,Master's,744000,62000,Employed,0.15,590,7280000
+68,Male,Single,Diploma,222000,18500,Self-employed,0.14,479,325000
+25,Female,Divorced,High School,228000,19000,Self-employed,0.26,785,260000
+37,Male,Married,Bachelor's,838800,69900,Employed,0.28,850,405000
+26,Female,Married,Diploma,180000,15000,Unemployed,0.12,684,250000
+37,Female,Married,Bachelor's,376800,31400,Employed,0.16,619,290000
+68,Female,Single,Master's,650400,54200,Employed,0.03,669,890000
+38,Female,Married,Bachelor's,180000,15000,Unemployed,0.3,582,1610000
+65,Female,Married,Master's,1088400,90700,Employed,0.11,669,4660000
+45,Male,Widowed,Diploma,66000,5500,Student,0.32,680,105000
+55,Male,Single,High School,225600,18800,Self-employed,0.32,716,290000
+43,Female,Married,Diploma,391200,32600,Employed,0.3,603,715000
+34,Female,Married,Bachelor's,691200,57600,Employed,0.38,713,1900000
+58,Male,Married,Bachelor's,180000,15000,Unemployed,0.08,418,1520000
+68,Male,Married,Bachelor's,180000,15000,Unemployed,0.21,748,95000
+33,Male,Married,Diploma,180000,15000,Self-employed,0.32,570,1080000
+59,Male,Married,Master's,781200,65100,Employed,0.12,699,6990000
+33,Male,Married,High School,180000,15000,Employed,0.07,720,75000
+56,Male,Married,PhD,405600,33800,Employed,0.1,722,1890000
+59,Male,Married,High School,254400,21200,Employed,0.1,721,1540000
+43,Female,Married,Bachelor's,60000,5000,Student,0.13,767,55000
+57,Female,Married,Bachelor's,536400,44700,Employed,0.16,638,540000
+34,Female,Married,Bachelor's,255600,21300,Self-employed,0.2,706,1110000
+24,Female,Married,Master's,578400,48200,Employed,0.23,644,2680000
+25,Male,Single,Bachelor's,213600,17800,Self-employed,0.15,778,350000
+42,Male,Single,Bachelor's,460800,38400,Employed,0.33,675,970000
+65,Female,Married,Master's,711600,59300,Employed,0.17,684,290000
+27,Female,Married,High School,180000,15000,Employed,0.27,662,1330000
+43,Female,Married,Bachelor's,276000,23000,Self-employed,0.33,714,500000
+55,Female,Widowed,Bachelor's,285600,23800,Unemployed,0.38,625,530000
+30,Female,Married,Diploma,219600,18300,Employed,0.31,672,1190000
+56,Female,Married,High School,180000,15000,Self-employed,0.4,648,70000
+35,Female,Married,High School,391200,32600,Employed,0.08,658,2700000
+60,Female,Married,High School,180000,15000,Employed,0.17,687,1260000
+49,Male,Married,Bachelor's,538800,44900,Self-employed,0.2,768,1180000
+47,Male,Married,Bachelor's,448800,37400,Employed,0.37,715,145000
+29,Male,Married,High School,231600,19300,Employed,0.24,641,590000
+43,Female,Divorced,Bachelor's,312000,26000,Employed,0.32,655,2460000
+62,Female,Married,High School,277200,23100,Self-employed,0.22,806,290000
+21,Male,Single,Master's,403200,33600,Unemployed,0.33,517,710000
+58,Male,Married,Bachelor's,609600,50800,Retired,0.46,579,730000
+45,Female,Widowed,High School,458400,38200,Retired,0.16,619,250000
+56,Male,Single,Diploma,286800,23900,Self-employed,0.3,730,205000
+53,Female,Widowed,Master's,1020000,85000,Employed,0.2,623,1955000
+42,Male,Widowed,Bachelor's,237600,19800,Self-employed,0.47,614,225000
+36,Male,Married,Diploma,267600,22300,Employed,0.29,756,115000
+51,Male,Married,Bachelor's,702000,58500,Employed,0.23,571,1400000
+27,Male,Single,Diploma,318000,26500,Retired,0.25,735,410000
+49,Male,Single,Master's,351600,29300,Employed,0.09,793,650000
+25,Male,Married,Master's,650400,54200,Self-employed,0.09,753,765000
+52,Male,Married,High School,412800,34400,Self-employed,0.43,697,525000
+51,Male,Divorced,Bachelor's,392400,32700,Self-employed,0.28,744,1175000
+25,Female,Single,Master's,909600,75800,Employed,0.22,850,7570000
+58,Male,Married,High School,304800,25400,Employed,0.08,682,300000
+41,Male,Married,Master's,488400,40700,Retired,0.04,698,4590000
+59,Male,Married,Bachelor's,416400,34700,Retired,0.23,850,2450000
+23,Female,Married,Diploma,187200,15600,Employed,0.06,634,360000
+29,Female,Divorced,PhD,630000,52500,Employed,0.47,684,430000
+45,Other,Married,Bachelor's,226800,18900,Unemployed,0.19,779,2060000
+30,Female,Single,Diploma,642000,53500,Retired,0.04,756,100000
+37,Male,Married,Bachelor's,747600,62300,Employed,0.15,588,225000
+53,Female,Single,Bachelor's,493200,41100,Self-employed,0.28,697,1130000
+28,Male,Divorced,Bachelor's,358800,29900,Retired,0.24,746,990000
+54,Female,Divorced,High School,180000,15000,Employed,0.25,674,360000
+26,Male,Single,Bachelor's,555600,46300,Employed,0.26,678,565000
+29,Male,Married,Master's,184800,15400,Unemployed,0.4,535,1310000
+49,Female,Married,Master's,1190400,99200,Self-employed,0.51,747,270000
+59,Female,Married,Diploma,577200,48100,Self-employed,0.11,847,1080000
+29,Female,Married,PhD,922800,76900,Self-employed,0.08,737,2350000
+35,Male,Widowed,High School,180000,15000,Employed,0.18,757,440000
+66,Male,Single,Master's,678000,56500,Retired,0.56,625,910000
+69,Male,Married,Diploma,180000,15000,Self-employed,0.29,595,70000
+49,Male,Single,PhD,573600,47800,Employed,0.37,642,750000
+42,Male,Married,Master's,457200,38100,Employed,0.16,719,1160000
+37,Male,Divorced,Master's,349200,29100,Self-employed,0.36,704,245000
+51,Female,Married,High School,205200,17100,Self-employed,0.24,550,1650000
+49,Male,Married,Master's,590400,49200,Employed,0.49,667,830000
+35,Female,Single,Diploma,392400,32700,Employed,0.24,683,2820000
+22,Female,Divorced,Bachelor's,700800,58400,Employed,0.19,715,1350000
+28,Female,Single,Master's,488400,40700,Employed,0.11,700,710000
+67,Male,Married,Bachelor's,315600,26300,Unemployed,0.22,703,470000
+41,Male,Single,Bachelor's,476400,39700,Self-employed,0.5,578,150000
+44,Male,Married,High School,568800,47400,Self-employed,0.49,826,5670000
+43,Female,Married,Bachelor's,481200,40100,Employed,0.28,526,480000
+59,Male,Married,High School,288000,24000,Employed,0.31,766,100000
+24,Male,Married,High School,180000,15000,Unemployed,0.13,733,85000
+25,Other,Married,PhD,806400,67200,Employed,0.05,627,495000
+34,Female,Married,Bachelor's,514800,42900,Employed,0.33,841,1190000
+44,Female,Married,High School,259200,21600,Employed,0.61,668,340000
+53,Male,Divorced,Bachelor's,134400,11200,Student,0.46,649,500000
+45,Female,Single,Diploma,272400,22700,Self-employed,0.11,752,790000
+42,Male,Single,High School,391200,32600,Retired,0.3,690,525000
+66,Male,Single,Master's,1022400,85200,Retired,0.42,657,1110000
+28,Female,Single,High School,195600,16300,Employed,0.43,653,700000
+49,Female,Married,High School,248400,20700,Self-employed,0.57,696,1940000
+47,Male,Single,High School,223200,18600,Employed,0.47,633,1890000
+44,Male,Single,Bachelor's,412800,34400,Self-employed,0.32,731,1225000
+60,Male,Single,High School,188400,15700,Employed,0.45,640,285000
+34,Female,Married,Diploma,297600,24800,Employed,0.25,644,350000
+67,Female,Married,Master's,459600,38300,Self-employed,0.24,661,230000
+37,Male,Married,Bachelor's,470400,39200,Employed,0.28,529,525000
+47,Male,Widowed,High School,222000,18500,Employed,0.5,657,100000
+46,Female,Single,Master's,883200,73600,Self-employed,0.45,728,2560000
+62,Female,Married,Bachelor's,465600,38800,Employed,0.16,822,3440000
+42,Male,Single,Master's,223200,18600,Unemployed,0.12,761,1820000
+34,Female,Married,High School,273600,22800,Employed,0.54,681,110000
+22,Other,Single,High School,268800,22400,Employed,0.31,679,1660000
+38,Male,Widowed,High School,394800,32900,Employed,0.59,625,360000
+61,Female,Married,Bachelor's,180000,15000,Unemployed,0.34,694,205000
+21,Female,Married,Diploma,300000,25000,Self-employed,0.18,579,780000
+64,Female,Married,Bachelor's,338400,28200,Employed,0.25,617,480000
+47,Female,Married,Diploma,230400,19200,Employed,0.38,559,345000
+27,Female,Single,Bachelor's,669600,55800,Self-employed,0.59,679,2190000
+35,Male,Divorced,Diploma,297600,24800,Retired,0.27,695,2160000
+48,Male,Married,High School,194400,16200,Employed,0.32,588,530000
+36,Female,Single,Bachelor's,448800,37400,Unemployed,0.49,556,380000
+26,Male,Single,Master's,514800,42900,Self-employed,0.25,740,4410000
+53,Male,Married,PhD,506400,42200,Self-employed,0.34,685,370000
+53,Male,Married,High School,262800,21900,Employed,0.15,604,325000
+26,Female,Married,Bachelor's,453600,37800,Employed,0.41,638,615000
+34,Other,Married,High School,180000,15000,Employed,0.34,735,210000
+32,Female,Single,Bachelor's,418800,34900,Self-employed,0.06,734,660000
+53,Female,Divorced,Diploma,555600,46300,Employed,0.39,669,4970000
+56,Male,Single,Master's,550800,45900,Employed,0.04,609,140000
+56,Male,Married,Master's,1021200,85100,Employed,0.36,593,8030000
+66,Female,Divorced,Diploma,241200,20100,Unemployed,0.18,482,1410000
+58,Male,Married,Diploma,297600,24800,Employed,0.38,608,165000
+36,Female,Married,Bachelor's,349200,29100,Employed,0.17,738,2240000
+26,Female,Divorced,Bachelor's,180000,15000,Employed,0.35,625,155000
+51,Male,Single,Bachelor's,848400,70700,Employed,0.46,606,420000
+65,Female,Single,High School,236400,19700,Employed,0.15,605,310000
+68,Male,Single,High School,180000,15000,Self-employed,0.42,644,275000
+32,Male,Single,Bachelor's,316800,26400,Employed,0.27,771,1730000
+32,Male,Married,Bachelor's,219600,18300,Self-employed,0.23,614,250000
+22,Male,Married,Bachelor's,500400,41700,Employed,0.64,639,3280000
+27,Male,Married,Diploma,180000,15000,Employed,0.49,585,120000
+48,Female,Married,High School,285600,23800,Self-employed,0.1,754,305000
+47,Male,Married,High School,457200,38100,Employed,0.38,676,370000
+39,Female,Single,Master's,847200,70600,Employed,0.27,582,625000
+36,Female,Married,Bachelor's,440400,36700,Employed,0.44,603,570000
+61,Male,Married,High School,348000,29000,Employed,0.58,711,160000
+43,Male,Married,High School,211200,17600,Employed,0.16,765,370000
+60,Female,Widowed,Master's,675600,56300,Retired,0.72,644,5390000
+68,Female,Divorced,Bachelor's,1083600,90300,Employed,0.32,740,2955000
+36,Female,Married,Master's,180000,15000,Unemployed,0.16,669,120000
+30,Male,Married,PhD,342000,28500,Employed,0.61,850,2100000
+67,Female,Married,High School,340800,28400,Employed,0.03,600,540000
+52,Female,Divorced,PhD,687600,57300,Employed,0.38,848,940000
+35,Female,Married,Diploma,282000,23500,Employed,0.18,742,525000
+51,Male,Married,Bachelor's,159600,13300,Student,0.08,590,1090000
+46,Female,Single,Bachelor's,861600,71800,Employed,0.37,741,725000
+65,Male,Married,Bachelor's,597600,49800,Self-employed,0.51,626,1670000
+33,Female,Married,Bachelor's,344400,28700,Employed,0.31,706,130000
+69,Female,Married,High School,180000,15000,Employed,0.03,727,1410000
+66,Female,Widowed,Bachelor's,656400,54700,Unemployed,0.2,583,1955000
+29,Male,Married,High School,282000,23500,Employed,0.17,825,100000
+29,Female,Married,High School,589200,49100,Employed,0.5,678,490000
+47,Male,Single,Bachelor's,877200,73100,Self-employed,0.22,691,865000
+23,Male,Married,Bachelor's,564000,47000,Employed,0.12,752,170000
+35,Female,Married,High School,282000,23500,Self-employed,0.09,739,1800000
+42,Female,Married,High School,220800,18400,Retired,0.44,751,340000
+68,Male,Married,PhD,831600,69300,Employed,0.2,761,1160000
+69,Female,Married,Bachelor's,708000,59000,Employed,0.36,850,7040000
+28,Male,Single,Bachelor's,513600,42800,Retired,0.19,707,755000
+64,Female,Single,High School,216000,18000,Retired,0.15,695,360000
+25,Female,Single,Bachelor's,488400,40700,Self-employed,0.36,795,3860000
+57,Female,Married,Master's,831600,69300,Self-employed,0.21,695,785000
+62,Female,Single,High School,266400,22200,Self-employed,0.34,587,730000
+64,Female,Single,Bachelor's,544800,45400,Employed,0.65,648,860000
+31,Male,Married,High School,237600,19800,Employed,0.24,640,160000
+64,Female,Married,High School,205200,17100,Employed,0.33,815,600000
+26,Male,Married,Bachelor's,1074000,89500,Employed,0.1,626,1270000
+46,Male,Married,Bachelor's,745200,62100,Employed,0.22,592,600000
+44,Female,Married,Bachelor's,442800,36900,Employed,0.37,757,500000
+36,Male,Married,Bachelor's,488400,40700,Employed,0.17,850,620000
+22,Male,Divorced,Bachelor's,229200,19100,Employed,0.14,573,795000
+58,Other,Married,Bachelor's,470400,39200,Employed,0.33,850,3230000
+37,Male,Married,Diploma,276000,23000,Employed,0.56,603,545000
+53,Male,Single,High School,79200,6600,Student,0.65,508,570000
+41,Male,Married,High School,180000,15000,Self-employed,0.34,560,180000
+39,Male,Divorced,Master's,649200,54100,Retired,0.52,699,1925000
+64,Female,Single,High School,312000,26000,Employed,0.11,645,430000
+25,Female,Married,Diploma,537600,44800,Employed,0.34,672,5120000
+57,Female,Married,Bachelor's,576000,48000,Self-employed,0.03,643,630000
+57,Male,Divorced,Bachelor's,528000,44000,Self-employed,0.38,582,500000
+39,Female,Single,Master's,523200,43600,Employed,0.13,748,1920000
+33,Male,Divorced,Bachelor's,182400,15200,Unemployed,0.58,589,100000
+21,Female,Single,Diploma,196800,16400,Employed,0.66,770,260000
+66,Female,Divorced,High School,351600,29300,Retired,0.21,734,240000
+67,Male,Divorced,Master's,428400,35700,Employed,0.52,666,2060000
+32,Female,Married,Master's,493200,41100,Employed,0.13,652,385000
+22,Female,Divorced,Master's,403200,33600,Employed,0.3,523,2460000
+27,Male,Widowed,Master's,446400,37200,Employed,0.3,761,4080000
+24,Female,Divorced,Diploma,180000,15000,Employed,0.06,694,180000
+61,Female,Married,High School,308400,25700,Employed,0.2,717,365000
+64,Male,Married,Bachelor's,180000,15000,Unemployed,0.43,559,150000
+28,Male,Single,Bachelor's,649200,54100,Employed,0.36,688,885000
+57,Female,Single,High School,180000,15000,Unemployed,0.11,525,220000
+29,Female,Married,Bachelor's,288000,24000,Student,0.16,579,210000
+38,Female,Single,PhD,631200,52600,Employed,0.13,810,450000
+50,Female,Divorced,High School,273600,22800,Employed,0.31,651,700000
+56,Female,Single,Diploma,180000,15000,Unemployed,0.5,612,580000
+63,Male,Single,Diploma,398400,33200,Employed,0.15,560,520000
+23,Male,Single,High School,180000,15000,Unemployed,0.15,546,100000
+30,Male,Single,Master's,1826400,152200,Self-employed,0.48,603,3230000
+34,Female,Single,Bachelor's,459600,38300,Employed,0.26,663,660000
+36,Female,Married,High School,217200,18100,Self-employed,0.26,628,1550000
+69,Female,Single,Master's,297600,24800,Employed,0.18,666,585000
+59,Male,Married,Bachelor's,459600,38300,Employed,0.37,729,420000
+36,Male,Married,Bachelor's,439200,36600,Employed,0.12,802,290000
+68,Female,Married,Bachelor's,506400,42200,Employed,0.18,724,340000
+45,Male,Married,Master's,885600,73800,Self-employed,0.31,610,190000
+45,Male,Single,High School,361200,30100,Employed,0.6,574,465000
+42,Female,Single,Bachelor's,553200,46100,Employed,0.26,606,655000
+28,Female,Divorced,Bachelor's,220800,18400,Employed,0.22,699,250000
+66,Female,Married,Master's,757200,63100,Employed,0.11,775,5400000
+21,Male,Single,Master's,330000,27500,Employed,0.35,771,290000
+29,Male,Married,Master's,866400,72200,Employed,0.39,850,485000
+32,Male,Married,High School,324000,27000,Employed,0.3,671,60000
+34,Male,Single,Bachelor's,363600,30300,Employed,0.19,644,2590000
+27,Male,Single,Diploma,217200,18100,Employed,0.56,674,540000
+21,Male,Married,Bachelor's,180000,15000,Unemployed,0.25,486,250000
+54,Female,Married,Master's,1434000,119500,Employed,0.12,693,8770000
+68,Male,Married,Bachelor's,351600,29300,Employed,0.31,658,335000
+26,Male,Single,High School,343200,28600,Employed,0.29,583,960000
+35,Male,Single,Bachelor's,739200,61600,Employed,0.19,790,1095000
+45,Female,Single,High School,271200,22600,Employed,0.58,620,380000
+66,Male,Married,High School,180000,15000,Self-employed,0.21,640,150000
+55,Male,Divorced,Bachelor's,291600,24300,Employed,0.15,563,2090000
+58,Male,Married,Master's,621600,51800,Employed,0.36,706,475000
+49,Male,Single,Diploma,282000,23500,Employed,0.17,835,1030000
+41,Female,Single,Bachelor's,226800,18900,Self-employed,0.18,703,320000
+30,Male,Single,Bachelor's,253200,21100,Employed,0.13,775,125000
+63,Male,Divorced,High School,180000,15000,Retired,0.24,626,720000
+60,Female,Married,Bachelor's,495600,41300,Employed,0.38,740,2910000
+22,Male,Married,High School,202800,16900,Employed,0.4,619,120000
+56,Female,Married,Master's,906000,75500,Employed,0.08,609,7690000
+25,Male,Married,Bachelor's,597600,49800,Employed,0.2,721,530000
+57,Female,Married,Diploma,411600,34300,Self-employed,0.06,792,735000
+61,Male,Married,High School,180000,15000,Employed,0.29,610,330000
+27,Male,Married,High School,236400,19700,Employed,0.71,704,2010000
+42,Male,Single,PhD,526800,43900,Employed,0.28,546,720000
+27,Other,Married,Master's,589200,49100,Employed,0.53,607,3150000
+48,Male,Widowed,Master's,739200,61600,Employed,0.21,850,2210000
+66,Female,Single,Bachelor's,446400,37200,Retired,0.22,649,3280000
+24,Female,Married,Master's,295200,24600,Employed,0.26,644,470000
+40,Male,Divorced,Bachelor's,183600,15300,Retired,0.16,737,1650000
+68,Male,Married,Diploma,180000,15000,Retired,0.41,594,860000
+35,Male,Married,Bachelor's,327600,27300,Employed,0.1,736,320000
+27,Other,Single,Bachelor's,879600,73300,Retired,0.58,737,1820000
+44,Female,Married,Diploma,297600,24800,Self-employed,0.22,652,540000
+45,Female,Divorced,High School,180000,15000,Employed,0.36,795,1490000
+53,Male,Widowed,Diploma,339600,28300,Self-employed,0.55,552,540000
+36,Female,Single,Bachelor's,460800,38400,Employed,0.54,657,1100000
+67,Male,Divorced,High School,180000,15000,Employed,0.44,785,720000
+46,Male,Married,High School,180000,15000,Employed,0.37,754,435000
+35,Male,Married,Bachelor's,183600,15300,Self-employed,0.09,650,810000
+68,Male,Single,Bachelor's,312000,26000,Employed,0.46,633,100000
+66,Female,Single,Diploma,394800,32900,Retired,0.65,698,270000
+45,Female,Married,Master's,270000,22500,Unemployed,0.37,481,225000
+22,Male,Married,Bachelor's,184800,15400,Employed,0.42,689,130000
+50,Male,Widowed,Diploma,264000,22000,Self-employed,0.72,702,2300000
+48,Female,Single,High School,180000,15000,Retired,0.34,618,240000
+28,Female,Divorced,Diploma,555600,46300,Employed,0.28,679,360000
+52,Male,Married,High School,206400,17200,Self-employed,0.28,680,100000
+62,Male,Single,Master's,630000,52500,Employed,0.31,575,1790000
+26,Female,Single,Master's,199200,16600,Unemployed,0.45,634,385000
+56,Female,Married,Bachelor's,360000,30000,Employed,0.61,574,170000
+27,Female,Divorced,High School,195600,16300,Self-employed,0.38,626,60000
+57,Male,Single,High School,346800,28900,Self-employed,0.4,638,1000000
+41,Female,Married,Bachelor's,464400,38700,Self-employed,0.11,809,540000
+21,Male,Married,Master's,1125600,93800,Employed,0.27,763,3650000
+68,Female,Married,Bachelor's,412800,34400,Employed,0.2,810,170000
+29,Male,Married,Master's,614400,51200,Self-employed,0.54,646,5540000
+50,Male,Divorced,High School,214800,17900,Employed,0.07,656,225000
+29,Male,Single,Bachelor's,180000,15000,Unemployed,0.05,654,55000
+66,Male,Single,High School,180000,15000,Employed,0.19,687,130000
+57,Male,Single,Bachelor's,1062000,88500,Employed,0.21,777,360000
+60,Female,Divorced,Bachelor's,484800,40400,Employed,0.31,741,80000
+42,Female,Married,Bachelor's,381600,31800,Employed,0.31,761,160000
+43,Female,Single,Master's,589200,49100,Retired,0.23,672,1740000
+52,Male,Married,High School,218400,18200,Self-employed,0.23,740,85000
+59,Male,Married,High School,284400,23700,Self-employed,0.34,641,210000
+62,Male,Married,Bachelor's,268800,22400,Student,0.23,850,155000
+21,Male,Single,Bachelor's,614400,51200,Employed,0.15,663,360000
+53,Male,Married,PhD,979200,81600,Employed,0.67,716,1815000
+26,Female,Married,Master's,541200,45100,Employed,0.38,756,525000
+35,Female,Single,Bachelor's,525600,43800,Employed,0.21,850,125000
+61,Male,Single,Bachelor's,1399200,116600,Employed,0.31,774,13550000
+33,Female,Single,Bachelor's,322800,26900,Employed,0.54,619,2930000
+60,Female,Married,High School,180000,15000,Employed,0.25,765,830000
+43,Male,Single,Diploma,256800,21400,Employed,0.19,552,1760000
+32,Female,Married,High School,369600,30800,Self-employed,0.51,638,1030000
+37,Male,Married,High School,279600,23300,Employed,0.28,618,2100000
+47,Male,Widowed,Master's,526800,43900,Employed,0.36,661,670000
+58,Other,Married,Bachelor's,752400,62700,Self-employed,0.45,750,2220000
+50,Female,Married,Master's,591600,49300,Employed,0.35,782,440000
+66,Male,Married,Master's,559200,46600,Self-employed,0.44,795,85000
+63,Male,Married,Master's,747600,62300,Self-employed,0.17,654,2340000
+57,Female,Divorced,Master's,782400,65200,Employed,0.29,579,715000
+50,Male,Widowed,High School,393600,32800,Employed,0.48,718,905000
+35,Female,Married,High School,284400,23700,Employed,0.11,697,235000
+41,Female,Married,Bachelor's,361200,30100,Unemployed,0.27,488,280000
+26,Male,Married,Diploma,420000,35000,Employed,0.25,651,220000
+39,Female,Married,Diploma,474000,39500,Employed,0.66,597,430000
+66,Female,Married,Master's,1124400,93700,Employed,0.05,523,1435000
+41,Female,Married,Bachelor's,240000,20000,Employed,0.13,700,1730000
+26,Male,Married,High School,207600,17300,Employed,0.15,628,1850000
+52,Male,Single,Bachelor's,556800,46400,Employed,0.37,637,1075000
+68,Male,Married,Master's,525600,43800,Employed,0.15,700,560000
+63,Female,Single,Master's,420000,35000,Employed,0.19,539,760000
+34,Female,Married,Bachelor's,295200,24600,Self-employed,0.03,598,2840000
+43,Female,Single,High School,236400,19700,Self-employed,0.14,698,1310000
+47,Female,Single,Master's,669600,55800,Employed,0.08,738,880000
+33,Male,Single,Bachelor's,457200,38100,Employed,0.35,795,1020000
+34,Male,Married,Bachelor's,745200,62100,Self-employed,0.11,704,1165000
+32,Female,Married,Master's,675600,56300,Employed,0.29,741,180000
+69,Female,Married,Bachelor's,469200,39100,Employed,0.59,695,1285000
+57,Female,Married,Master's,914400,76200,Employed,0.34,764,715000
+62,Male,Divorced,Master's,361200,30100,Self-employed,0.06,602,320000
+61,Male,Divorced,High School,204000,17000,Self-employed,0.33,623,105000
+67,Female,Married,Bachelor's,180000,15000,Retired,0.3,679,160000
+26,Male,Married,High School,322800,26900,Employed,0.2,678,1440000
+64,Male,Married,Diploma,180000,15000,Employed,0.18,580,80000
+24,Female,Married,High School,183600,15300,Employed,0.18,551,130000
+44,Female,Single,Bachelor's,616800,51400,Employed,0.27,614,2095000
+50,Female,Married,High School,271200,22600,Employed,0.48,620,170000
+38,Female,Single,Master's,318000,26500,Unemployed,0.37,666,125000
+28,Female,Married,High School,361200,30100,Employed,0.18,513,460000
+30,Male,Married,High School,261600,21800,Employed,0.21,850,375000
+61,Male,Widowed,High School,248400,20700,Employed,0.06,608,240000
+36,Female,Single,Diploma,555600,46300,Self-employed,0.5,548,605000
+36,Male,Married,High School,279600,23300,Employed,0.09,570,80000
+66,Female,Married,Master's,996000,83000,Employed,0.35,682,5440000
+28,Female,Divorced,Bachelor's,229200,19100,Employed,0.03,611,180000
+65,Male,Divorced,Master's,895200,74600,Employed,0.39,678,400000
+66,Male,Single,High School,189600,15800,Employed,0.09,646,150000
+50,Female,Widowed,High School,180000,15000,Employed,0.3,687,220000
+29,Male,Widowed,Master's,1005600,83800,Employed,0.3,684,435000
+28,Male,Widowed,Bachelor's,362400,30200,Employed,0.19,719,470000
+34,Female,Married,High School,180000,15000,Employed,0.24,811,820000
+49,Male,Divorced,High School,183600,15300,Employed,0.27,647,1680000
+28,Male,Single,Master's,544800,45400,Self-employed,0.29,610,930000
+43,Female,Single,High School,272400,22700,Self-employed,0.19,752,290000
+26,Female,Single,Bachelor's,742800,61900,Employed,0.04,718,1120000
+47,Male,Married,Master's,260400,21700,Self-employed,0.58,685,340000
+22,Female,Widowed,Bachelor's,271200,22600,Employed,0.17,701,390000
+55,Female,Married,Master's,693600,57800,Employed,0.05,649,345000
+23,Male,Married,Bachelor's,544800,45400,Employed,0.23,794,240000
+30,Male,Married,Bachelor's,326400,27200,Employed,0.72,762,240000
+29,Female,Married,Bachelor's,180000,15000,Employed,0.1,707,50000
+61,Male,Married,High School,180000,15000,Employed,0.33,653,250000
+23,Female,Married,Bachelor's,325200,27100,Self-employed,0.18,546,100000
+42,Female,Married,Master's,757200,63100,Employed,0.1,756,650000
+49,Male,Married,Diploma,204000,17000,Self-employed,0.46,686,250000
+46,Female,Married,Bachelor's,334800,27900,Employed,0.13,765,1570000
+54,Female,Married,Bachelor's,256800,21400,Employed,0.42,573,85000
+60,Female,Married,Bachelor's,446400,37200,Employed,0.12,674,885000
+40,Male,Married,Bachelor's,456000,38000,Employed,0.45,668,540000
+61,Female,Divorced,Bachelor's,180000,15000,Unemployed,0.29,482,270000
+36,Male,Married,High School,184800,15400,Employed,0.19,559,270000
+69,Female,Divorced,High School,315600,26300,Self-employed,0.41,701,120000
+45,Female,Married,Diploma,261600,21800,Self-employed,0.26,850,195000
+57,Male,Single,Bachelor's,373200,31100,Employed,0.27,790,1500000
+63,Male,Married,Diploma,468000,39000,Self-employed,0.16,533,110000
+59,Female,Single,Diploma,261600,21800,Employed,0.41,695,110000
+62,Female,Single,Bachelor's,166800,13900,Student,0.3,605,180000
+47,Male,Single,Bachelor's,247200,20600,Employed,0.06,739,380000
+23,Male,Married,Bachelor's,736800,61400,Employed,0.44,697,2090000
+45,Female,Married,Bachelor's,338400,28200,Retired,0.11,637,1460000
+29,Male,Married,Master's,481200,40100,Self-employed,0.17,761,245000
+64,Female,Married,High School,277200,23100,Self-employed,0.32,684,450000
+32,Male,Married,Bachelor's,380400,31700,Employed,0.43,707,1155000
+32,Male,Divorced,Diploma,300000,25000,Employed,0.28,679,2610000
+33,Female,Divorced,High School,78000,6500,Student,0.21,655,170000
+52,Male,Married,Bachelor's,297600,24800,Employed,0.34,695,145000
+48,Female,Single,High School,234000,19500,Self-employed,0.39,785,2020000
+67,Female,Divorced,High School,78000,6500,Student,0.11,726,150000
+41,Male,Married,High School,511200,42600,Self-employed,0.24,774,325000
+34,Male,Single,Bachelor's,268800,22400,Self-employed,0.45,525,610000
+23,Male,Married,High School,300000,25000,Employed,0.13,714,1410000
+21,Female,Married,Master's,723600,60300,Employed,0.11,610,1020000
+39,Female,Married,Diploma,439200,36600,Self-employed,0.17,694,4330000
+66,Female,Married,Diploma,122400,10200,Student,0.23,749,160000
+46,Male,Single,Bachelor's,679200,56600,Employed,0.31,601,520000
+64,Male,Single,Master's,657600,54800,Self-employed,0.13,713,615000
+25,Male,Married,Bachelor's,310800,25900,Employed,0.48,643,890000
+25,Female,Married,High School,196800,16400,Employed,0.45,760,130000
+61,Male,Married,Master's,348000,29000,Employed,0.16,712,265000
+26,Male,Single,Bachelor's,550800,45900,Employed,0.43,662,560000
+23,Male,Married,PhD,758400,63200,Employed,0.25,685,690000
+40,Male,Widowed,Bachelor's,525600,43800,Employed,0.21,710,605000
+66,Female,Single,Diploma,211200,17600,Self-employed,0.47,818,315000
+54,Female,Married,Master's,948000,79000,Employed,0.34,716,145000
+25,Female,Married,High School,327600,27300,Employed,0.35,720,50000
+62,Male,Single,Bachelor's,398400,33200,Employed,0.31,765,620000
+62,Female,Divorced,Bachelor's,710400,59200,Employed,0.4,674,1260000
+60,Male,Widowed,High School,259200,21600,Employed,0.37,601,310000
+65,Female,Married,High School,372000,31000,Self-employed,0.07,688,915000
+32,Female,Married,High School,262800,21900,Employed,0.58,753,1750000
+68,Male,Single,High School,180000,15000,Unemployed,0.26,619,100000
+36,Female,Married,Bachelor's,462000,38500,Employed,0.18,604,740000
+60,Male,Single,Bachelor's,180000,15000,Employed,0.36,742,345000
+49,Male,Married,High School,267600,22300,Employed,0.16,822,2060000
+59,Male,Single,High School,340800,28400,Employed,0.67,684,235000
+51,Male,Married,Master's,343200,28600,Employed,0.18,630,295000
+52,Female,Divorced,High School,60000,5000,Student,0.32,739,50000
+51,Female,Single,Master's,832800,69400,Employed,0.28,769,505000
+59,Female,Married,High School,247200,20600,Employed,0.17,727,395000
+57,Female,Divorced,Master's,439200,36600,Employed,0.32,714,1260000
+27,Female,Single,Bachelor's,337200,28100,Self-employed,0.47,702,1030000
+61,Male,Divorced,High School,180000,15000,Self-employed,0.32,804,110000
+47,Male,Married,Diploma,487200,40600,Employed,0.23,738,270000
+36,Male,Married,Diploma,352800,29400,Employed,0.05,675,235000
+46,Female,Married,High School,286800,23900,Self-employed,0.45,713,565000
+68,Female,Single,Diploma,180000,15000,Self-employed,0.46,667,355000
+63,Female,Single,Bachelor's,1430400,119200,Self-employed,0.11,672,1040000
+61,Male,Married,Bachelor's,451200,37600,Self-employed,0.21,670,3810000
+43,Male,Married,High School,180000,15000,Unemployed,0.22,682,225000
+59,Female,Divorced,Bachelor's,427200,35600,Employed,0.44,672,800000
+39,Male,Married,High School,302400,25200,Employed,0.63,677,140000
+54,Female,Single,High School,180000,15000,Unemployed,0.22,643,1010000
+52,Male,Single,High School,192000,16000,Employed,0.41,743,565000
+33,Male,Divorced,Diploma,296400,24700,Retired,0.27,781,2820000
+34,Female,Single,High School,259200,21600,Self-employed,0.33,630,410000
+23,Female,Divorced,High School,262800,21900,Self-employed,0.31,723,950000
+27,Female,Single,Diploma,351600,29300,Retired,0.17,727,935000
+42,Male,Single,Master's,674400,56200,Self-employed,0.12,709,895000
+44,Male,Single,Bachelor's,680400,56700,Employed,0.24,551,970000
+29,Female,Married,Master's,652800,54400,Employed,0.14,693,360000
+41,Female,Married,High School,193200,16100,Employed,0.18,696,380000
+50,Male,Divorced,Master's,651600,54300,Employed,0.72,799,4790000
+32,Female,Married,High School,180000,15000,Employed,0.05,778,350000
+37,Male,Single,High School,414000,34500,Employed,0.27,732,770000
+39,Male,Married,High School,210000,17500,Employed,0.25,850,260000
+45,Female,Married,Bachelor's,817200,68100,Self-employed,0.06,732,1405000
+38,Female,Married,High School,208800,17400,Employed,0.29,642,320000
+57,Male,Married,Bachelor's,296400,24700,Employed,0.28,764,310000
+37,Male,Widowed,Bachelor's,446400,37200,Self-employed,0.13,677,190000
+42,Other,Married,Diploma,265200,22100,Self-employed,0.13,714,2100000
+39,Female,Married,Master's,969600,80800,Employed,0.2,622,1630000
+29,Female,Married,High School,222000,18500,Employed,0.65,637,260000
+54,Male,Married,High School,289200,24100,Employed,0.2,562,465000
+32,Female,Married,High School,180000,15000,Unemployed,0.62,626,60000
+35,Female,Single,High School,184800,15400,Employed,0.25,628,100000
+59,Female,Single,High School,109200,9100,Student,0.28,838,100000
+67,Male,Widowed,High School,134400,11200,Student,0.34,754,140000
+53,Female,Divorced,Diploma,180000,15000,Self-employed,0.07,644,130000
+65,Female,Single,Master's,879600,73300,Retired,0.33,635,290000
+62,Female,Widowed,Master's,459600,38300,Employed,0.17,640,245000
+44,Female,Married,PhD,980400,81700,Employed,0.33,641,720000
+58,Female,Single,High School,284400,23700,Self-employed,0.22,605,200000
+37,Male,Divorced,High School,195600,16300,Employed,0.29,674,170000
+43,Male,Widowed,Bachelor's,441600,36800,Self-employed,0.46,635,460000
+47,Female,Married,Bachelor's,238800,19900,Retired,0.38,604,130000
+68,Male,Married,High School,180000,15000,Employed,0.07,780,270000
+62,Male,Married,Master's,640800,53400,Employed,0.46,651,4280000
+44,Female,Married,PhD,1579200,131600,Employed,0.21,659,500000
+52,Male,Married,Diploma,182400,15200,Employed,0.07,811,290000
+30,Female,Married,PhD,915600,76300,Employed,0.11,850,835000
+60,Male,Married,High School,180000,15000,Unemployed,0.28,697,250000
+48,Male,Married,Bachelor's,404400,33700,Employed,0.11,706,640000
+47,Male,Divorced,High School,81600,6800,Student,0.46,598,100000
+58,Female,Divorced,Bachelor's,486000,40500,Self-employed,0.3,772,4040000
+52,Female,Single,High School,292800,24400,Self-employed,0.24,638,530000
+24,Male,Married,Bachelor's,406800,33900,Self-employed,0.43,573,565000
+35,Male,Single,High School,205200,17100,Employed,0.31,646,175000
+29,Male,Married,Bachelor's,1042800,86900,Self-employed,0.33,599,1060000
+57,Female,Single,Bachelor's,615600,51300,Employed,0.16,623,770000
+22,Other,Divorced,Diploma,240000,20000,Employed,0.2,792,100000
+30,Female,Married,Bachelor's,266400,22200,Unemployed,0.17,749,1950000
+50,Male,Married,PhD,919200,76600,Employed,0.15,649,3260000
+55,Female,Married,Master's,798000,66500,Self-employed,0.29,641,835000
+45,Male,Single,PhD,584400,48700,Employed,0.15,635,695000
+63,Male,Single,High School,200400,16700,Employed,0.16,820,235000
+66,Male,Single,Bachelor's,448800,37400,Employed,0.1,812,460000
+27,Male,Married,Master's,780000,65000,Employed,0.25,642,1215000
+67,Male,Divorced,Master's,778800,64900,Self-employed,0.48,782,1800000
+51,Female,Single,High School,180000,15000,Employed,0.44,700,100000
+52,Male,Married,PhD,760800,63400,Employed,0.23,738,2360000
+25,Female,Single,Bachelor's,610800,50900,Employed,0.32,738,330000
+51,Female,Married,Master's,643200,53600,Employed,0.41,678,1165000
+56,Female,Married,Bachelor's,400800,33400,Self-employed,0.07,664,500000
+49,Male,Divorced,Diploma,355200,29600,Employed,0.3,812,1670000
+25,Female,Divorced,High School,237600,19800,Employed,0.22,681,70000
+46,Male,Married,High School,308400,25700,Employed,0.27,712,1780000
+66,Male,Married,Bachelor's,228000,19000,Employed,0.4,838,1110000
+56,Male,Single,Bachelor's,261600,21800,Employed,0.23,730,920000
+27,Female,Single,Bachelor's,492000,41000,Self-employed,0.56,696,815000
+68,Female,Divorced,Bachelor's,763200,63600,Employed,0.24,657,330000
+67,Female,Married,Bachelor's,367200,30600,Employed,0.12,631,1265000
+29,Female,Married,High School,192000,16000,Self-employed,0.04,703,1470000
+60,Female,Single,High School,350400,29200,Employed,0.14,631,300000
+40,Female,Single,Bachelor's,651600,54300,Self-employed,0.13,665,290000
+50,Female,Married,Diploma,97200,8100,Student,0.25,512,180000
+42,Male,Married,Master's,885600,73800,Self-employed,0.26,731,3810000
+59,Other,Divorced,PhD,480000,40000,Employed,0.18,642,445000
+69,Female,Married,Bachelor's,537600,44800,Employed,0.37,846,485000
+59,Male,Married,High School,180000,15000,Employed,0.44,618,1340000
+66,Male,Single,Master's,858000,71500,Employed,0.16,668,650000
+67,Male,Single,High School,183600,15300,Employed,0.25,677,1180000
+25,Female,Single,Bachelor's,728400,60700,Employed,0.18,658,420000
+33,Male,Single,PhD,526800,43900,Self-employed,0.38,564,600000
+56,Male,Widowed,Master's,723600,60300,Self-employed,0.29,702,675000
+49,Female,Married,Master's,577200,48100,Employed,0.08,736,575000
+23,Female,Married,High School,229200,19100,Employed,0.51,657,175000
+25,Female,Married,Bachelor's,274800,22900,Employed,0.26,671,400000
+46,Female,Married,Master's,1215600,101300,Self-employed,0.04,670,1240000
+51,Male,Married,High School,256800,21400,Employed,0.25,616,260000
+29,Male,Single,Master's,555600,46300,Employed,0.72,647,230000
+29,Female,Married,Diploma,181200,15100,Retired,0.07,804,790000
+27,Male,Single,Master's,440400,36700,Employed,0.08,734,560000
+48,Female,Divorced,Bachelor's,271200,22600,Self-employed,0.14,757,700000
+21,Other,Married,High School,222000,18500,Employed,0.17,640,1420000
+49,Female,Married,Master's,555600,46300,Employed,0.56,773,205000
+44,Female,Divorced,Bachelor's,943200,78600,Retired,0.24,783,2235000
+43,Female,Married,Bachelor's,211200,17600,Employed,0.35,660,530000
+54,Female,Single,PhD,856800,71400,Self-employed,0.35,850,4460000
+46,Male,Married,Bachelor's,520800,43400,Self-employed,0.31,616,485000
+56,Male,Married,Bachelor's,868800,72400,Self-employed,0.42,597,155000
+58,Male,Married,Diploma,247200,20600,Employed,0.03,617,1150000
+66,Female,Single,Master's,672000,56000,Employed,0.37,660,680000
+60,Male,Single,Bachelor's,180000,15000,Unemployed,0.14,694,150000
+46,Male,Married,Bachelor's,813600,67800,Employed,0.09,635,430000
+45,Female,Married,Master's,555600,46300,Retired,0.43,540,935000
+32,Male,Single,High School,266400,22200,Self-employed,0.52,637,2340000
+50,Female,Married,Master's,450000,37500,Self-employed,0.15,671,1860000
+27,Male,Married,Master's,600000,50000,Self-employed,0.36,728,3750000
+66,Male,Single,High School,262800,21900,Retired,0.31,481,1300000
+62,Male,Married,Bachelor's,783600,65300,Self-employed,0.26,663,1470000
+26,Male,Married,Master's,984000,82000,Employed,0.31,691,1650000
+59,Other,Married,Bachelor's,630000,52500,Employed,0.31,693,910000
+26,Other,Married,High School,367200,30600,Employed,0.29,738,3140000
+56,Female,Single,High School,248400,20700,Employed,0.28,605,1800000
+25,Female,Married,High School,216000,18000,Employed,0.03,669,185000
+44,Female,Married,Diploma,180000,15000,Employed,0.39,687,540000
+53,Female,Married,Bachelor's,518400,43200,Employed,0.16,665,310000
+56,Male,Married,Bachelor's,273600,22800,Employed,0.38,721,1020000
+41,Male,Married,Bachelor's,240000,20000,Self-employed,0.42,613,75000
+66,Female,Single,Bachelor's,403200,33600,Employed,0.38,726,560000
+58,Other,Single,Bachelor's,201600,16800,Self-employed,0.25,668,295000
+31,Male,Single,Master's,88800,7400,Student,0.22,732,135000
+53,Male,Married,Master's,664800,55400,Employed,0.3,787,1065000
+56,Male,Married,Bachelor's,571200,47600,Employed,0.45,757,360000
+37,Male,Married,Diploma,304800,25400,Self-employed,0.51,575,255000
+57,Female,Single,PhD,684000,57000,Self-employed,0.17,653,5540000
+65,Male,Married,Master's,400800,33400,Employed,0.36,713,1570000
+61,Female,Single,PhD,613200,51100,Employed,0.38,677,1110000
+58,Female,Single,Bachelor's,1236000,103000,Retired,0.21,638,225000
+52,Male,Married,Diploma,548400,45700,Employed,0.35,748,2330000
+34,Female,Single,Bachelor's,193200,16100,Student,0.36,577,1300000
+59,Female,Single,Diploma,456000,38000,Employed,0.22,549,2250000
+38,Male,Married,Diploma,278400,23200,Employed,0.37,602,160000
+47,Male,Single,Bachelor's,518400,43200,Self-employed,0.32,716,380000
+36,Female,Divorced,Master's,180000,15000,Unemployed,0.11,756,100000
+36,Male,Widowed,Bachelor's,265200,22100,Employed,0.5,835,520000
+28,Male,Married,Bachelor's,418800,34900,Employed,0.27,667,2650000
+68,Male,Single,Bachelor's,454800,37900,Employed,0.15,611,390000
+28,Male,Married,Diploma,272400,22700,Retired,0.19,682,260000
+25,Female,Married,High School,180000,15000,Unemployed,0.43,637,500000
+66,Male,Married,Bachelor's,398400,33200,Self-employed,0.33,551,720000
+48,Female,Single,Diploma,268800,22400,Self-employed,0.32,532,300000
+42,Male,Single,High School,180000,15000,Employed,0.28,576,100000
+57,Female,Single,Bachelor's,525600,43800,Employed,0.42,785,360000
+39,Male,Married,High School,180000,15000,Self-employed,0.5,659,1010000
+27,Female,Married,High School,332400,27700,Employed,0.46,636,730000
+56,Female,Divorced,Bachelor's,333600,27800,Employed,0.39,728,260000
+29,Male,Single,PhD,804000,67000,Employed,0.29,791,340000
+48,Female,Married,High School,200400,16700,Retired,0.39,620,1020000
+67,Male,Single,Bachelor's,96000,8000,Student,0.18,673,50000
+66,Female,Single,Bachelor's,541200,45100,Employed,0.41,705,600000
+38,Female,Married,Bachelor's,799200,66600,Employed,0.38,757,310000
+59,Male,Single,Bachelor's,459600,38300,Self-employed,0.13,687,200000
+51,Male,Divorced,Bachelor's,343200,28600,Employed,0.27,571,2710000
+44,Male,Divorced,Master's,322800,26900,Employed,0.37,692,840000
+27,Female,Single,Diploma,276000,23000,Self-employed,0.13,707,360000
+39,Female,Single,Master's,627600,52300,Employed,0.08,684,4410000
+52,Male,Single,High School,180000,15000,Unemployed,0.32,571,1790000
+69,Male,Divorced,Master's,310800,25900,Employed,0.16,589,395000
+21,Male,Single,Bachelor's,180000,15000,Unemployed,0.41,722,1470000
+56,Female,Married,Bachelor's,537600,44800,Employed,0.49,745,3730000
+62,Male,Single,Bachelor's,298800,24900,Employed,0.12,690,540000
+67,Male,Married,Bachelor's,325200,27100,Employed,0.19,605,2330000
+41,Female,Single,High School,283200,23600,Retired,0.58,735,305000
+26,Male,Married,Bachelor's,466800,38900,Employed,0.1,642,450000
+34,Female,Married,Bachelor's,186000,15500,Employed,0.1,547,630000
+62,Male,Single,Diploma,312000,26000,Self-employed,0.2,752,420000
+64,Male,Single,Diploma,268800,22400,Self-employed,0.13,516,180000
+52,Female,Married,Diploma,307200,25600,Retired,0.26,660,1130000
+27,Male,Married,Master's,661200,55100,Self-employed,0.33,756,1750000
+26,Male,Divorced,Diploma,200400,16700,Employed,0.27,692,510000
+44,Other,Married,Bachelor's,417600,34800,Employed,0.18,743,2120000
+49,Female,Divorced,PhD,621600,51800,Employed,0.38,790,945000
+22,Female,Single,High School,231600,19300,Employed,0.43,603,1830000
+54,Male,Divorced,High School,338400,28200,Retired,0.15,679,380000
+47,Male,Divorced,Master's,243600,20300,Student,0.26,665,360000
+21,Male,Married,Bachelor's,364800,30400,Employed,0.5,679,560000
+25,Female,Widowed,Diploma,366000,30500,Employed,0.19,733,65000
+43,Female,Married,High School,210000,17500,Employed,0.61,730,195000
+56,Female,Married,Bachelor's,565200,47100,Employed,0.03,767,1955000
+61,Female,Single,Master's,750000,62500,Employed,0.38,615,1410000
+42,Male,Single,Bachelor's,303600,25300,Self-employed,0.28,712,275000
+35,Female,Married,Master's,74400,6200,Student,0.06,583,50000
+68,Male,Divorced,Diploma,390000,32500,Employed,0.5,713,595000
+43,Male,Widowed,Bachelor's,366000,30500,Retired,0.14,817,210000
+36,Female,Married,High School,379200,31600,Retired,0.22,800,700000
+42,Female,Divorced,Bachelor's,235200,19600,Unemployed,0.4,528,120000
+21,Male,Married,Master's,318000,26500,Employed,0.42,605,760000
+35,Male,Married,High School,214800,17900,Employed,0.43,713,50000
+46,Female,Single,Bachelor's,326400,27200,Employed,0.4,642,430000
+66,Male,Married,Diploma,793200,66100,Self-employed,0.27,780,210000
+57,Female,Married,Diploma,372000,31000,Employed,0.22,740,3570000
+59,Female,Married,High School,336000,28000,Employed,0.07,720,445000
+47,Male,Married,Bachelor's,289200,24100,Retired,0.17,603,2860000
+26,Male,Married,PhD,696000,58000,Employed,0.03,767,6810000
+40,Male,Widowed,High School,250800,20900,Employed,0.59,726,100000
+69,Female,Married,High School,182400,15200,Employed,0.47,674,1440000
+23,Male,Married,High School,236400,19700,Employed,0.18,562,490000
+64,Female,Married,Bachelor's,333600,27800,Employed,0.21,806,145000
+54,Male,Married,High School,252000,21000,Employed,0.05,588,465000
+34,Female,Married,PhD,856800,71400,Employed,0.18,585,180000
+59,Male,Widowed,Bachelor's,180000,15000,Employed,0.14,726,130000
+62,Male,Married,Bachelor's,288000,24000,Self-employed,0.28,769,295000
+23,Female,Married,High School,235200,19600,Self-employed,0.4,620,785000
+26,Female,Married,Bachelor's,565200,47100,Employed,0.19,611,725000
+53,Male,Married,Master's,532800,44400,Self-employed,0.28,720,5040000
+69,Male,Divorced,Bachelor's,229200,19100,Employed,0.17,839,190000
+22,Female,Divorced,Bachelor's,277200,23100,Employed,0.16,825,100000
+53,Male,Widowed,Bachelor's,388800,32400,Employed,0.28,761,620000
+27,Male,Married,Master's,620400,51700,Self-employed,0.2,719,1155000
+52,Male,Married,Diploma,291600,24300,Self-employed,0.34,662,1590000
+51,Male,Single,Master's,928800,77400,Employed,0.13,674,1400000
+25,Female,Married,High School,184800,15400,Employed,0.18,655,170000
+54,Female,Married,Bachelor's,589200,49100,Employed,0.18,702,675000
+64,Female,Divorced,Bachelor's,256800,21400,Self-employed,0.09,650,145000
+63,Female,Single,Bachelor's,331200,27600,Employed,0.66,665,360000
+22,Male,Divorced,High School,400800,33400,Retired,0.37,630,665000
+33,Female,Married,Bachelor's,774000,64500,Employed,0.25,673,5240000
+32,Male,Single,High School,264000,22000,Employed,0.3,672,100000
+43,Male,Married,Bachelor's,468000,39000,Self-employed,0.26,707,520000
+28,Female,Married,High School,180000,15000,Employed,0.18,723,1550000
+62,Male,Married,Bachelor's,579600,48300,Employed,0.18,850,345000
+59,Male,Married,Diploma,568800,47400,Employed,0.31,779,1490000
+60,Male,Married,High School,260400,21700,Employed,0.3,771,265000
+30,Female,Single,Bachelor's,279600,23300,Employed,0.32,793,320000
+21,Male,Divorced,Diploma,526800,43900,Employed,0.33,720,4470000
+65,Female,Widowed,Bachelor's,333600,27800,Employed,0.18,560,250000
+35,Female,Married,Master's,585600,48800,Self-employed,0.65,737,570000
+53,Female,Single,Master's,451200,37600,Self-employed,0.58,669,3100000
+65,Male,Married,Bachelor's,672000,56000,Employed,0.16,644,720000
+22,Female,Single,Bachelor's,507600,42300,Employed,0.43,567,710000
+21,Male,Widowed,Bachelor's,560400,46700,Retired,0.38,576,330000
+21,Female,Single,Diploma,235200,19600,Retired,0.3,664,100000
+28,Female,Single,Diploma,598800,49900,Retired,0.2,702,415000
+23,Male,Single,High School,290400,24200,Self-employed,0.55,682,310000
+61,Female,Married,Master's,986400,82200,Employed,0.22,660,1810000
+50,Male,Married,High School,180000,15000,Employed,0.72,720,460000
+69,Male,Married,Diploma,351600,29300,Self-employed,0.39,737,660000
+60,Male,Married,High School,189600,15800,Employed,0.12,723,980000
+68,Female,Divorced,High School,336000,28000,Employed,0.57,726,345000
+32,Female,Married,High School,256800,21400,Employed,0.55,741,235000
+35,Female,Single,Bachelor's,586800,48900,Self-employed,0.12,544,790000
+62,Male,Married,Bachelor's,627600,52300,Employed,0.18,717,4810000
+32,Female,Married,Master's,487200,40600,Employed,0.46,649,1350000
+23,Female,Married,Bachelor's,373200,31100,Employed,0.09,834,435000
+53,Female,Married,Master's,344400,28700,Retired,0.23,785,110000
+60,Male,Married,Bachelor's,277200,23100,Self-employed,0.3,711,1460000
+68,Male,Single,High School,256800,21400,Employed,0.47,664,170000
+66,Female,Married,Master's,715200,59600,Employed,0.35,522,575000
+26,Male,Married,Bachelor's,327600,27300,Self-employed,0.32,595,1360000
+58,Male,Married,Master's,630000,52500,Self-employed,0.28,656,915000
+62,Female,Single,High School,180000,15000,Employed,0.44,709,150000
+55,Male,Single,Bachelor's,368400,30700,Employed,0.26,656,680000
+61,Male,Married,Diploma,182400,15200,Self-employed,0.21,797,860000
+62,Male,Married,Diploma,180000,15000,Unemployed,0.23,577,1490000
+42,Female,Single,Bachelor's,180000,15000,Employed,0.39,850,340000
+22,Female,Married,Master's,882000,73500,Employed,0.22,596,935000
+43,Male,Married,Master's,411600,34300,Self-employed,0.2,752,660000
+30,Male,Married,Master's,639600,53300,Employed,0.13,686,820000
+26,Female,Married,Master's,477600,39800,Employed,0.21,669,1620000
+27,Male,Married,Master's,171600,14300,Student,0.54,664,375000
+55,Other,Married,Bachelor's,536400,44700,Employed,0.29,623,2420000
+45,Female,Married,Bachelor's,634800,52900,Self-employed,0.03,709,160000
+47,Male,Married,High School,180000,15000,Employed,0.04,619,70000
+57,Male,Married,PhD,642000,53500,Employed,0.22,722,675000
+47,Male,Married,Bachelor's,459600,38300,Employed,0.11,719,130000
+51,Female,Single,High School,180000,15000,Employed,0.44,691,115000
+25,Male,Married,Bachelor's,331200,27600,Employed,0.13,646,195000
+62,Female,Divorced,Master's,472800,39400,Employed,0.19,805,865000
+42,Female,Single,Bachelor's,457200,38100,Retired,0.31,548,440000
+28,Female,Single,High School,180000,15000,Self-employed,0.58,717,245000
+60,Female,Married,Bachelor's,214800,17900,Employed,0.1,825,235000
+56,Male,Married,Bachelor's,206400,17200,Self-employed,0.23,775,285000
+23,Female,Divorced,Bachelor's,894000,74500,Employed,0.1,599,820000
+30,Female,Single,High School,180000,15000,Employed,0.21,622,1050000
+21,Male,Divorced,Bachelor's,186000,15500,Employed,0.13,679,360000
+34,Male,Married,Bachelor's,618000,51500,Retired,0.38,596,770000
+25,Male,Married,High School,504000,42000,Employed,0.2,623,1560000
+55,Male,Married,Diploma,244800,20400,Self-employed,0.41,561,260000
+46,Female,Married,Bachelor's,402000,33500,Unemployed,0.21,686,440000
+69,Male,Single,Bachelor's,433200,36100,Retired,0.22,773,140000
+57,Female,Married,PhD,535200,44600,Employed,0.15,650,430000
+50,Female,Single,PhD,1232400,102700,Employed,0.51,677,1940000
+45,Male,Single,Bachelor's,423600,35300,Employed,0.72,610,230000
+23,Female,Single,Bachelor's,469200,39100,Employed,0.15,732,3060000
+24,Male,Divorced,High School,188400,15700,Retired,0.4,622,135000
+51,Male,Single,Bachelor's,180000,15000,Employed,0.36,611,150000
+21,Male,Married,Bachelor's,334800,27900,Self-employed,0.26,745,870000
+23,Male,Married,Bachelor's,793200,66100,Employed,0.47,783,590000
+31,Male,Divorced,PhD,1602000,133500,Employed,0.12,714,5190000
+64,Male,Married,High School,267600,22300,Employed,0.18,545,1940000
+43,Male,Married,Diploma,546000,45500,Employed,0.24,769,1785000
+55,Male,Single,Bachelor's,458400,38200,Self-employed,0.54,559,710000
+41,Female,Single,Diploma,332400,27700,Employed,0.24,579,390000
+29,Male,Single,High School,360000,30000,Employed,0.53,648,2730000
+39,Female,Married,Bachelor's,408000,34000,Self-employed,0.36,709,450000
+25,Female,Married,High School,255600,21300,Employed,0.23,644,540000
+58,Female,Married,Diploma,322800,26900,Employed,0.1,783,120000
+29,Female,Married,PhD,766800,63900,Employed,0.03,724,5370000
+39,Female,Married,Bachelor's,450000,37500,Employed,0.48,691,1120000
+69,Female,Single,High School,235200,19600,Employed,0.16,572,620000
+50,Female,Widowed,Master's,631200,52600,Self-employed,0.59,801,640000
+43,Female,Divorced,High School,274800,22900,Employed,0.38,667,140000
+47,Male,Married,High School,496800,41400,Self-employed,0.3,598,430000
+59,Female,Married,PhD,720000,60000,Self-employed,0.4,653,400000
+33,Female,Widowed,Master's,994800,82900,Employed,0.28,805,2520000
+52,Male,Divorced,Diploma,303600,25300,Employed,0.17,699,1050000
+63,Female,Married,Bachelor's,325200,27100,Employed,0.48,670,140000
+49,Female,Single,Bachelor's,259200,21600,Employed,0.49,643,115000
+42,Female,Widowed,Master's,643200,53600,Employed,0.06,734,1070000
+28,Male,Married,Bachelor's,645600,53800,Employed,0.42,574,450000
+33,Male,Married,Bachelor's,294000,24500,Employed,0.4,699,2380000
+67,Male,Single,High School,247200,20600,Employed,0.18,640,420000
+47,Female,Married,High School,180000,15000,Employed,0.22,567,200000
+35,Female,Married,High School,180000,15000,Retired,0.36,651,105000
+41,Female,Married,Bachelor's,1111200,92600,Employed,0.34,570,2110000
+49,Male,Married,Bachelor's,384000,32000,Self-employed,0.26,640,350000
+47,Male,Married,Diploma,660000,55000,Employed,0.23,503,3560000
+55,Female,Married,High School,180000,15000,Self-employed,0.32,626,275000
+33,Female,Married,Bachelor's,507600,42300,Employed,0.1,590,270000
+52,Male,Married,High School,97200,8100,Student,0.11,648,100000
+42,Male,Widowed,Master's,549600,45800,Employed,0.09,679,1580000
+67,Male,Married,Master's,1104000,92000,Self-employed,0.11,715,370000
+28,Female,Married,Bachelor's,880800,73400,Self-employed,0.19,783,7050000
+28,Female,Single,Master's,594000,49500,Self-employed,0.24,792,1900000
+43,Male,Married,Bachelor's,531600,44300,Employed,0.26,657,4300000
+45,Female,Single,Bachelor's,243600,20300,Self-employed,0.18,687,440000
+54,Female,Married,Bachelor's,339600,28300,Self-employed,0.36,606,370000
+40,Female,Married,High School,180000,15000,Self-employed,0.37,665,510000
+65,Male,Married,High School,196800,16400,Self-employed,0.52,788,930000
+44,Male,Single,Bachelor's,212400,17700,Self-employed,0.6,614,70000
+27,Female,Married,High School,229200,19100,Retired,0.26,836,410000
+26,Female,Single,Master's,688800,57400,Retired,0.32,535,1925000
+68,Female,Married,High School,342000,28500,Employed,0.35,693,85000
+27,Female,Single,Bachelor's,151200,12600,Student,0.29,594,100000
+67,Male,Divorced,Bachelor's,282000,23500,Self-employed,0.11,502,490000
+34,Male,Married,High School,180000,15000,Employed,0.24,754,50000
+25,Male,Married,High School,297600,24800,Self-employed,0.72,685,1570000
+35,Female,Divorced,Bachelor's,394800,32900,Employed,0.43,721,490000
+51,Male,Divorced,High School,262800,21900,Employed,0.12,618,990000
+41,Female,Divorced,High School,308400,25700,Employed,0.31,742,740000
+59,Female,Single,High School,180000,15000,Retired,0.41,643,1190000
+50,Female,Married,Bachelor's,776400,64700,Employed,0.3,764,6910000
+40,Female,Married,Master's,879600,73300,Employed,0.48,655,685000
+52,Female,Married,Master's,584400,48700,Self-employed,0.36,771,460000
+68,Male,Married,Diploma,288000,24000,Self-employed,0.59,712,200000
+41,Other,Married,Bachelor's,889200,74100,Self-employed,0.72,809,345000
+28,Male,Single,PhD,777600,64800,Employed,0.41,737,800000
+41,Male,Single,Bachelor's,207600,17300,Self-employed,0.21,778,380000
+62,Female,Married,Master's,597600,49800,Self-employed,0.51,721,90000
+31,Female,Married,Master's,595200,49600,Employed,0.24,766,2000000
+67,Female,Married,High School,180000,15000,Employed,0.24,687,95000
+49,Male,Married,Bachelor's,206400,17200,Employed,0.18,694,250000
+50,Male,Single,Master's,711600,59300,Employed,0.23,799,1775000
+36,Female,Single,High School,180000,15000,Self-employed,0.35,687,255000
+66,Female,Married,High School,387600,32300,Self-employed,0.44,555,520000
+22,Male,Married,High School,183600,15300,Employed,0.26,711,445000
+35,Female,Married,High School,180000,15000,Retired,0.16,787,1330000
+41,Female,Married,High School,231600,19300,Retired,0.22,685,75000
+44,Female,Divorced,Bachelor's,447600,37300,Self-employed,0.7,686,470000
+44,Male,Married,Master's,1650000,137500,Employed,0.24,654,1480000
+28,Female,Single,High School,498000,41500,Employed,0.72,633,515000
+32,Male,Married,Master's,999600,83300,Self-employed,0.19,627,450000
+25,Male,Single,PhD,589200,49100,Self-employed,0.32,687,1780000
+49,Male,Single,Bachelor's,398400,33200,Employed,0.29,577,1040000
+38,Female,Married,PhD,1191600,99300,Retired,0.19,547,795000
+48,Female,Married,Bachelor's,244800,20400,Employed,0.23,681,1750000
+49,Male,Single,High School,180000,15000,Unemployed,0.32,688,100000
+55,Male,Married,High School,192000,16000,Retired,0.64,554,160000
+47,Male,Married,Bachelor's,392400,32700,Self-employed,0.15,850,1870000
+52,Male,Single,Master's,429600,35800,Unemployed,0.47,711,2430000
+49,Female,Married,High School,338400,28200,Employed,0.3,698,320000
+52,Male,Single,Bachelor's,427200,35600,Employed,0.41,814,240000
+51,Male,Married,Master's,439200,36600,Employed,0.24,662,1005000
+36,Other,Married,PhD,1098000,91500,Employed,0.46,707,1340000
+33,Male,Married,Master's,529200,44100,Employed,0.08,567,360000
+59,Female,Married,High School,262800,21900,Employed,0.11,689,310000
+37,Female,Married,High School,241200,20100,Employed,0.04,727,1760000
+47,Female,Single,High School,205200,17100,Self-employed,0.38,658,280000
+30,Female,Married,High School,267600,22300,Employed,0.37,661,2020000
+42,Male,Married,Master's,790800,65900,Self-employed,0.3,601,255000
+46,Female,Single,Bachelor's,374400,31200,Self-employed,0.27,809,205000
+51,Female,Married,PhD,642000,53500,Self-employed,0.55,560,305000
+46,Male,Single,Bachelor's,724800,60400,Retired,0.04,824,195000
+38,Female,Married,Bachelor's,675600,56300,Self-employed,0.36,624,405000
+68,Female,Married,High School,180000,15000,Self-employed,0.16,545,245000
+46,Female,Married,Bachelor's,405600,33800,Employed,0.25,670,3990000
+60,Female,Divorced,Master's,297600,24800,Employed,0.16,679,495000
+57,Male,Married,Bachelor's,730800,60900,Self-employed,0.29,696,1040000
+48,Female,Divorced,Master's,180000,15000,Unemployed,0.11,586,90000
+64,Female,Married,Master's,1014000,84500,Employed,0.3,819,2700000
+27,Female,Married,High School,60000,5000,Student,0.24,707,100000
+66,Male,Married,High School,180000,15000,Unemployed,0.38,631,360000
+62,Female,Divorced,Bachelor's,627600,52300,Retired,0.29,664,1620000
+45,Female,Married,Bachelor's,450000,37500,Self-employed,0.1,850,230000
+56,Male,Divorced,High School,403200,33600,Retired,0.26,655,3050000
+46,Female,Married,High School,348000,29000,Self-employed,0.43,671,250000
+34,Female,Widowed,PhD,676800,56400,Employed,0.03,673,1245000
+60,Female,Married,Master's,956400,79700,Employed,0.18,789,1390000
+33,Female,Single,Diploma,265200,22100,Retired,0.47,686,345000
+36,Male,Single,Bachelor's,180000,15000,Employed,0.15,615,1200000
+46,Female,Married,High School,315600,26300,Employed,0.11,720,2750000
+62,Female,Single,High School,483600,40300,Self-employed,0.18,732,610000
+39,Male,Single,Diploma,488400,40700,Employed,0.07,628,380000
+45,Male,Married,Diploma,331200,27600,Employed,0.3,724,200000
+23,Male,Married,PhD,363600,30300,Student,0.53,850,550000
+26,Female,Single,High School,612000,51000,Self-employed,0.14,804,925000
+23,Male,Married,Bachelor's,235200,19600,Employed,0.03,782,280000
+24,Female,Married,Master's,702000,58500,Employed,0.42,707,1770000
+63,Female,Married,High School,241200,20100,Employed,0.39,688,1640000
+62,Female,Married,Bachelor's,360000,30000,Employed,0.34,779,220000
+61,Male,Single,Diploma,531600,44300,Employed,0.52,539,1890000
+23,Female,Widowed,High School,244800,20400,Employed,0.35,667,50000
+24,Male,Divorced,High School,310800,25900,Employed,0.47,621,190000
+34,Female,Married,Master's,328800,27400,Unemployed,0.38,589,885000
+48,Male,Single,Bachelor's,524400,43700,Employed,0.24,717,2300000
+37,Female,Married,High School,300000,25000,Employed,0.61,724,2630000
+44,Male,Divorced,Bachelor's,243600,20300,Self-employed,0.4,623,1000000
+29,Male,Divorced,Master's,1512000,126000,Employed,0.31,561,2180000
+56,Other,Divorced,Bachelor's,680400,56700,Employed,0.07,775,410000
+36,Female,Widowed,PhD,1200000,100000,Employed,0.32,727,1135000
+24,Female,Married,Master's,237600,19800,Student,0.3,653,435000
+57,Female,Single,High School,180000,15000,Employed,0.12,602,230000
+65,Male,Single,High School,218400,18200,Self-employed,0.48,706,280000
+21,Male,Single,Bachelor's,793200,66100,Self-employed,0.23,621,1450000
+42,Female,Single,Bachelor's,522000,43500,Employed,0.45,646,5020000
+61,Female,Single,Bachelor's,531600,44300,Self-employed,0.31,758,3960000
+55,Female,Married,Bachelor's,585600,48800,Employed,0.58,733,290000
+62,Male,Married,High School,180000,15000,Employed,0.14,716,55000
+41,Female,Single,PhD,906000,75500,Self-employed,0.46,786,335000
+39,Male,Married,Bachelor's,508800,42400,Employed,0.27,599,360000
+55,Female,Divorced,Bachelor's,180000,15000,Unemployed,0.31,705,290000
+28,Female,Single,Bachelor's,405600,33800,Employed,0.13,760,305000
+32,Female,Single,Bachelor's,634800,52900,Employed,0.03,783,910000
+50,Male,Married,PhD,951600,79300,Employed,0.23,735,1875000
+53,Male,Divorced,High School,278400,23200,Employed,0.31,686,650000
+26,Male,Married,Bachelor's,625200,52100,Retired,0.18,735,5920000
+45,Male,Single,Bachelor's,238800,19900,Employed,0.17,778,265000
+38,Male,Married,Master's,1482000,123500,Employed,0.44,698,1765000
+45,Female,Married,Bachelor's,423600,35300,Self-employed,0.05,760,520000
+67,Male,Single,High School,282000,23500,Employed,0.36,421,550000
+24,Male,Married,Bachelor's,529200,44100,Self-employed,0.27,550,350000
+69,Female,Married,Bachelor's,230400,19200,Employed,0.41,769,280000
+43,Male,Single,High School,242400,20200,Employed,0.05,707,230000
+58,Male,Divorced,Bachelor's,561600,46800,Employed,0.3,722,745000
+41,Female,Single,Bachelor's,398400,33200,Self-employed,0.21,652,210000
+36,Male,Divorced,Diploma,265200,22100,Employed,0.22,542,440000
+58,Male,Married,High School,188400,15700,Employed,0.17,776,110000
+54,Female,Single,Master's,759600,63300,Employed,0.36,752,835000
+28,Male,Married,High School,199200,16600,Employed,0.35,780,185000
+55,Male,Single,Diploma,332400,27700,Employed,0.3,514,245000
+57,Male,Single,Bachelor's,984000,82000,Self-employed,0.32,771,1240000
+40,Male,Single,High School,458400,38200,Retired,0.23,756,3220000
+66,Female,Divorced,High School,180000,15000,Self-employed,0.53,725,260000
+52,Male,Divorced,PhD,901200,75100,Employed,0.34,712,655000
+37,Male,Single,Bachelor's,588000,49000,Self-employed,0.07,636,5350000
+21,Male,Married,High School,698400,58200,Employed,0.11,725,1000000
+54,Female,Widowed,High School,464400,38700,Employed,0.36,645,695000
+31,Male,Married,High School,228000,19000,Employed,0.33,737,150000
+58,Female,Single,Bachelor's,451200,37600,Self-employed,0.35,651,750000
+46,Male,Married,Diploma,615600,51300,Employed,0.1,659,940000
+43,Female,Married,High School,302400,25200,Employed,0.34,612,475000
+29,Male,Married,Master's,582000,48500,Employed,0.28,693,570000
+55,Male,Married,Bachelor's,523200,43600,Retired,0.37,691,500000
+29,Female,Married,Master's,1113600,92800,Employed,0.27,795,280000
+41,Male,Married,Bachelor's,454800,37900,Employed,0.15,698,785000
+61,Female,Married,Master's,460800,38400,Employed,0.34,470,3310000
+66,Female,Married,Diploma,258000,21500,Employed,0.63,850,220000
+69,Female,Married,High School,231600,19300,Employed,0.32,633,1920000
+67,Male,Married,High School,228000,19000,Employed,0.43,547,385000
+48,Female,Single,High School,206400,17200,Employed,0.69,766,1270000
+30,Male,Married,Master's,642000,53500,Retired,0.2,764,965000
+62,Other,Married,Bachelor's,224400,18700,Employed,0.17,662,620000
+60,Female,Married,High School,190800,15900,Employed,0.33,582,430000
+69,Female,Married,High School,309600,25800,Employed,0.16,700,290000
+52,Female,Married,Bachelor's,422400,35200,Employed,0.33,656,780000
+27,Female,Married,Diploma,451200,37600,Employed,0.24,683,460000
+45,Female,Married,Master's,576000,48000,Self-employed,0.08,700,630000
+42,Male,Married,Master's,1183200,98600,Self-employed,0.59,542,8030000
+62,Female,Married,Bachelor's,216000,18000,Employed,0.43,642,520000
+40,Male,Married,High School,180000,15000,Self-employed,0.2,643,625000
+37,Male,Divorced,Bachelor's,379200,31600,Employed,0.16,681,145000
+24,Female,Married,Bachelor's,460800,38400,Employed,0.2,689,650000
+61,Male,Single,Master's,117600,9800,Student,0.05,538,275000
+58,Female,Divorced,High School,180000,15000,Unemployed,0.13,575,60000
+23,Male,Married,Bachelor's,258000,21500,Employed,0.59,666,380000
+42,Male,Married,Bachelor's,418800,34900,Self-employed,0.18,668,2410000
+44,Female,Widowed,Bachelor's,808800,67400,Self-employed,0.34,771,7690000
+43,Male,Single,Diploma,60000,5000,Student,0.16,711,500000
+66,Female,Single,High School,210000,17500,Employed,0.28,850,1310000
+28,Female,Single,Master's,568800,47400,Employed,0.18,609,2590000
+36,Female,Widowed,High School,478800,39900,Self-employed,0.32,753,700000
+29,Male,Married,Diploma,411600,34300,Employed,0.33,707,525000
+32,Female,Married,Bachelor's,180000,15000,Unemployed,0.3,607,150000
+65,Male,Single,Diploma,242400,20200,Employed,0.36,708,475000
+67,Male,Single,Bachelor's,290400,24200,Self-employed,0.21,782,140000
+23,Male,Single,Diploma,435600,36300,Employed,0.25,656,480000
+51,Male,Married,Bachelor's,688800,57400,Self-employed,0.35,770,930000
+32,Male,Single,High School,352800,29400,Employed,0.37,704,355000
+30,Male,Divorced,Bachelor's,475200,39600,Employed,0.28,694,800000
+35,Male,Married,Bachelor's,428400,35700,Employed,0.08,850,420000
+30,Female,Divorced,Master's,612000,51000,Self-employed,0.35,623,1020000
+45,Male,Married,High School,186000,15500,Employed,0.66,736,910000
+69,Male,Married,Diploma,202800,16900,Employed,0.35,769,670000
+49,Male,Single,High School,182400,15200,Unemployed,0.28,661,360000
+56,Male,Married,High School,277200,23100,Employed,0.42,658,440000
+45,Female,Married,Diploma,458400,38200,Employed,0.68,699,270000
+21,Female,Single,Master's,295200,24600,Self-employed,0.17,586,320000
+25,Female,Widowed,Diploma,302400,25200,Employed,0.29,610,110000
+34,Female,Single,High School,356400,29700,Self-employed,0.1,748,660000
+32,Male,Single,PhD,830400,69200,Employed,0.18,660,485000
+62,Female,Married,Bachelor's,543600,45300,Retired,0.29,601,295000
+62,Male,Married,Diploma,362400,30200,Employed,0.21,710,1160000
+62,Male,Single,Bachelor's,464400,38700,Employed,0.38,649,4580000
+52,Male,Widowed,Bachelor's,180000,15000,Unemployed,0.11,673,220000
+48,Male,Single,Master's,1035600,86300,Self-employed,0.21,846,2060000
+52,Female,Married,High School,337200,28100,Employed,0.13,670,65000
+40,Male,Single,Bachelor's,267600,22300,Employed,0.13,653,50000
+53,Male,Single,Bachelor's,921600,76800,Employed,0.23,605,240000
+59,Male,Married,PhD,888000,74000,Employed,0.3,641,915000
+58,Female,Married,Bachelor's,529200,44100,Employed,0.33,655,1820000
+51,Female,Married,High School,180000,15000,Self-employed,0.29,561,325000
+23,Female,Single,PhD,1039200,86600,Employed,0.11,782,1500000
+56,Female,Single,Bachelor's,375600,31300,Student,0.26,638,355000
+38,Female,Divorced,Bachelor's,392400,32700,Self-employed,0.14,732,130000
+57,Male,Single,High School,295200,24600,Self-employed,0.09,713,430000
+47,Male,Married,Master's,620400,51700,Self-employed,0.04,734,1945000
+64,Male,Single,Bachelor's,730800,60900,Employed,0.62,669,1345000
+37,Male,Single,PhD,870000,72500,Employed,0.19,775,230000
+66,Female,Single,Bachelor's,180000,15000,Unemployed,0.49,711,480000
+62,Male,Single,High School,236400,19700,Retired,0.21,699,245000
+37,Male,Married,Master's,532800,44400,Employed,0.31,599,1870000
+44,Female,Married,High School,477600,39800,Retired,0.51,781,2880000
+47,Male,Married,Diploma,325200,27100,Employed,0.29,635,920000
+58,Male,Single,Master's,873600,72800,Self-employed,0.69,774,1500000
+54,Male,Married,PhD,242400,20200,Unemployed,0.14,686,2010000
+62,Female,Married,Master's,573600,47800,Employed,0.34,623,305000
+39,Male,Single,High School,180000,15000,Employed,0.67,709,720000
+45,Male,Single,Bachelor's,224400,18700,Employed,0.14,649,1070000
+42,Male,Single,Bachelor's,529200,44100,Self-employed,0.6,646,495000
+65,Female,Single,Bachelor's,644400,53700,Employed,0.07,797,130000
+35,Male,Married,Bachelor's,675600,56300,Self-employed,0.19,590,1080000
+49,Male,Single,Bachelor's,519600,43300,Retired,0.03,696,770000
+26,Female,Married,Diploma,297600,24800,Employed,0.27,758,430000
+62,Female,Married,Bachelor's,326400,27200,Retired,0.13,695,610000
+39,Male,Married,High School,310800,25900,Employed,0.2,612,2390000
+37,Male,Single,Master's,724800,60400,Retired,0.34,741,4690000
+49,Male,Married,Master's,440400,36700,Self-employed,0.26,655,1190000
+45,Female,Married,Diploma,241200,20100,Self-employed,0.44,653,680000
+62,Male,Widowed,PhD,657600,54800,Unemployed,0.28,486,300000
+47,Female,Single,Master's,483600,40300,Employed,0.39,774,590000
+46,Female,Single,Master's,699600,58300,Self-employed,0.27,746,420000
+26,Female,Divorced,Master's,496800,41400,Employed,0.25,748,870000
+22,Male,Single,Diploma,214800,17900,Employed,0.24,606,265000
+40,Female,Single,Master's,332400,27700,Employed,0.35,606,2180000
+69,Female,Divorced,High School,180000,15000,Employed,0.06,719,330000
+65,Female,Married,PhD,421200,35100,Self-employed,0.33,720,700000
+51,Male,Married,Bachelor's,511200,42600,Self-employed,0.32,842,1110000
+51,Female,Single,Bachelor's,507600,42300,Employed,0.44,738,610000
+40,Female,Single,Diploma,403200,33600,Employed,0.35,609,880000
+29,Female,Single,High School,262800,21900,Unemployed,0.12,548,2430000
+21,Female,Married,High School,296400,24700,Self-employed,0.08,702,205000
+37,Male,Married,High School,201600,16800,Employed,0.13,734,200000
+36,Male,Married,Bachelor's,421200,35100,Employed,0.21,778,1330000
+30,Female,Divorced,Diploma,180000,15000,Unemployed,0.08,655,175000
+33,Female,Widowed,PhD,1077600,89800,Employed,0.23,655,1725000
+22,Female,Single,Master's,1111200,92600,Retired,0.37,660,1160000
+50,Male,Married,Bachelor's,360000,30000,Employed,0.08,590,385000
+66,Male,Married,Master's,356400,29700,Self-employed,0.39,792,610000
+54,Female,Married,Bachelor's,270000,22500,Employed,0.3,692,160000
+42,Female,Divorced,Master's,883200,73600,Employed,0.05,446,545000
+41,Male,Married,Bachelor's,474000,39500,Employed,0.24,734,470000
+36,Male,Married,Bachelor's,481200,40100,Employed,0.08,684,150000
+27,Female,Single,High School,402000,33500,Self-employed,0.04,637,795000
+50,Male,Married,Master's,580800,48400,Employed,0.03,715,3260000
+48,Male,Married,Master's,981600,81800,Self-employed,0.34,714,4770000
+21,Male,Married,High School,450000,37500,Employed,0.3,735,630000
+41,Male,Married,High School,279600,23300,Retired,0.11,713,265000
+34,Male,Married,Master's,640800,53400,Employed,0.45,720,3800000
+29,Female,Married,PhD,640800,53400,Employed,0.16,673,340000
+55,Female,Widowed,Bachelor's,235200,19600,Employed,0.13,764,210000
+46,Female,Married,High School,225600,18800,Employed,0.31,518,720000
+52,Female,Married,Bachelor's,984000,82000,Self-employed,0.26,709,7400000
+55,Male,Married,High School,180000,15000,Employed,0.18,589,1570000
+69,Male,Married,Master's,601200,50100,Self-employed,0.49,675,345000
+60,Male,Married,High School,180000,15000,Self-employed,0.33,725,340000
+51,Male,Married,Diploma,93600,7800,Student,0.31,626,130000
+64,Female,Married,Bachelor's,237600,19800,Employed,0.45,670,2050000
+44,Male,Single,Bachelor's,327600,27300,Self-employed,0.09,753,1720000
+69,Female,Divorced,Master's,758400,63200,Employed,0.62,593,890000
+58,Male,Married,Bachelor's,482400,40200,Employed,0.24,748,665000
+52,Male,Married,High School,180000,15000,Employed,0.69,663,500000
+65,Male,Single,High School,360000,30000,Employed,0.36,788,2320000
+46,Male,Single,Bachelor's,510000,42500,Employed,0.4,623,930000
+56,Female,Single,High School,367200,30600,Employed,0.29,723,100000
+34,Female,Single,Bachelor's,180000,15000,Unemployed,0.18,668,270000
+68,Male,Single,Bachelor's,180000,15000,Unemployed,0.18,487,115000
+51,Female,Widowed,Bachelor's,415200,34600,Employed,0.48,712,230000
+59,Female,Married,High School,180000,15000,Employed,0.22,730,50000
+43,Male,Divorced,Master's,638400,53200,Employed,0.46,653,260000
+63,Male,Married,Bachelor's,428400,35700,Self-employed,0.27,794,1080000
+24,Male,Married,Bachelor's,790800,65900,Self-employed,0.08,586,6910000
+26,Male,Divorced,Bachelor's,276000,23000,Employed,0.17,592,140000
+45,Female,Single,Diploma,211200,17600,Employed,0.58,631,100000
+56,Male,Married,Diploma,271200,22600,Employed,0.07,612,570000
+60,Female,Divorced,Master's,686400,57200,Employed,0.49,720,945000
+42,Female,Divorced,Bachelor's,446400,37200,Employed,0.31,747,190000
+52,Male,Married,High School,372000,31000,Self-employed,0.32,582,900000
+48,Female,Divorced,Master's,606000,50500,Self-employed,0.5,652,1220000
+68,Male,Married,Bachelor's,405600,33800,Employed,0.26,660,625000
+53,Male,Single,High School,216000,18000,Employed,0.25,713,1810000
+41,Male,Single,High School,196800,16400,Employed,0.38,582,200000
+68,Male,Married,Diploma,180000,15000,Employed,0.4,574,60000
+26,Male,Single,Bachelor's,508800,42400,Employed,0.55,686,470000
+69,Female,Single,Master's,894000,74500,Self-employed,0.19,714,235000
+28,Female,Single,High School,284400,23700,Self-employed,0.1,746,235000
+35,Female,Divorced,Diploma,484800,40400,Self-employed,0.12,850,730000
+61,Male,Divorced,High School,234000,19500,Employed,0.21,629,325000
+56,Other,Divorced,Bachelor's,386400,32200,Employed,0.41,625,555000
+68,Male,Married,Master's,482400,40200,Employed,0.33,731,1270000
+57,Female,Divorced,High School,180000,15000,Employed,0.5,692,195000
+52,Female,Married,Master's,1105200,92100,Employed,0.29,777,1595000
+37,Female,Married,High School,212400,17700,Employed,0.38,648,315000
+21,Male,Married,Bachelor's,675600,56300,Employed,0.2,621,780000
+27,Female,Single,Bachelor's,576000,48000,Self-employed,0.33,750,190000
+35,Female,Married,Bachelor's,751200,62600,Self-employed,0.38,693,1060000
+23,Male,Married,Master's,190800,15900,Student,0.1,755,265000
+45,Female,Widowed,Bachelor's,457200,38100,Self-employed,0.16,691,170000
+59,Male,Single,Master's,500400,41700,Unemployed,0.62,651,3580000
+68,Male,Single,Bachelor's,432000,36000,Employed,0.57,557,795000
+44,Female,Married,Bachelor's,367200,30600,Self-employed,0.28,626,1380000
+63,Female,Single,High School,180000,15000,Employed,0.41,746,850000
+69,Male,Widowed,Bachelor's,232800,19400,Employed,0.16,850,95000
+63,Male,Married,Master's,478800,39900,Employed,0.09,812,300000
+43,Male,Married,Bachelor's,507600,42300,Self-employed,0.09,827,760000
+36,Male,Married,Master's,1399200,116600,Employed,0.4,681,1830000
+68,Female,Married,PhD,411600,34300,Self-employed,0.08,742,1210000
+32,Male,Single,High School,180000,15000,Employed,0.08,707,265000
+41,Female,Married,Bachelor's,523200,43600,Retired,0.37,648,2920000
+24,Male,Single,Master's,805200,67100,Employed,0.19,698,2110000
+59,Male,Married,High School,192000,16000,Employed,0.15,700,1090000
+52,Male,Married,High School,232800,19400,Employed,0.38,612,2020000
+25,Male,Single,High School,180000,15000,Employed,0.21,714,160000
+31,Male,Married,Master's,1369200,114100,Self-employed,0.45,735,1200000
+48,Male,Married,PhD,354000,29500,Employed,0.23,639,1180000
+47,Male,Married,Master's,549600,45800,Self-employed,0.21,626,785000
+60,Male,Married,Bachelor's,548400,45700,Retired,0.38,685,2550000
+34,Female,Married,Bachelor's,367200,30600,Employed,0.28,703,1570000
+66,Female,Married,High School,246000,20500,Self-employed,0.19,631,100000
+42,Female,Married,PhD,716400,59700,Employed,0.45,817,1430000
+61,Male,Single,PhD,1674000,139500,Employed,0.28,850,2665000
+32,Male,Married,Bachelor's,266400,22200,Employed,0.43,850,510000
+22,Male,Married,High School,248400,20700,Employed,0.19,647,415000
+23,Female,Married,PhD,1544400,128700,Employed,0.24,666,1665000
+39,Female,Divorced,Master's,414000,34500,Self-employed,0.29,631,560000
+67,Male,Single,PhD,622800,51900,Employed,0.13,776,785000
+23,Male,Married,Bachelor's,308400,25700,Retired,0.59,620,1450000
+39,Male,Married,Diploma,406800,33900,Self-employed,0.13,727,690000
+26,Male,Married,Diploma,303600,25300,Self-employed,0.2,726,105000
+66,Female,Divorced,Bachelor's,476400,39700,Retired,0.18,782,835000
+54,Male,Married,Master's,597600,49800,Employed,0.65,767,2650000
+58,Male,Married,High School,308400,25700,Retired,0.19,709,100000
+55,Male,Married,Bachelor's,690000,57500,Employed,0.17,663,1285000
+53,Male,Married,Master's,871200,72600,Employed,0.2,765,1400000
+58,Male,Married,High School,224400,18700,Self-employed,0.17,802,2110000
+21,Male,Married,Bachelor's,223200,18600,Self-employed,0.18,707,390000
+63,Male,Single,Master's,1045200,87100,Employed,0.28,720,9220000
+57,Male,Married,Bachelor's,855600,71300,Self-employed,0.13,579,1000000
+57,Female,Married,Bachelor's,180000,15000,Unemployed,0.25,575,150000
+40,Male,Married,Master's,502800,41900,Employed,0.1,641,390000
+60,Male,Married,High School,310800,25900,Self-employed,0.29,640,850000
+39,Female,Divorced,Bachelor's,938400,78200,Employed,0.36,824,7620000
+23,Male,Married,Master's,978000,81500,Retired,0.06,662,7300000
+65,Female,Single,High School,320400,26700,Employed,0.1,698,1210000
+32,Female,Married,High School,180000,15000,Self-employed,0.12,675,1470000
+25,Male,Married,High School,446400,37200,Self-employed,0.15,730,385000
+51,Male,Divorced,Bachelor's,280800,23400,Employed,0.12,648,420000
+32,Female,Married,Diploma,180000,15000,Unemployed,0.11,509,265000
+63,Male,Divorced,Bachelor's,801600,66800,Employed,0.11,773,360000
+42,Male,Married,Bachelor's,360000,30000,Employed,0.44,716,370000
+21,Female,Married,Bachelor's,786000,65500,Self-employed,0.35,766,2030000
+67,Male,Married,Bachelor's,180000,15000,Employed,0.22,778,1450000
+46,Female,Single,Master's,733200,61100,Retired,0.2,632,1430000
+33,Female,Single,Bachelor's,555600,46300,Employed,0.16,710,280000
+54,Female,Married,Master's,493200,41100,Unemployed,0.12,581,545000
+46,Female,Single,Bachelor's,668400,55700,Self-employed,0.27,508,2130000
+22,Female,Single,Bachelor's,494400,41200,Retired,0.45,644,870000
+58,Male,Single,High School,372000,31000,Employed,0.52,622,2290000
+40,Other,Single,Bachelor's,558000,46500,Employed,0.34,749,2890000
+55,Female,Single,Bachelor's,675600,56300,Employed,0.04,670,3200000
+64,Female,Married,Master's,404400,33700,Employed,0.35,747,515000
+50,Female,Divorced,Bachelor's,472800,39400,Retired,0.29,739,4020000
+53,Female,Married,Master's,102000,8500,Student,0.37,575,50000
+33,Male,Married,Diploma,483600,40300,Employed,0.08,595,4010000
+32,Female,Single,Bachelor's,361200,30100,Employed,0.55,723,260000
+41,Male,Single,Diploma,252000,21000,Employed,0.16,577,330000
+62,Male,Divorced,High School,217200,18100,Employed,0.32,619,260000
+46,Male,Married,Bachelor's,252000,21000,Employed,0.55,776,475000
+38,Female,Married,High School,60000,5000,Student,0.31,643,100000
+59,Female,Married,High School,326400,27200,Employed,0.14,520,840000
+62,Male,Married,Diploma,508800,42400,Employed,0.24,566,590000
+65,Male,Married,PhD,613200,51100,Self-employed,0.45,802,1910000
+35,Male,Single,Master's,375600,31300,Employed,0.4,747,3450000
+55,Male,Divorced,PhD,662400,55200,Self-employed,0.24,662,780000
+49,Male,Married,High School,189600,15800,Self-employed,0.44,697,375000
+42,Female,Married,High School,180000,15000,Retired,0.43,753,150000
+40,Male,Single,High School,213600,17800,Retired,0.14,606,1410000
+26,Male,Married,Bachelor's,648000,54000,Employed,0.15,725,170000
+34,Male,Married,PhD,834000,69500,Self-employed,0.31,636,500000
+47,Male,Married,Bachelor's,187200,15600,Student,0.22,698,160000
+64,Female,Widowed,Bachelor's,258000,21500,Unemployed,0.14,718,105000
+63,Male,Single,High School,368400,30700,Employed,0.22,776,565000
+30,Male,Divorced,Bachelor's,606000,50500,Employed,0.4,672,3940000
+54,Female,Married,Master's,625200,52100,Employed,0.4,753,1050000
+25,Male,Divorced,Bachelor's,218400,18200,Unemployed,0.62,671,1430000
+54,Female,Married,Bachelor's,363600,30300,Employed,0.5,643,595000
+37,Female,Married,Bachelor's,344400,28700,Unemployed,0.23,529,170000
+43,Female,Married,Bachelor's,358800,29900,Self-employed,0.29,791,515000
+56,Female,Divorced,Diploma,236400,19700,Self-employed,0.07,678,465000
+41,Male,Divorced,Master's,936000,78000,Employed,0.39,676,1020000
+60,Male,Married,Bachelor's,463200,38600,Employed,0.25,730,805000
+47,Male,Married,Diploma,304800,25400,Retired,0.21,850,220000
+69,Male,Married,Bachelor's,554400,46200,Employed,0.19,522,1920000
+52,Male,Single,High School,404400,33700,Self-employed,0.15,832,210000
+35,Male,Single,High School,465600,38800,Retired,0.32,669,590000
+58,Male,Married,High School,222000,18500,Employed,0.03,688,1330000
+40,Male,Married,Master's,1051200,87600,Employed,0.03,617,2660000
+47,Female,Married,High School,229200,19100,Employed,0.17,553,120000
+27,Male,Married,PhD,1605600,133800,Self-employed,0.29,741,1945000
+26,Male,Married,Diploma,182400,15200,Self-employed,0.38,652,55000
+49,Male,Single,Bachelor's,788400,65700,Employed,0.31,640,2000000
+30,Female,Single,Master's,482400,40200,Self-employed,0.04,625,2140000
+69,Male,Single,High School,229200,19100,Self-employed,0.24,533,550000
+62,Female,Married,Master's,751200,62600,Employed,0.47,683,1060000
+55,Male,Married,Bachelor's,180000,15000,Employed,0.15,698,810000
+57,Male,Divorced,High School,180000,15000,Unemployed,0.28,681,345000
+50,Female,Single,PhD,1106400,92200,Employed,0.11,723,690000
+23,Male,Married,Diploma,522000,43500,Self-employed,0.22,682,265000
+40,Male,Married,High School,192000,16000,Employed,0.42,592,280000
+45,Male,Married,Master's,747600,62300,Self-employed,0.13,768,1280000
+65,Male,Married,Diploma,278400,23200,Retired,0.26,651,50000
+31,Male,Widowed,Bachelor's,325200,27100,Unemployed,0.42,648,2300000
+45,Male,Married,High School,180000,15000,Unemployed,0.09,566,370000
+37,Male,Married,Master's,314400,26200,Employed,0.38,765,280000
+27,Female,Single,Bachelor's,364800,30400,Employed,0.13,785,215000
+26,Male,Single,High School,468000,39000,Self-employed,0.43,633,85000
+38,Male,Single,PhD,987600,82300,Self-employed,0.27,833,6300000
+25,Female,Single,Bachelor's,544800,45400,Employed,0.2,767,1930000
+24,Male,Married,Master's,710400,59200,Self-employed,0.26,850,6080000
+38,Female,Single,Bachelor's,200400,16700,Self-employed,0.62,796,1140000
+30,Male,Married,Bachelor's,321600,26800,Employed,0.27,690,235000
+48,Female,Divorced,Diploma,180000,15000,Unemployed,0.25,528,165000
+21,Female,Divorced,Bachelor's,721200,60100,Retired,0.06,724,250000
+35,Male,Single,Diploma,231600,19300,Employed,0.29,552,105000
+43,Female,Single,Bachelor's,722400,60200,Employed,0.11,770,1055000
+68,Female,Married,High School,180000,15000,Employed,0.13,701,770000
+52,Female,Single,Master's,301200,25100,Retired,0.23,652,460000
+64,Male,Married,High School,261600,21800,Employed,0.58,663,1580000
+37,Male,Married,Bachelor's,406800,33900,Employed,0.37,796,660000
+43,Male,Married,Bachelor's,901200,75100,Employed,0.22,723,1140000
+41,Female,Single,High School,300000,25000,Employed,0.37,678,195000
+64,Male,Single,Diploma,286800,23900,Employed,0.05,652,445000
+68,Male,Divorced,High School,510000,42500,Employed,0.46,695,3320000
+68,Female,Divorced,High School,270000,22500,Self-employed,0.45,747,265000
+57,Male,Married,Master's,602400,50200,Employed,0.16,738,1015000
+45,Female,Married,Bachelor's,440400,36700,Employed,0.29,608,3840000
+47,Male,Married,Bachelor's,506400,42200,Retired,0.46,731,965000
+69,Female,Single,High School,220800,18400,Employed,0.33,609,2100000
+34,Male,Divorced,Bachelor's,106800,8900,Student,0.17,669,155000
+37,Male,Single,High School,180000,15000,Unemployed,0.45,469,1010000
+64,Female,Married,High School,180000,15000,Employed,0.35,656,315000
+39,Male,Single,Bachelor's,363600,30300,Employed,0.25,641,90000
+32,Male,Married,Bachelor's,524400,43700,Employed,0.13,598,405000
+48,Male,Married,High School,242400,20200,Self-employed,0.09,653,315000
+36,Female,Married,High School,218400,18200,Employed,0.24,756,610000
+64,Male,Married,Bachelor's,180000,15000,Employed,0.61,633,180000
+65,Male,Married,High School,237600,19800,Self-employed,0.34,569,325000
+35,Male,Married,High School,297600,24800,Self-employed,0.04,806,315000
+46,Male,Married,PhD,849600,70800,Self-employed,0.56,677,1235000
+69,Female,Married,High School,193200,16100,Employed,0.1,783,290000
+57,Male,Married,Bachelor's,459600,38300,Self-employed,0.1,611,250000
+31,Female,Married,Master's,484800,40400,Employed,0.17,782,525000
+49,Female,Single,Diploma,180000,15000,Unemployed,0.22,695,100000
+51,Female,Married,Bachelor's,530400,44200,Self-employed,0.65,757,655000
+53,Female,Single,Bachelor's,441600,36800,Self-employed,0.26,737,550000
+22,Male,Married,High School,277200,23100,Self-employed,0.2,766,100000
+35,Female,Married,Diploma,224400,18700,Employed,0.54,673,180000
+62,Female,Divorced,PhD,373200,31100,Employed,0.03,691,620000
+32,Female,Single,High School,117600,9800,Student,0.19,718,100000
+35,Male,Married,Master's,796800,66400,Retired,0.28,835,1340000
+36,Male,Single,Bachelor's,807600,67300,Employed,0.7,850,190000
+29,Female,Divorced,Bachelor's,360000,30000,Employed,0.1,706,380000
+28,Male,Single,Bachelor's,399600,33300,Employed,0.05,631,720000
+38,Female,Married,Bachelor's,373200,31100,Self-employed,0.05,682,640000
+63,Male,Single,Bachelor's,388800,32400,Employed,0.31,633,235000
+21,Male,Married,Bachelor's,198000,16500,Unemployed,0.25,633,315000
+34,Male,Single,Master's,835200,69600,Employed,0.49,696,1190000
+23,Male,Married,Master's,1089600,90800,Self-employed,0.19,722,6990000
+48,Male,Single,High School,180000,15000,Employed,0.15,714,110000
+33,Female,Married,High School,258000,21500,Employed,0.29,709,280000
+59,Female,Single,Master's,646800,53900,Self-employed,0.51,585,310000
+49,Female,Married,High School,216000,18000,Unemployed,0.58,568,1390000
+59,Female,Single,Master's,716400,59700,Employed,0.43,616,1145000
+52,Female,Widowed,High School,180000,15000,Unemployed,0.4,680,100000
+42,Male,Married,High School,60000,5000,Student,0.25,504,500000
+63,Female,Married,High School,301200,25100,Self-employed,0.32,785,105000
+44,Female,Single,High School,201600,16800,Employed,0.46,733,500000
+67,Female,Single,Bachelor's,349200,29100,Employed,0.43,709,290000
+69,Male,Divorced,Diploma,180000,15000,Employed,0.17,595,1500000
+49,Female,Married,PhD,81600,6800,Student,0.09,679,500000
+54,Male,Married,Diploma,279600,23300,Employed,0.07,562,150000
+33,Male,Married,Bachelor's,706800,58900,Retired,0.24,760,3010000
+60,Female,Single,Bachelor's,792000,66000,Self-employed,0.12,692,260000
+53,Female,Divorced,Diploma,235200,19600,Employed,0.17,809,640000
+65,Male,Married,Master's,447600,37300,Employed,0.28,817,465000
+34,Male,Divorced,Diploma,714000,59500,Employed,0.53,703,840000
+59,Female,Married,Bachelor's,714000,59500,Employed,0.18,757,590000
+44,Male,Single,Diploma,200400,16700,Employed,0.08,815,235000
+30,Male,Married,Bachelor's,595200,49600,Employed,0.41,572,4880000
+29,Female,Widowed,High School,331200,27600,Self-employed,0.1,662,290000
+48,Female,Single,Diploma,180000,15000,Unemployed,0.07,619,525000
+36,Male,Married,PhD,574800,47900,Employed,0.33,772,1045000
+25,Female,Married,Master's,493200,41100,Employed,0.46,718,3200000
+41,Male,Married,Master's,510000,42500,Retired,0.15,712,4160000
+52,Male,Married,Bachelor's,292800,24400,Self-employed,0.41,583,225000
+36,Female,Married,Bachelor's,427200,35600,Employed,0.44,633,1240000
+67,Female,Divorced,Master's,596400,49700,Employed,0.28,749,1940000
+59,Male,Married,Bachelor's,1058400,88200,Employed,0.6,689,270000
+46,Male,Divorced,Master's,1414800,117900,Employed,0.68,667,5290000
+66,Male,Single,Bachelor's,403200,33600,Self-employed,0.36,671,1165000
+42,Male,Single,Bachelor's,519600,43300,Employed,0.04,764,605000
+27,Male,Single,Bachelor's,235200,19600,Employed,0.36,729,1690000
+22,Male,Married,High School,286800,23900,Employed,0.69,634,100000
+66,Female,Married,High School,474000,39500,Self-employed,0.53,839,3330000
+68,Male,Single,Master's,663600,55300,Employed,0.46,699,1240000
+57,Female,Married,Bachelor's,553200,46100,Employed,0.18,635,1800000
+26,Female,Married,High School,234000,19500,Employed,0.51,622,2120000
+35,Female,Married,PhD,484800,40400,Retired,0.16,750,510000
+23,Female,Married,Master's,558000,46500,Unemployed,0.19,720,3730000
+23,Male,Married,Bachelor's,332400,27700,Self-employed,0.31,796,200000
+33,Male,Widowed,Diploma,202800,16900,Unemployed,0.29,695,350000
+49,Female,Married,Diploma,60000,5000,Student,0.33,690,100000
+24,Male,Divorced,Master's,798000,66500,Employed,0.41,615,950000
+69,Male,Widowed,High School,180000,15000,Unemployed,0.06,704,100000
+43,Male,Divorced,High School,180000,15000,Unemployed,0.38,650,500000
+33,Female,Single,High School,252000,21000,Employed,0.46,746,500000
+46,Male,Married,Bachelor's,394800,32900,Employed,0.24,710,960000
+59,Male,Married,Diploma,290400,24200,Employed,0.21,670,680000
+36,Male,Single,Master's,868800,72400,Self-employed,0.07,691,400000
+23,Female,Married,Master's,678000,56500,Self-employed,0.29,722,320000
+23,Male,Single,PhD,409200,34100,Self-employed,0.09,697,870000
+62,Female,Married,Diploma,400800,33400,Employed,0.11,567,365000
+26,Female,Married,Bachelor's,180000,15000,Employed,0.33,849,1550000
+52,Male,Married,Bachelor's,432000,36000,Employed,0.1,621,130000
+39,Male,Divorced,PhD,1110000,92500,Employed,0.11,561,580000
+59,Female,Married,Diploma,390000,32500,Employed,0.29,642,275000
+23,Female,Married,Diploma,309600,25800,Employed,0.46,592,140000
+64,Male,Single,Bachelor's,219600,18300,Student,0.6,850,1820000
+55,Male,Divorced,Bachelor's,654000,54500,Self-employed,0.38,675,5240000
+43,Male,Single,High School,180000,15000,Employed,0.38,756,325000
+31,Male,Divorced,Bachelor's,374400,31200,Employed,0.13,699,2550000
+68,Male,Single,Diploma,292800,24400,Employed,0.1,505,1440000
+35,Male,Single,Bachelor's,609600,50800,Employed,0.14,771,1140000
+45,Male,Married,High School,386400,32200,Employed,0.06,586,3210000
+40,Female,Married,Bachelor's,661200,55100,Employed,0.24,726,5320000
+32,Female,Divorced,High School,264000,22000,Self-employed,0.13,562,130000
+41,Female,Married,High School,246000,20500,Employed,0.67,696,110000
+28,Female,Married,Bachelor's,180000,15000,Unemployed,0.34,622,65000
+21,Female,Single,High School,333600,27800,Retired,0.12,662,440000
+35,Male,Widowed,Bachelor's,662400,55200,Employed,0.42,686,515000
+26,Female,Married,Bachelor's,384000,32000,Employed,0.28,640,135000
+41,Male,Divorced,Bachelor's,253200,21100,Self-employed,0.31,501,460000
+63,Male,Married,High School,415200,34600,Retired,0.24,740,485000
+28,Female,Married,High School,537600,44800,Self-employed,0.51,771,980000
+21,Female,Married,Bachelor's,328800,27400,Employed,0.4,712,500000
+26,Male,Married,High School,180000,15000,Unemployed,0.43,506,245000
+45,Female,Divorced,High School,309600,25800,Employed,0.5,645,2230000
+34,Male,Married,Master's,600000,50000,Employed,0.25,713,1650000
+44,Male,Divorced,High School,339600,28300,Employed,0.1,597,620000
+22,Male,Widowed,Bachelor's,483600,40300,Employed,0.49,735,1270000
+37,Male,Married,High School,235200,19600,Self-employed,0.18,753,140000
+41,Female,Married,High School,194400,16200,Employed,0.31,621,120000
+42,Male,Married,Master's,673200,56100,Retired,0.05,791,990000
+48,Male,Single,Bachelor's,234000,19500,Employed,0.51,643,310000
+59,Other,Married,High School,366000,30500,Employed,0.23,665,520000
+43,Female,Single,High School,180000,15000,Employed,0.3,678,225000
+62,Male,Married,Bachelor's,186000,15500,Employed,0.28,782,1820000
+46,Male,Married,Bachelor's,520800,43400,Self-employed,0.46,670,845000
+33,Male,Divorced,Bachelor's,511200,42600,Employed,0.15,796,565000
+32,Male,Married,Diploma,438000,36500,Employed,0.07,611,260000
+36,Female,Married,PhD,704400,58700,Employed,0.18,850,810000
+50,Female,Single,Master's,458400,38200,Employed,0.24,584,680000
+32,Male,Married,Bachelor's,393600,32800,Employed,0.17,733,335000
+65,Male,Married,Master's,496800,41400,Employed,0.48,662,495000
+44,Male,Married,Diploma,481200,40100,Self-employed,0.12,494,880000
+63,Female,Divorced,Diploma,180000,15000,Unemployed,0.1,659,1670000
+54,Male,Married,Diploma,368400,30700,Employed,0.12,728,2370000
+37,Male,Single,High School,280800,23400,Employed,0.19,762,445000
+32,Other,Single,High School,190800,15900,Employed,0.11,641,270000
+57,Female,Married,Master's,626400,52200,Employed,0.25,705,220000
+37,Male,Single,Master's,655200,54600,Employed,0.2,758,1270000
+33,Male,Married,Bachelor's,458400,38200,Self-employed,0.3,673,515000
+66,Male,Single,Bachelor's,580800,48400,Employed,0.27,645,90000
+44,Other,Married,High School,247200,20600,Employed,0.3,694,480000
+23,Male,Married,High School,180000,15000,Employed,0.23,806,215000
+45,Male,Married,Bachelor's,214800,17900,Self-employed,0.27,645,300000
+43,Female,Married,Bachelor's,180000,15000,Self-employed,0.46,671,730000
+63,Male,Married,Bachelor's,210000,17500,Unemployed,0.26,552,1930000
+55,Male,Married,Bachelor's,514800,42900,Employed,0.39,698,570000
+30,Female,Divorced,Master's,180000,15000,Unemployed,0.26,722,130000
+28,Male,Married,High School,180000,15000,Retired,0.07,553,810000
+50,Female,Divorced,High School,180000,15000,Unemployed,0.21,603,510000
+23,Female,Married,High School,618000,51500,Employed,0.3,761,840000
+36,Male,Married,Master's,417600,34800,Employed,0.34,656,2970000
+27,Female,Married,Bachelor's,549600,45800,Retired,0.14,637,645000
+22,Female,Single,Bachelor's,309600,25800,Employed,0.64,641,330000
+66,Female,Widowed,PhD,556800,46400,Self-employed,0.09,756,430000
+25,Female,Married,Bachelor's,476400,39700,Employed,0.14,699,1530000
+21,Male,Single,Diploma,248400,20700,Employed,0.15,769,1260000
+66,Male,Married,High School,180000,15000,Employed,0.11,645,275000
+30,Female,Married,Bachelor's,686400,57200,Self-employed,0.6,695,1480000
+61,Male,Single,Bachelor's,478800,39900,Employed,0.56,681,770000
+22,Male,Single,Master's,800400,66700,Employed,0.08,729,325000
+28,Male,Divorced,High School,180000,15000,Unemployed,0.5,499,1330000
+26,Male,Married,Bachelor's,180000,15000,Unemployed,0.31,636,180000
+55,Female,Single,High School,186000,15500,Self-employed,0.11,716,70000
+51,Female,Single,Master's,846000,70500,Employed,0.16,437,1360000
+44,Female,Married,Diploma,468000,39000,Employed,0.19,636,115000
+32,Male,Married,High School,180000,15000,Employed,0.29,678,205000
+25,Male,Married,Diploma,82800,6900,Student,0.2,694,160000
+48,Female,Widowed,Master's,327600,27300,Employed,0.26,801,200000
+32,Male,Single,High School,266400,22200,Retired,0.11,850,90000
+49,Female,Single,Diploma,267600,22300,Employed,0.72,694,1220000
+54,Female,Single,High School,243600,20300,Unemployed,0.27,677,130000
+62,Male,Married,PhD,471600,39300,Employed,0.2,690,330000
+45,Male,Single,Bachelor's,482400,40200,Employed,0.48,749,4770000
+21,Female,Married,PhD,373200,31100,Unemployed,0.65,641,530000
+34,Male,Married,High School,184800,15400,Employed,0.26,840,170000
+62,Female,Single,Bachelor's,771600,64300,Employed,0.38,806,3100000
+47,Female,Divorced,Bachelor's,470400,39200,Employed,0.38,702,620000
+51,Male,Divorced,High School,463200,38600,Employed,0.41,653,2770000
+43,Female,Married,Bachelor's,273600,22800,Self-employed,0.07,705,360000
+28,Male,Divorced,Diploma,248400,20700,Retired,0.33,647,495000
+64,Male,Married,High School,483600,40300,Self-employed,0.29,697,540000
+58,Female,Married,Diploma,601200,50100,Self-employed,0.45,588,1040000
+69,Female,Married,Bachelor's,904800,75400,Employed,0.59,804,7730000
+62,Female,Single,Bachelor's,386400,32200,Employed,0.27,643,105000
+35,Female,Married,Bachelor's,327600,27300,Employed,0.3,742,1300000
+33,Female,Divorced,Master's,674400,56200,Self-employed,0.5,515,880000
+33,Male,Married,Bachelor's,338400,28200,Employed,0.16,624,415000
+66,Male,Married,Bachelor's,541200,45100,Employed,0.13,833,720000
+48,Male,Married,High School,180000,15000,Retired,0.25,714,320000
+43,Male,Widowed,Bachelor's,180000,15000,Unemployed,0.47,767,1240000
+68,Male,Single,High School,180000,15000,Self-employed,0.66,679,50000
+50,Female,Married,High School,184800,15400,Self-employed,0.25,656,100000
+65,Male,Single,Bachelor's,220800,18400,Employed,0.16,768,100000
+69,Female,Widowed,Master's,2473200,206100,Self-employed,0.19,710,4000000
+24,Female,Married,High School,355200,29600,Self-employed,0.34,671,100000
+38,Other,Single,Bachelor's,530400,44200,Employed,0.16,829,1740000
+56,Male,Married,High School,180000,15000,Employed,0.58,817,160000
+60,Female,Married,High School,289200,24100,Employed,0.22,797,380000
+28,Female,Single,Bachelor's,480000,40000,Employed,0.27,656,760000
+36,Male,Divorced,High School,250800,20900,Employed,0.29,423,330000
+47,Male,Married,Master's,991200,82600,Self-employed,0.55,643,1170000
+60,Male,Single,High School,193200,16100,Employed,0.15,666,380000
+26,Female,Widowed,Bachelor's,457200,38100,Self-employed,0.57,622,790000
+50,Female,Single,High School,180000,15000,Unemployed,0.22,586,220000
+35,Male,Single,High School,228000,19000,Employed,0.33,744,1430000
+31,Female,Married,Bachelor's,285600,23800,Employed,0.55,591,100000
+46,Male,Single,Diploma,60000,5000,Student,0.32,576,570000
+41,Male,Married,High School,250800,20900,Self-employed,0.42,649,850000
+52,Female,Married,High School,430800,35900,Self-employed,0.16,677,375000
+36,Female,Single,Diploma,279600,23300,Employed,0.06,832,95000
+61,Female,Widowed,Master's,393600,32800,Employed,0.07,660,675000
+24,Male,Married,Master's,670800,55900,Retired,0.03,808,970000
+63,Male,Married,High School,210000,17500,Retired,0.23,680,395000
+22,Male,Single,High School,235200,19600,Employed,0.09,723,420000
+57,Male,Divorced,Diploma,188400,15700,Retired,0.25,756,540000
+37,Male,Single,Bachelor's,369600,30800,Self-employed,0.42,850,230000
+39,Female,Single,Diploma,446400,37200,Employed,0.09,619,485000
+21,Female,Divorced,High School,301200,25100,Employed,0.46,716,690000
+55,Male,Single,Bachelor's,529200,44100,Self-employed,0.2,751,3660000
+29,Male,Divorced,Bachelor's,458400,38200,Employed,0.16,587,500000
+53,Male,Married,Bachelor's,501600,41800,Self-employed,0.1,561,600000
+56,Male,Divorced,Bachelor's,288000,24000,Unemployed,0.16,493,285000
+62,Female,Single,High School,180000,15000,Employed,0.05,517,185000
+55,Male,Widowed,Diploma,180000,15000,Unemployed,0.38,569,160000
+35,Female,Single,Bachelor's,490800,40900,Self-employed,0.21,746,1685000
+57,Male,Single,Bachelor's,541200,45100,Employed,0.17,642,4290000
+61,Male,Married,High School,426000,35500,Employed,0.21,660,605000
+36,Other,Single,Diploma,304800,25400,Self-employed,0.48,648,2480000
+27,Male,Married,High School,70800,5900,Student,0.37,726,50000
+64,Male,Married,Master's,681600,56800,Employed,0.16,750,850000
+28,Female,Single,Diploma,295200,24600,Employed,0.31,707,495000
+50,Male,Single,Master's,579600,48300,Self-employed,0.5,817,535000
+32,Male,Married,Master's,193200,16100,Student,0.08,650,700000
+27,Male,Married,Bachelor's,297600,24800,Employed,0.43,736,1540000
+59,Male,Married,Master's,993600,82800,Employed,0.21,662,7220000
+28,Female,Married,High School,286800,23900,Retired,0.55,590,115000
+53,Male,Married,High School,220800,18400,Employed,0.22,722,295000
+54,Female,Married,Bachelor's,272400,22700,Employed,0.05,690,1560000
+23,Female,Single,Bachelor's,584400,48700,Employed,0.47,671,1155000
+29,Male,Married,PhD,751200,62600,Employed,0.3,727,1010000
+59,Male,Single,Bachelor's,360000,30000,Employed,0.23,703,335000
+45,Male,Married,High School,243600,20300,Employed,0.54,668,1100000
+26,Male,Single,High School,488400,40700,Employed,0.2,524,875000
+69,Male,Married,Bachelor's,211200,17600,Employed,0.14,625,230000
+33,Female,Single,Bachelor's,540000,45000,Employed,0.07,677,300000
+21,Male,Single,Bachelor's,679200,56600,Employed,0.31,706,470000
+66,Male,Single,Master's,506400,42200,Employed,0.21,714,330000
+21,Female,Married,High School,266400,22200,Retired,0.33,599,210000
+48,Female,Married,Bachelor's,282000,23500,Employed,0.15,662,180000
+69,Male,Married,High School,189600,15800,Employed,0.29,428,205000
+49,Male,Widowed,Bachelor's,213600,17800,Employed,0.16,716,1240000
+49,Female,Married,Master's,810000,67500,Employed,0.17,768,900000
+40,Male,Single,Bachelor's,802800,66900,Employed,0.58,790,5140000
+27,Female,Divorced,Bachelor's,762000,63500,Employed,0.32,597,5900000
+49,Female,Married,High School,180000,15000,Self-employed,0.3,593,520000
+64,Male,Single,Master's,471600,39300,Employed,0.15,776,3920000
+25,Male,Single,Bachelor's,676800,56400,Self-employed,0.36,783,830000
+64,Male,Married,Master's,252000,21000,Unemployed,0.25,616,880000
+41,Male,Married,High School,128400,10700,Student,0.19,667,90000
+47,Male,Married,High School,284400,23700,Retired,0.05,726,2780000
+29,Female,Single,Bachelor's,312000,26000,Self-employed,0.17,584,590000
+51,Female,Widowed,Bachelor's,390000,32500,Employed,0.17,733,315000
+29,Female,Married,Bachelor's,523200,43600,Employed,0.25,767,140000
+34,Female,Married,Diploma,745200,62100,Employed,0.19,661,210000
+56,Female,Single,Bachelor's,313200,26100,Unemployed,0.22,771,150000
+23,Male,Married,Diploma,598800,49900,Self-employed,0.26,654,1680000
+42,Male,Divorced,High School,202800,16900,Employed,0.34,544,165000
+50,Female,Single,Bachelor's,417600,34800,Employed,0.39,680,330000
+27,Female,Married,Master's,1194000,99500,Employed,0.12,586,460000
+35,Male,Single,Diploma,140400,11700,Student,0.49,691,230000
+37,Female,Married,PhD,438000,36500,Employed,0.1,790,1470000
+53,Male,Married,PhD,286800,23900,Unemployed,0.17,557,220000
+68,Male,Married,Bachelor's,1345200,112100,Self-employed,0.15,750,9890000
+61,Female,Married,Master's,433200,36100,Self-employed,0.4,744,1380000
+30,Male,Single,Bachelor's,570000,47500,Self-employed,0.38,629,855000
+21,Female,Divorced,High School,356400,29700,Employed,0.12,665,1750000
+23,Female,Married,High School,182400,15200,Employed,0.21,691,100000
+50,Female,Single,Diploma,237600,19800,Retired,0.15,691,460000
+28,Male,Divorced,High School,180000,15000,Employed,0.15,649,1250000
+32,Female,Single,Master's,874800,72900,Self-employed,0.1,641,2650000
+62,Male,Single,PhD,1567200,130600,Employed,0.55,607,12010000
+63,Female,Divorced,Bachelor's,466800,38900,Employed,0.47,612,235000
+62,Male,Single,Bachelor's,415200,34600,Self-employed,0.54,640,580000
+33,Other,Single,Master's,196800,16400,Unemployed,0.26,707,180000
+51,Female,Single,Bachelor's,487200,40600,Employed,0.21,545,420000
+50,Male,Divorced,High School,230400,19200,Employed,0.38,671,235000
+30,Male,Single,PhD,1135200,94600,Employed,0.09,818,2820000
+48,Male,Married,Bachelor's,520800,43400,Retired,0.59,496,5030000
+46,Female,Single,High School,218400,18200,Self-employed,0.4,705,170000
+40,Female,Married,High School,180000,15000,Self-employed,0.59,648,430000
+57,Female,Single,Master's,494400,41200,Employed,0.14,696,415000
+54,Female,Divorced,High School,202800,16900,Employed,0.35,673,1850000
+47,Male,Married,Master's,481200,40100,Employed,0.47,793,130000
+56,Female,Divorced,Master's,444000,37000,Self-employed,0.22,659,2010000
+58,Male,Married,High School,295200,24600,Employed,0.08,657,2230000
+48,Female,Married,Diploma,115200,9600,Student,0.24,623,140000
+34,Male,Single,Bachelor's,276000,23000,Self-employed,0.26,725,300000
+58,Female,Married,High School,212400,17700,Employed,0.24,652,210000
+56,Male,Married,Bachelor's,267600,22300,Employed,0.22,707,470000
+69,Male,Married,PhD,784800,65400,Employed,0.29,769,620000
+28,Male,Single,Bachelor's,324000,27000,Employed,0.22,677,2920000
+41,Female,Married,Bachelor's,144000,12000,Student,0.4,595,160000
+66,Male,Single,Master's,82800,6900,Student,0.48,478,100000
+46,Male,Married,PhD,885600,73800,Employed,0.26,810,1120000
+67,Male,Widowed,Master's,374400,31200,Employed,0.23,747,1540000
+21,Male,Single,High School,240000,20000,Employed,0.21,602,295000
+22,Female,Single,High School,180000,15000,Employed,0.09,660,1010000
+60,Female,Single,Bachelor's,474000,39500,Employed,0.2,842,510000
+38,Female,Married,High School,267600,22300,Employed,0.57,609,380000
+46,Female,Married,Bachelor's,367200,30600,Employed,0.27,770,290000
+41,Male,Widowed,Master's,302400,25200,Employed,0.39,827,180000
+40,Male,Divorced,Master's,451200,37600,Employed,0.2,668,290000
+67,Female,Married,Diploma,297600,24800,Employed,0.23,592,1780000
+25,Female,Married,Master's,434400,36200,Self-employed,0.26,713,405000
+58,Male,Single,Bachelor's,438000,36500,Employed,0.26,667,805000
+64,Female,Divorced,Bachelor's,243600,20300,Employed,0.34,708,1860000
+53,Male,Married,High School,288000,24000,Self-employed,0.59,632,560000
+40,Male,Single,High School,397200,33100,Employed,0.34,632,685000
+28,Male,Widowed,Master's,615600,51300,Retired,0.2,741,760000
+54,Female,Married,Bachelor's,735600,61300,Employed,0.06,528,1080000
+43,Female,Single,Master's,1071600,89300,Employed,0.37,716,1515000
+28,Female,Married,High School,217200,18100,Employed,0.14,630,405000
+38,Female,Single,High School,222000,18500,Employed,0.27,684,1320000
+68,Female,Single,High School,303600,25300,Employed,0.03,546,365000
+34,Male,Single,Bachelor's,247200,20600,Employed,0.32,841,90000
+29,Female,Married,Bachelor's,502800,41900,Employed,0.07,702,800000
+54,Male,Single,Bachelor's,288000,24000,Employed,0.28,767,2800000
+30,Male,Single,High School,230400,19200,Employed,0.2,593,450000
+66,Male,Married,High School,302400,25200,Employed,0.18,628,210000
+63,Male,Single,High School,313200,26100,Self-employed,0.47,686,350000
+69,Female,Married,High School,180000,15000,Employed,0.11,680,1370000
+65,Male,Married,PhD,648000,54000,Employed,0.32,734,1910000
+32,Male,Single,High School,60000,5000,Student,0.19,648,105000
+31,Female,Single,High School,198000,16500,Employed,0.64,672,275000
+37,Female,Single,Master's,763200,63600,Self-employed,0.41,702,250000
+44,Male,Married,PhD,692400,57700,Self-employed,0.23,694,815000
+64,Male,Divorced,Bachelor's,523200,43600,Employed,0.24,659,4250000
+56,Male,Single,High School,180000,15000,Self-employed,0.1,635,1330000
+52,Female,Single,Bachelor's,852000,71000,Self-employed,0.34,760,400000
+64,Female,Single,High School,464400,38700,Self-employed,0.26,606,590000
+52,Male,Married,High School,180000,15000,Employed,0.48,580,90000
+39,Female,Married,Bachelor's,624000,52000,Employed,0.09,687,520000
+41,Female,Married,Master's,711600,59300,Employed,0.48,736,4910000
+46,Other,Married,High School,363600,30300,Employed,0.63,850,540000
+25,Male,Single,Bachelor's,304800,25400,Employed,0.12,634,400000
+57,Female,Married,Bachelor's,488400,40700,Employed,0.47,696,620000
+52,Female,Widowed,Bachelor's,380400,31700,Employed,0.51,656,990000
+56,Male,Single,Diploma,188400,15700,Student,0.27,658,55000
+47,Male,Married,PhD,242400,20200,Unemployed,0.31,698,220000
+59,Male,Married,High School,180000,15000,Employed,0.42,616,350000
+67,Male,Single,High School,354000,29500,Employed,0.28,708,260000
+48,Female,Married,High School,367200,30600,Employed,0.12,614,270000
+42,Female,Single,Bachelor's,254400,21200,Employed,0.49,653,310000
+26,Male,Single,Master's,472800,39400,Employed,0.18,760,590000
+59,Female,Married,High School,180000,15000,Self-employed,0.24,650,130000
+65,Male,Divorced,High School,234000,19500,Employed,0.34,668,210000
+55,Female,Single,Master's,753600,62800,Self-employed,0.09,780,1465000
+63,Male,Married,Bachelor's,670800,55900,Retired,0.33,850,1275000
+63,Female,Single,PhD,591600,49300,Employed,0.3,788,210000
+60,Female,Married,Bachelor's,1177200,98100,Employed,0.05,690,11210000
+45,Female,Married,Master's,795600,66300,Employed,0.22,629,4390000
+25,Female,Married,Bachelor's,762000,63500,Employed,0.39,627,565000
+21,Male,Widowed,High School,441600,36800,Employed,0.04,596,435000
+31,Female,Married,Bachelor's,265200,22100,Employed,0.42,632,1850000
+42,Female,Single,Diploma,812400,67700,Employed,0.19,677,1135000
+57,Male,Widowed,Bachelor's,1058400,88200,Retired,0.41,670,1570000
+43,Other,Single,Bachelor's,340800,28400,Employed,0.24,667,90000
+22,Male,Married,High School,252000,21000,Employed,0.51,715,370000
+31,Male,Married,Bachelor's,372000,31000,Employed,0.1,727,100000
+68,Female,Divorced,Diploma,346800,28900,Employed,0.72,696,1310000
+69,Male,Married,Master's,487200,40600,Employed,0.09,739,3040000
+39,Male,Married,High School,132000,11000,Student,0.38,850,340000
+60,Male,Married,Bachelor's,324000,27000,Employed,0.1,733,100000
+56,Female,Married,Diploma,414000,34500,Self-employed,0.35,765,615000
+66,Female,Divorced,High School,266400,22200,Self-employed,0.48,744,530000
+64,Male,Single,Bachelor's,472800,39400,Employed,0.34,664,500000
+51,Female,Single,Bachelor's,187200,15600,Retired,0.45,762,1110000
+40,Female,Married,Bachelor's,116400,9700,Student,0.42,608,830000
+51,Female,Single,High School,331200,27600,Employed,0.58,586,250000
+36,Female,Divorced,Master's,956400,79700,Employed,0.26,783,1410000
+38,Female,Married,High School,378000,31500,Employed,0.44,849,860000
+50,Male,Married,Bachelor's,723600,60300,Retired,0.18,654,195000
+48,Male,Married,Bachelor's,1314000,109500,Employed,0.38,737,1325000
+49,Female,Divorced,High School,228000,19000,Employed,0.08,569,160000
+39,Male,Married,High School,243600,20300,Employed,0.31,830,210000
+41,Male,Single,High School,217200,18100,Employed,0.29,658,435000
+21,Male,Married,Diploma,644400,53700,Retired,0.29,700,4960000
+50,Male,Married,Diploma,374400,31200,Self-employed,0.17,660,1280000
+49,Female,Divorced,PhD,924000,77000,Self-employed,0.2,697,480000
+66,Male,Married,High School,180000,15000,Employed,0.39,558,600000
+45,Female,Married,Master's,544800,45400,Employed,0.13,626,840000
+43,Female,Married,PhD,1320000,110000,Self-employed,0.35,706,2120000
+24,Male,Married,High School,310800,25900,Employed,0.59,710,250000
+30,Male,Married,Bachelor's,180000,15000,Employed,0.26,771,335000
+37,Male,Single,PhD,357600,29800,Unemployed,0.32,655,800000
+39,Male,Single,High School,249600,20800,Employed,0.11,850,110000
+38,Male,Married,Bachelor's,688800,57400,Employed,0.19,731,4920000
+40,Female,Married,Bachelor's,266400,22200,Employed,0.07,742,100000
+58,Male,Single,Bachelor's,364800,30400,Employed,0.5,631,1730000
+27,Male,Divorced,Master's,212400,17700,Unemployed,0.08,727,130000
+37,Male,Single,Diploma,225600,18800,Employed,0.38,724,770000
+28,Male,Married,High School,376800,31400,Employed,0.13,801,2840000
+36,Male,Married,Bachelor's,260400,21700,Employed,0.03,579,95000
+54,Female,Divorced,Diploma,294000,24500,Employed,0.31,488,170000
+23,Male,Divorced,Bachelor's,674400,56200,Self-employed,0.19,695,6080000
+37,Female,Married,Bachelor's,562800,46900,Employed,0.1,745,490000
+22,Female,Married,Bachelor's,465600,38800,Employed,0.24,764,130000
+67,Female,Married,Master's,722400,60200,Self-employed,0.14,701,4880000
+56,Female,Divorced,Bachelor's,613200,51100,Employed,0.43,850,445000
+32,Male,Married,Bachelor's,576000,48000,Retired,0.27,677,1850000
+30,Female,Married,PhD,1111200,92600,Employed,0.48,702,1655000
+25,Male,Single,High School,480000,40000,Employed,0.34,708,510000
+44,Female,Married,Bachelor's,274800,22900,Employed,0.13,608,50000
+57,Male,Single,Diploma,306000,25500,Employed,0.32,681,135000
+49,Female,Married,Bachelor's,508800,42400,Employed,0.33,640,350000
+64,Female,Married,Master's,372000,31000,Employed,0.29,743,80000
+37,Female,Single,Master's,502800,41900,Retired,0.17,678,165000
+34,Male,Married,Bachelor's,339600,28300,Self-employed,0.51,679,285000
+44,Female,Married,Master's,589200,49100,Self-employed,0.32,669,655000
+30,Female,Divorced,Diploma,60000,5000,Student,0.08,687,50000
+68,Male,Single,Bachelor's,321600,26800,Employed,0.27,797,210000
+30,Male,Single,Master's,484800,40400,Employed,0.5,631,785000
+44,Male,Married,Bachelor's,548400,45700,Self-employed,0.09,691,4310000
+46,Male,Married,Bachelor's,774000,64500,Employed,0.09,751,6210000
+23,Female,Married,Master's,758400,63200,Self-employed,0.08,727,4780000
+43,Male,Married,High School,201600,16800,Employed,0.33,798,135000
+43,Female,Divorced,Bachelor's,428400,35700,Employed,0.17,530,730000
+33,Female,Single,Bachelor's,886800,73900,Self-employed,0.21,638,650000
+27,Female,Married,Bachelor's,386400,32200,Employed,0.21,681,190000
+23,Female,Single,PhD,351600,29300,Employed,0.28,747,205000
+21,Female,Divorced,Bachelor's,217200,18100,Self-employed,0.47,670,110000
+44,Male,Married,High School,210000,17500,Employed,0.21,656,860000
+25,Male,Married,Master's,452400,37700,Employed,0.52,686,580000
+68,Female,Widowed,High School,195600,16300,Self-employed,0.13,655,280000
+32,Female,Single,Bachelor's,250800,20900,Employed,0.32,791,260000
+52,Male,Married,Master's,492000,41000,Employed,0.18,725,860000
+54,Female,Married,Master's,894000,74500,Employed,0.27,683,140000
+45,Other,Divorced,Bachelor's,228000,19000,Self-employed,0.17,715,1440000
+64,Male,Married,Master's,618000,51500,Employed,0.53,594,250000
+26,Female,Single,Bachelor's,525600,43800,Retired,0.11,643,750000
+32,Female,Single,High School,403200,33600,Employed,0.22,637,890000
+33,Male,Single,Bachelor's,994800,82900,Employed,0.45,778,690000
+27,Male,Divorced,Bachelor's,723600,60300,Employed,0.62,800,390000
+35,Male,Married,Master's,828000,69000,Retired,0.16,643,510000
+36,Female,Married,Bachelor's,649200,54100,Employed,0.42,786,4030000
+58,Male,Single,High School,180000,15000,Self-employed,0.14,699,200000
+35,Female,Married,High School,273600,22800,Employed,0.13,663,955000
+63,Female,Married,Diploma,180000,15000,Unemployed,0.13,584,185000
+58,Female,Married,Master's,777600,64800,Retired,0.13,675,720000
+65,Male,Married,Bachelor's,882000,73500,Employed,0.27,676,690000
+26,Male,Single,High School,180000,15000,Employed,0.13,568,110000
+69,Male,Single,High School,406800,33900,Employed,0.3,663,250000
+51,Male,Divorced,Diploma,180000,15000,Retired,0.24,683,200000
+69,Male,Married,Bachelor's,590400,49200,Self-employed,0.44,587,720000
+38,Male,Married,Master's,1256400,104700,Retired,0.38,657,320000
+67,Male,Divorced,PhD,920400,76700,Employed,0.3,671,535000
+49,Female,Married,Bachelor's,716400,59700,Self-employed,0.37,580,510000
+24,Male,Married,Diploma,180000,15000,Retired,0.4,776,265000
+41,Male,Married,High School,313200,26100,Employed,0.33,681,210000
+27,Female,Single,Bachelor's,463200,38600,Employed,0.34,554,145000
+67,Female,Married,Bachelor's,306000,25500,Employed,0.18,737,750000
+35,Female,Divorced,Diploma,301200,25100,Employed,0.05,623,1450000
+31,Female,Married,Diploma,283200,23600,Self-employed,0.38,573,120000
+48,Male,Single,Master's,104400,8700,Student,0.23,662,100000
+41,Female,Divorced,Bachelor's,262800,21900,Self-employed,0.18,827,405000
+25,Female,Single,Bachelor's,375600,31300,Employed,0.15,686,540000
+61,Female,Married,Bachelor's,213600,17800,Retired,0.13,638,225000
+62,Female,Married,Bachelor's,208800,17400,Unemployed,0.14,688,180000
+57,Male,Married,High School,194400,16200,Employed,0.4,617,385000
+51,Male,Single,Master's,374400,31200,Retired,0.07,818,3430000
+40,Female,Married,High School,456000,38000,Employed,0.19,673,260000
+47,Male,Married,High School,183600,15300,Employed,0.27,733,220000
+46,Male,Divorced,Bachelor's,386400,32200,Self-employed,0.09,551,605000
+29,Male,Married,Bachelor's,642000,53500,Employed,0.16,690,4680000
+25,Male,Single,Bachelor's,416400,34700,Self-employed,0.29,600,760000
+33,Male,Single,Master's,324000,27000,Employed,0.34,670,350000
+43,Male,Married,Diploma,608400,50700,Employed,0.14,696,780000
+28,Female,Married,High School,253200,21100,Self-employed,0.11,643,280000
+26,Male,Single,High School,180000,15000,Employed,0.12,641,190000
+62,Male,Single,High School,302400,25200,Employed,0.07,791,475000
+39,Male,Single,Master's,488400,40700,Employed,0.17,513,400000
+49,Female,Married,Bachelor's,756000,63000,Employed,0.29,748,1250000
+46,Female,Married,High School,214800,17900,Employed,0.04,661,365000
+57,Female,Divorced,Bachelor's,366000,30500,Self-employed,0.16,634,2630000
+57,Female,Single,Master's,950400,79200,Employed,0.66,651,7760000
+35,Other,Married,Master's,805200,67100,Self-employed,0.72,715,2605000
+62,Female,Married,Diploma,180000,15000,Unemployed,0.17,665,290000
+39,Female,Married,Bachelor's,290400,24200,Employed,0.49,637,390000
+61,Male,Single,High School,224400,18700,Employed,0.44,701,100000
+40,Female,Single,Master's,578400,48200,Employed,0.31,533,4210000
+26,Male,Single,Master's,1476000,123000,Self-employed,0.69,771,1870000
+58,Female,Married,Bachelor's,944400,78700,Employed,0.29,705,1160000
+22,Male,Married,Bachelor's,723600,60300,Employed,0.24,571,490000
+58,Male,Married,Bachelor's,106800,8900,Student,0.23,752,900000
+23,Male,Married,Bachelor's,345600,28800,Employed,0.2,716,570000
+31,Female,Married,Bachelor's,1159200,96600,Employed,0.11,704,1110000
+50,Female,Single,Bachelor's,450000,37500,Self-employed,0.38,620,795000
+67,Male,Single,PhD,872400,72700,Employed,0.15,609,990000
+41,Male,Single,Bachelor's,306000,25500,Unemployed,0.11,568,440000
+26,Male,Single,Diploma,346800,28900,Retired,0.62,850,210000
+32,Female,Widowed,Bachelor's,836400,69700,Employed,0.24,657,920000
+64,Male,Widowed,Bachelor's,536400,44700,Retired,0.19,741,395000
+56,Male,Married,High School,180000,15000,Self-employed,0.03,740,50000
+25,Female,Married,Bachelor's,273600,22800,Employed,0.3,830,900000
+39,Female,Married,High School,180000,15000,Unemployed,0.48,663,175000
+33,Female,Married,Bachelor's,411600,34300,Employed,0.2,588,535000
+29,Female,Married,High School,200400,16700,Employed,0.49,648,555000
+62,Female,Single,Diploma,264000,22000,Self-employed,0.33,618,200000
+51,Male,Widowed,PhD,571200,47600,Employed,0.24,740,610000
+29,Male,Married,High School,381600,31800,Retired,0.2,744,190000
+52,Female,Single,High School,279600,23300,Employed,0.16,745,2140000
+41,Male,Married,Diploma,180000,15000,Self-employed,0.13,747,1370000
+24,Female,Married,Bachelor's,358800,29900,Self-employed,0.25,850,2410000
+43,Male,Divorced,PhD,336000,28000,Unemployed,0.15,731,280000
+30,Male,Married,Bachelor's,440400,36700,Employed,0.17,571,3220000
+33,Male,Married,Master's,372000,31000,Employed,0.06,641,300000
+64,Female,Married,High School,180000,15000,Unemployed,0.08,763,60000
+55,Female,Married,Diploma,303600,25300,Employed,0.23,645,800000
+27,Male,Single,Master's,925200,77100,Self-employed,0.06,716,3280000
+62,Male,Single,High School,180000,15000,Employed,0.07,635,1450000
+49,Male,Married,Bachelor's,510000,42500,Self-employed,0.22,583,705000
+63,Male,Married,Bachelor's,376800,31400,Employed,0.29,714,725000
+57,Male,Married,PhD,1273200,106100,Self-employed,0.15,801,1770000
+37,Female,Married,Bachelor's,381600,31800,Self-employed,0.3,671,2670000
+47,Male,Married,Master's,500400,41700,Employed,0.1,519,3920000
+47,Male,Married,Bachelor's,474000,39500,Employed,0.38,674,870000
+56,Male,Married,Diploma,337200,28100,Employed,0.18,660,180000
+33,Male,Married,High School,482400,40200,Employed,0.57,679,200000
+37,Male,Married,Bachelor's,235200,19600,Employed,0.32,642,1820000
+32,Female,Single,High School,180000,15000,Employed,0.33,555,500000
+35,Female,Single,Diploma,252000,21000,Employed,0.28,615,350000
+28,Female,Divorced,Bachelor's,171600,14300,Student,0.38,586,500000
+22,Male,Single,Bachelor's,499200,41600,Self-employed,0.31,752,4120000
+67,Female,Married,Bachelor's,478800,39900,Employed,0.32,690,665000
+24,Female,Single,PhD,494400,41200,Unemployed,0.71,709,100000
+64,Female,Married,High School,361200,30100,Employed,0.14,652,3340000
+21,Female,Married,PhD,676800,56400,Employed,0.25,659,1110000
+59,Male,Married,Bachelor's,322800,26900,Employed,0.38,659,655000
+37,Other,Divorced,Master's,1261200,105100,Self-employed,0.22,629,1640000
+46,Female,Single,Bachelor's,358800,29900,Employed,0.19,734,100000
+34,Female,Married,High School,289200,24100,Employed,0.51,533,2430000
+45,Female,Widowed,Bachelor's,235200,19600,Employed,0.37,663,100000
+43,Other,Married,Master's,207600,17300,Unemployed,0.27,609,720000
+46,Male,Divorced,Bachelor's,180000,15000,Unemployed,0.37,610,145000
+40,Female,Married,Master's,963600,80300,Employed,0.48,728,365000
+47,Female,Single,High School,226800,18900,Retired,0.07,540,230000
+61,Female,Widowed,PhD,1540800,128400,Employed,0.17,736,670000
+42,Female,Married,Master's,578400,48200,Self-employed,0.35,708,3400000
+38,Male,Married,Master's,1719600,143300,Retired,0.32,729,3070000
+27,Male,Single,Bachelor's,201600,16800,Employed,0.1,726,130000
+38,Male,Married,Master's,686400,57200,Employed,0.19,676,3150000
+27,Female,Married,Bachelor's,399600,33300,Employed,0.33,699,2990000
+29,Female,Single,Bachelor's,180000,15000,Unemployed,0.26,742,270000
+67,Female,Widowed,Master's,627600,52300,Employed,0.33,555,4900000
+25,Female,Single,High School,198000,16500,Employed,0.03,796,185000
+44,Female,Married,Master's,717600,59800,Self-employed,0.03,850,610000
+61,Male,Single,Bachelor's,325200,27100,Employed,0.32,758,680000
+67,Female,Married,Diploma,288000,24000,Self-employed,0.09,662,505000
+28,Female,Married,Bachelor's,180000,15000,Unemployed,0.48,634,580000
+29,Female,Married,Bachelor's,345600,28800,Unemployed,0.41,715,1220000
+39,Female,Married,High School,318000,26500,Employed,0.28,743,240000
+48,Other,Married,Bachelor's,483600,40300,Employed,0.31,718,140000
+68,Male,Widowed,Diploma,445200,37100,Retired,0.24,599,230000
+31,Female,Divorced,Bachelor's,306000,25500,Employed,0.39,806,225000
+29,Female,Married,High School,356400,29700,Self-employed,0.12,733,2280000
+33,Male,Married,High School,357600,29800,Employed,0.5,717,60000
+63,Male,Single,High School,358800,29900,Retired,0.12,765,1860000
+22,Male,Single,High School,180000,15000,Employed,0.11,672,1030000
+39,Male,Married,Master's,828000,69000,Self-employed,0.29,726,1455000
+26,Female,Married,Bachelor's,301200,25100,Employed,0.28,647,1740000
+28,Male,Married,Master's,1192800,99400,Employed,0.11,679,7330000
+65,Male,Married,Bachelor's,644400,53700,Employed,0.13,737,940000
+21,Female,Married,High School,190800,15900,Employed,0.43,687,170000
+36,Male,Widowed,Master's,1131600,94300,Employed,0.03,709,2165000
+65,Female,Single,Master's,283200,23600,Employed,0.12,678,490000
+50,Male,Married,High School,194400,16200,Retired,0.32,534,500000
+24,Male,Single,Bachelor's,531600,44300,Self-employed,0.52,792,1285000
+43,Other,Single,Bachelor's,594000,49500,Self-employed,0.23,623,1665000
+68,Female,Widowed,Bachelor's,234000,19500,Employed,0.27,759,200000
+40,Female,Single,Diploma,280800,23400,Employed,0.15,682,930000
+46,Female,Single,Bachelor's,555600,46300,Employed,0.47,724,260000
+47,Male,Married,Diploma,505200,42100,Employed,0.11,663,420000
+53,Female,Single,Bachelor's,68400,5700,Student,0.42,633,50000
+30,Male,Married,Bachelor's,243600,20300,Employed,0.21,611,70000
+62,Male,Widowed,Bachelor's,436800,36400,Employed,0.25,793,215000
+69,Male,Married,High School,248400,20700,Retired,0.59,741,205000
+27,Female,Married,High School,268800,22400,Self-employed,0.17,718,290000
+61,Male,Married,Bachelor's,541200,45100,Employed,0.51,750,240000
+61,Male,Divorced,Bachelor's,448800,37400,Employed,0.16,723,1230000
+57,Male,Single,Bachelor's,457200,38100,Employed,0.6,598,780000
+39,Female,Married,Bachelor's,271200,22600,Employed,0.26,737,1380000
+43,Male,Married,High School,180000,15000,Unemployed,0.28,592,100000
+62,Male,Married,Bachelor's,193200,16100,Employed,0.36,730,330000
+28,Male,Single,Bachelor's,534000,44500,Self-employed,0.11,638,955000
+61,Female,Married,Bachelor's,489600,40800,Employed,0.31,523,155000
+66,Male,Married,Bachelor's,360000,30000,Self-employed,0.17,652,730000
+54,Female,Married,Bachelor's,366000,30500,Employed,0.13,650,2150000
+37,Male,Single,Bachelor's,459600,38300,Self-employed,0.28,801,2260000
+48,Male,Single,Master's,564000,47000,Self-employed,0.7,756,4860000
+23,Male,Married,Bachelor's,370800,30900,Employed,0.44,850,70000
+66,Male,Married,PhD,774000,64500,Employed,0.62,713,280000
+37,Male,Widowed,PhD,546000,45500,Unemployed,0.1,642,3290000
+23,Male,Married,Diploma,338400,28200,Employed,0.28,670,305000
+59,Female,Single,Master's,488400,40700,Self-employed,0.34,697,245000
+53,Male,Married,Bachelor's,594000,49500,Retired,0.35,699,965000
+51,Male,Married,PhD,662400,55200,Employed,0.06,654,580000
+23,Male,Married,Master's,850800,70900,Employed,0.23,680,1120000
+57,Male,Married,Bachelor's,604800,50400,Employed,0.09,643,130000
+52,Male,Married,Diploma,465600,38800,Employed,0.14,683,230000
+59,Male,Single,Bachelor's,426000,35500,Self-employed,0.47,827,1240000
+61,Male,Single,Diploma,568800,47400,Employed,0.45,778,1130000
+31,Male,Single,Bachelor's,402000,33500,Employed,0.34,850,470000
+31,Female,Married,Bachelor's,494400,41200,Employed,0.09,703,350000
+66,Female,Single,Bachelor's,180000,15000,Employed,0.35,796,280000
+47,Female,Divorced,Diploma,220800,18400,Retired,0.2,663,1070000
+42,Male,Single,Master's,498000,41500,Self-employed,0.32,742,490000
+35,Female,Married,Bachelor's,430800,35900,Self-employed,0.12,674,715000
+52,Male,Married,Bachelor's,225600,18800,Employed,0.72,850,255000
+57,Male,Single,Master's,1398000,116500,Employed,0.09,694,7050000
+21,Female,Married,Master's,447600,37300,Self-employed,0.14,650,410000
+48,Male,Widowed,Bachelor's,528000,44000,Employed,0.36,715,120000
+69,Male,Divorced,High School,240000,20000,Self-employed,0.41,647,350000
+34,Female,Single,Diploma,469200,39100,Employed,0.21,850,720000
+34,Female,Married,Bachelor's,646800,53900,Employed,0.59,721,375000
+64,Male,Single,High School,319200,26600,Employed,0.08,850,75000
+24,Male,Married,Master's,346800,28900,Employed,0.32,719,235000
+40,Male,Married,High School,214800,17900,Self-employed,0.17,704,90000
+43,Other,Divorced,Diploma,514800,42900,Employed,0.46,707,3250000
+60,Male,Married,Bachelor's,180000,15000,Employed,0.35,715,1700000
+27,Male,Single,Bachelor's,586800,48900,Employed,0.17,747,540000
+42,Male,Widowed,Diploma,235200,19600,Unemployed,0.31,670,795000
+28,Female,Married,Bachelor's,423600,35300,Employed,0.31,634,3580000
+59,Female,Single,Master's,675600,56300,Retired,0.5,704,660000
+51,Male,Married,High School,499200,41600,Employed,0.3,664,4270000
+45,Female,Married,Master's,849600,70800,Employed,0.31,662,2440000
+40,Male,Married,Bachelor's,544800,45400,Retired,0.7,568,1085000
+28,Female,Single,Bachelor's,672000,56000,Employed,0.53,586,5890000
+66,Male,Single,Master's,422400,35200,Employed,0.62,672,1990000
+52,Male,Single,Master's,1042800,86900,Self-employed,0.27,675,2220000
+36,Male,Married,Bachelor's,486000,40500,Employed,0.41,807,1675000
+41,Other,Single,Bachelor's,469200,39100,Self-employed,0.06,647,2780000
+56,Female,Married,High School,194400,16200,Employed,0.58,565,145000
+56,Female,Widowed,Diploma,180000,15000,Unemployed,0.63,527,110000
+43,Male,Widowed,Bachelor's,271200,22600,Employed,0.18,684,65000
+35,Male,Married,Bachelor's,307200,25600,Employed,0.47,755,450000
+53,Male,Married,Master's,488400,40700,Employed,0.08,777,585000
+53,Male,Divorced,Bachelor's,1026000,85500,Employed,0.39,677,1375000
+50,Male,Married,Bachelor's,672000,56000,Employed,0.03,849,2460000
+24,Female,Married,Bachelor's,118800,9900,Student,0.36,625,100000
+44,Female,Single,Bachelor's,296400,24700,Employed,0.29,595,140000
+51,Female,Single,PhD,777600,64800,Employed,0.17,674,1040000
+67,Male,Married,Master's,546000,45500,Employed,0.39,605,680000
+46,Male,Single,High School,193200,16100,Employed,0.12,650,190000
+37,Male,Married,Master's,657600,54800,Employed,0.09,677,6110000
+48,Male,Single,PhD,1347600,112300,Employed,0.03,836,970000
+29,Female,Married,High School,266400,22200,Employed,0.12,601,635000
+25,Female,Married,Bachelor's,231600,19300,Unemployed,0.33,798,200000
+54,Male,Single,Bachelor's,368400,30700,Employed,0.38,718,1780000
+69,Male,Married,Bachelor's,1128000,94000,Employed,0.06,845,1690000
+62,Female,Single,Master's,499200,41600,Self-employed,0.42,767,450000
+49,Male,Married,Master's,1374000,114500,Employed,0.24,653,13250000
+22,Female,Single,High School,364800,30400,Employed,0.61,656,95000
+69,Female,Married,High School,184800,15400,Employed,0.15,670,100000
+43,Female,Divorced,High School,219600,18300,Employed,0.07,653,50000
+35,Male,Single,Master's,372000,31000,Employed,0.47,825,240000
+64,Female,Married,High School,180000,15000,Unemployed,0.15,598,250000
+57,Female,Divorced,Bachelor's,276000,23000,Unemployed,0.23,484,2710000
+57,Male,Widowed,Bachelor's,312000,26000,Employed,0.2,670,2700000
+34,Male,Divorced,High School,180000,15000,Employed,0.3,662,565000
+69,Female,Married,High School,200400,16700,Employed,0.3,661,250000
+43,Female,Single,Master's,345600,28800,Employed,0.19,701,2190000
+47,Male,Single,Bachelor's,325200,27100,Employed,0.25,710,2240000
+57,Female,Single,Bachelor's,402000,33500,Employed,0.41,811,410000
+53,Female,Married,Diploma,180000,15000,Employed,0.16,724,315000
+29,Male,Widowed,High School,190800,15900,Employed,0.07,510,195000
+35,Male,Single,Bachelor's,760800,63400,Employed,0.28,599,1495000
+38,Male,Married,High School,387600,32300,Self-employed,0.22,653,330000
+67,Male,Widowed,Diploma,790800,65900,Self-employed,0.04,735,340000
+56,Female,Single,High School,258000,21500,Self-employed,0.46,707,245000
+38,Female,Single,Bachelor's,702000,58500,Employed,0.44,604,360000
+57,Male,Single,Diploma,180000,15000,Employed,0.23,732,325000
+57,Female,Single,High School,204000,17000,Employed,0.13,728,700000
+40,Male,Married,Master's,468000,39000,Employed,0.19,782,600000
+40,Male,Married,Bachelor's,180000,15000,Employed,0.5,649,1110000
+64,Male,Married,Master's,396000,33000,Employed,0.37,752,230000
+48,Female,Single,Master's,331200,27600,Employed,0.14,716,2640000
+28,Female,Married,Diploma,666000,55500,Employed,0.3,558,770000
+56,Female,Single,Bachelor's,528000,44000,Employed,0.12,755,2340000
+49,Male,Married,PhD,529200,44100,Self-employed,0.07,710,290000
+45,Male,Single,Diploma,200400,16700,Self-employed,0.32,731,500000
+56,Male,Married,High School,468000,39000,Employed,0.33,503,1230000
+65,Female,Married,High School,458400,38200,Self-employed,0.28,668,755000
+37,Male,Single,Master's,694800,57900,Employed,0.24,645,1390000
+41,Female,Married,High School,444000,37000,Self-employed,0.23,775,470000
+30,Female,Married,Master's,391200,32600,Self-employed,0.47,674,380000
+52,Male,Divorced,Bachelor's,721200,60100,Employed,0.17,692,1040000
+40,Male,Widowed,Bachelor's,404400,33700,Employed,0.36,671,685000
+37,Male,Single,Bachelor's,558000,46500,Employed,0.22,719,260000
+55,Female,Married,Diploma,193200,16100,Self-employed,0.34,682,920000
+40,Other,Single,Diploma,321600,26800,Employed,0.33,637,1910000
+43,Male,Married,Bachelor's,327600,27300,Student,0.34,703,950000
+42,Other,Single,Bachelor's,794400,66200,Self-employed,0.29,687,690000
+33,Male,Married,Bachelor's,543600,45300,Employed,0.56,653,2670000
+27,Male,Divorced,Bachelor's,510000,42500,Employed,0.37,656,200000
+61,Female,Married,Bachelor's,435600,36300,Employed,0.34,755,785000
+25,Female,Divorced,Bachelor's,560400,46700,Self-employed,0.23,716,2240000
+36,Male,Single,Master's,594000,49500,Retired,0.32,588,165000
+53,Female,Divorced,High School,207600,17300,Self-employed,0.38,677,1820000
+27,Female,Married,Master's,514800,42900,Employed,0.44,818,2740000
+53,Female,Married,Bachelor's,408000,34000,Employed,0.14,636,575000
+56,Female,Single,Bachelor's,230400,19200,Unemployed,0.21,644,180000
+53,Male,Married,Diploma,303600,25300,Employed,0.56,604,670000
+35,Male,Married,Bachelor's,288000,24000,Self-employed,0.06,657,1750000
+21,Female,Single,High School,349200,29100,Employed,0.22,665,360000
+64,Male,Divorced,Bachelor's,342000,28500,Employed,0.17,737,1150000
+37,Male,Married,Diploma,715200,59600,Employed,0.35,638,440000
+60,Male,Widowed,Diploma,243600,20300,Employed,0.19,802,305000
+30,Male,Single,High School,514800,42900,Employed,0.28,600,1910000
+28,Male,Married,Master's,1084800,90400,Employed,0.66,719,2830000
+59,Male,Single,Master's,378000,31500,Employed,0.41,575,1130000
+67,Male,Single,Bachelor's,374400,31200,Employed,0.51,699,495000
+63,Male,Single,High School,212400,17700,Employed,0.55,767,100000
+57,Female,Single,Bachelor's,741600,61800,Self-employed,0.39,715,610000
+33,Female,Married,Master's,746400,62200,Employed,0.47,598,410000
+65,Male,Single,Master's,297600,24800,Unemployed,0.15,802,990000
+53,Male,Single,Master's,477600,39800,Employed,0.61,778,530000
+29,Male,Married,Bachelor's,619200,51600,Employed,0.17,661,960000
+27,Female,Married,Bachelor's,502800,41900,Self-employed,0.15,696,350000
+63,Female,Married,High School,225600,18800,Self-employed,0.34,693,110000
+34,Female,Married,Diploma,441600,36800,Employed,0.1,556,510000
+58,Female,Single,Master's,602400,50200,Employed,0.06,636,1730000
+27,Male,Married,High School,208800,17400,Employed,0.07,681,205000
+34,Male,Married,High School,262800,21900,Employed,0.11,791,125000
+34,Male,Single,Master's,736800,61400,Employed,0.22,642,185000
+34,Male,Single,Master's,340800,28400,Self-employed,0.35,678,260000
+54,Male,Divorced,High School,460800,38400,Self-employed,0.55,754,355000
+65,Female,Single,Bachelor's,513600,42800,Employed,0.13,741,220000
+65,Male,Single,High School,248400,20700,Self-employed,0.28,793,170000
+57,Female,Single,High School,199200,16600,Self-employed,0.27,739,500000
+30,Male,Divorced,High School,235200,19600,Employed,0.67,706,310000
+68,Male,Married,Bachelor's,84000,7000,Student,0.25,690,50000
+47,Female,Widowed,Diploma,379200,31600,Employed,0.28,784,1050000
+47,Male,Divorced,Master's,672000,56000,Employed,0.03,645,630000
+55,Male,Married,High School,367200,30600,Employed,0.07,741,470000
+58,Male,Single,High School,180000,15000,Employed,0.21,645,910000
+67,Female,Married,Diploma,223200,18600,Self-employed,0.44,651,1960000
+49,Male,Divorced,Bachelor's,582000,48500,Self-employed,0.14,706,250000
+50,Female,Widowed,PhD,1886400,157200,Employed,0.24,705,12460000
+57,Other,Divorced,Diploma,386400,32200,Self-employed,0.3,634,260000
+33,Female,Divorced,Bachelor's,278400,23200,Employed,0.1,675,140000
+36,Male,Married,High School,278400,23200,Employed,0.24,676,1380000
+51,Female,Married,High School,63600,5300,Student,0.46,699,100000
+24,Male,Married,High School,193200,16100,Employed,0.15,681,260000
+36,Female,Married,High School,180000,15000,Self-employed,0.09,713,910000
+56,Male,Single,Master's,632400,52700,Employed,0.13,724,4460000
+68,Male,Married,Bachelor's,332400,27700,Employed,0.29,642,125000
+46,Male,Single,Master's,868800,72400,Employed,0.2,724,705000
+40,Female,Single,Master's,322800,26900,Unemployed,0.15,442,2910000
+42,Female,Married,Master's,1210800,100900,Employed,0.15,849,750000
+54,Male,Married,Diploma,303600,25300,Employed,0.16,850,1120000
+47,Male,Married,High School,301200,25100,Employed,0.34,696,190000
+22,Female,Married,High School,219600,18300,Employed,0.25,630,250000
+47,Female,Married,High School,284400,23700,Employed,0.15,719,110000
+40,Female,Married,High School,180000,15000,Employed,0.48,574,1300000
+55,Male,Married,High School,180000,15000,Employed,0.11,789,730000
+63,Female,Married,Bachelor's,1629600,135800,Employed,0.31,730,1090000
+68,Female,Single,Diploma,489600,40800,Employed,0.33,624,2960000
+50,Male,Married,Bachelor's,541200,45100,Retired,0.33,593,860000
+38,Male,Married,Bachelor's,465600,38800,Employed,0.43,496,460000
+42,Male,Single,Diploma,288000,24000,Self-employed,0.37,716,290000
+29,Male,Divorced,High School,180000,15000,Employed,0.34,554,170000
+66,Female,Single,Bachelor's,398400,33200,Employed,0.13,656,70000
+62,Male,Married,Master's,978000,81500,Self-employed,0.5,692,8710000
+62,Female,Divorced,Bachelor's,739200,61600,Employed,0.31,645,940000
+37,Male,Married,Master's,573600,47800,Retired,0.29,585,585000
+36,Female,Married,Diploma,291600,24300,Unemployed,0.25,628,195000
+62,Female,Married,Master's,1099200,91600,Self-employed,0.39,696,990000
+47,Female,Single,Bachelor's,277200,23100,Retired,0.22,677,100000
+55,Female,Married,PhD,577200,48100,Retired,0.22,842,495000
+45,Male,Married,Diploma,360000,30000,Employed,0.19,831,300000
+42,Female,Single,Master's,300000,25000,Unemployed,0.18,626,595000
+51,Female,Single,Bachelor's,345600,28800,Self-employed,0.26,755,2940000
+60,Male,Widowed,Bachelor's,710400,59200,Employed,0.14,650,630000
+37,Other,Single,Bachelor's,438000,36500,Employed,0.46,568,4200000
+60,Male,Divorced,Bachelor's,516000,43000,Employed,0.29,718,340000
+32,Female,Single,Master's,962400,80200,Employed,0.27,583,9470000
+40,Male,Married,PhD,990000,82500,Employed,0.59,792,2775000
+65,Female,Married,Bachelor's,339600,28300,Self-employed,0.13,683,800000
+67,Male,Married,High School,180000,15000,Unemployed,0.67,600,280000
+66,Male,Married,Bachelor's,559200,46600,Retired,0.19,608,760000
+36,Male,Married,Diploma,198000,16500,Self-employed,0.26,679,395000
+62,Other,Married,Bachelor's,349200,29100,Retired,0.16,656,765000
+66,Male,Married,High School,180000,15000,Retired,0.27,552,120000
+68,Female,Married,Bachelor's,222000,18500,Self-employed,0.62,669,1820000
+22,Male,Married,Bachelor's,662400,55200,Employed,0.31,686,615000
+57,Female,Married,High School,255600,21300,Employed,0.39,717,320000
+69,Male,Married,High School,435600,36300,Retired,0.41,637,420000
+58,Female,Single,High School,180000,15000,Employed,0.15,671,1030000
+32,Female,Single,Master's,610800,50900,Self-employed,0.37,658,290000
+58,Male,Married,Bachelor's,300000,25000,Retired,0.17,650,715000
+26,Male,Widowed,Bachelor's,256800,21400,Self-employed,0.22,657,205000
+44,Female,Single,High School,189600,15800,Retired,0.03,700,75000
+51,Male,Single,Master's,732000,61000,Self-employed,0.36,666,1405000
+43,Male,Widowed,High School,64800,5400,Student,0.24,628,50000
+55,Male,Married,Diploma,180000,15000,Retired,0.37,758,770000
+32,Female,Married,Bachelor's,288000,24000,Self-employed,0.65,690,430000
+50,Female,Married,High School,226800,18900,Self-employed,0.14,749,290000
+52,Female,Married,Master's,309600,25800,Retired,0.33,569,310000
+52,Female,Married,Master's,682800,56900,Self-employed,0.24,825,620000
+35,Male,Divorced,Bachelor's,447600,37300,Employed,0.15,712,1240000
+35,Male,Married,Diploma,626400,52200,Self-employed,0.28,669,4730000
+33,Male,Married,High School,384000,32000,Employed,0.23,739,230000
+43,Male,Single,Bachelor's,319200,26600,Retired,0.2,815,365000
+49,Male,Single,Diploma,306000,25500,Employed,0.09,611,300000
+38,Female,Divorced,Master's,796800,66400,Employed,0.45,536,4000000
+41,Male,Divorced,Bachelor's,951600,79300,Employed,0.53,705,9140000
+35,Male,Married,Diploma,304800,25400,Employed,0.38,553,310000
+31,Male,Single,High School,91200,7600,Student,0.39,573,50000
+53,Male,Married,Diploma,344400,28700,Self-employed,0.42,844,1000000
+60,Male,Single,Diploma,308400,25700,Employed,0.08,591,220000
+35,Male,Married,PhD,940800,78400,Employed,0.26,598,8560000
+63,Male,Married,Bachelor's,697200,58100,Employed,0.14,744,3460000
+48,Female,Married,Bachelor's,180000,15000,Unemployed,0.72,692,720000
+29,Female,Married,Diploma,326400,27200,Employed,0.07,790,620000
+38,Female,Married,Diploma,66000,5500,Student,0.16,537,50000
+21,Female,Divorced,Bachelor's,296400,24700,Employed,0.11,661,970000
+22,Female,Single,PhD,500400,41700,Employed,0.65,757,1190000
+37,Female,Single,Bachelor's,140400,11700,Student,0.27,627,100000
+43,Male,Married,High School,219600,18300,Employed,0.36,789,160000
+60,Female,Single,PhD,428400,35700,Employed,0.46,667,460000
+27,Male,Single,High School,213600,17800,Employed,0.18,655,150000
+62,Male,Single,Bachelor's,500400,41700,Self-employed,0.22,659,2440000
+32,Male,Single,Master's,799200,66600,Retired,0.26,787,1565000
+27,Male,Married,Bachelor's,326400,27200,Employed,0.16,718,650000
+55,Female,Widowed,Master's,316800,26400,Retired,0.21,664,475000
+58,Male,Divorced,Master's,540000,45000,Employed,0.46,630,475000
+50,Female,Married,High School,286800,23900,Self-employed,0.24,689,170000
+26,Female,Single,Bachelor's,484800,40400,Employed,0.21,717,140000
+26,Male,Married,Bachelor's,480000,40000,Employed,0.11,706,4790000
+40,Male,Married,Diploma,446400,37200,Self-employed,0.28,680,1850000
+43,Male,Married,Master's,456000,38000,Employed,0.07,718,475000
+69,Male,Married,Master's,616800,51400,Employed,0.17,644,580000
+35,Other,Married,Diploma,333600,27800,Self-employed,0.09,693,540000
+30,Female,Single,High School,432000,36000,Employed,0.2,668,420000
+67,Female,Divorced,High School,242400,20200,Employed,0.14,596,1830000
+28,Male,Married,High School,415200,34600,Self-employed,0.4,683,1420000
+22,Female,Married,Bachelor's,319200,26600,Self-employed,0.17,690,2040000
+41,Female,Widowed,Bachelor's,244800,20400,Employed,0.37,585,90000
+40,Male,Single,High School,250800,20900,Self-employed,0.47,753,580000
+51,Male,Single,Bachelor's,728400,60700,Employed,0.16,651,990000
+64,Male,Married,High School,180000,15000,Self-employed,0.23,683,340000
+66,Male,Married,Master's,265200,22100,Employed,0.17,634,360000
+35,Female,Single,Master's,468000,39000,Self-employed,0.23,681,630000
+69,Female,Single,High School,358800,29900,Self-employed,0.11,850,520000
+52,Male,Single,High School,241200,20100,Self-employed,0.72,718,100000
+24,Female,Single,PhD,158400,13200,Student,0.39,660,375000
+66,Male,Married,Diploma,408000,34000,Employed,0.23,585,360000
+27,Male,Single,Master's,646800,53900,Retired,0.2,665,750000
+49,Female,Married,High School,400800,33400,Employed,0.5,641,400000
+59,Female,Married,Diploma,253200,21100,Retired,0.72,711,375000
+33,Female,Married,Bachelor's,595200,49600,Employed,0.45,634,265000
+34,Male,Divorced,Diploma,312000,26000,Employed,0.49,739,340000
+44,Female,Single,Master's,200400,16700,Unemployed,0.03,622,255000
+64,Female,Single,PhD,710400,59200,Retired,0.19,590,230000
+31,Female,Single,Bachelor's,415200,34600,Employed,0.49,772,405000
+53,Male,Married,Bachelor's,548400,45700,Employed,0.11,657,530000
+43,Male,Married,Bachelor's,639600,53300,Self-employed,0.25,624,570000
+26,Female,Single,Bachelor's,369600,30800,Employed,0.22,683,420000
+55,Female,Married,High School,324000,27000,Employed,0.23,710,300000
+61,Female,Widowed,Bachelor's,384000,32000,Employed,0.25,645,595000
+49,Female,Single,Bachelor's,916800,76400,Employed,0.39,738,525000
+29,Female,Single,Diploma,181200,15100,Self-employed,0.19,606,1640000
+28,Female,Married,Bachelor's,334800,27900,Employed,0.22,780,470000
+41,Male,Married,Master's,1232400,102700,Employed,0.64,566,1350000
+45,Male,Single,Master's,541200,45100,Employed,0.24,651,565000
+48,Male,Married,Bachelor's,970800,80900,Self-employed,0.48,772,450000
+32,Female,Single,Master's,609600,50800,Retired,0.2,649,490000
+45,Male,Married,High School,336000,28000,Employed,0.13,647,155000
+35,Male,Married,High School,186000,15500,Retired,0.1,555,100000
+54,Female,Single,Bachelor's,747600,62300,Unemployed,0.36,708,1490000
+60,Female,Single,Bachelor's,494400,41200,Employed,0.41,682,955000
+52,Male,Married,Master's,316800,26400,Employed,0.4,752,500000
+21,Male,Married,Master's,420000,35000,Employed,0.25,722,290000
+69,Female,Divorced,Diploma,477600,39800,Retired,0.44,539,410000
+22,Male,Married,High School,180000,15000,Employed,0.16,531,170000
+69,Male,Married,High School,240000,20000,Employed,0.29,630,100000
+22,Male,Married,Diploma,298800,24900,Employed,0.08,821,1900000
+46,Male,Married,Bachelor's,214800,17900,Employed,0.14,662,175000
+26,Female,Single,Master's,877200,73100,Retired,0.31,831,1575000
+25,Male,Single,High School,180000,15000,Retired,0.42,568,500000
+54,Male,Married,Master's,493200,41100,Employed,0.2,744,1405000
+56,Male,Single,Bachelor's,423600,35300,Self-employed,0.29,739,320000
+26,Male,Single,Diploma,180000,15000,Self-employed,0.31,573,1300000
+68,Male,Single,High School,180000,15000,Employed,0.4,529,250000
+36,Female,Divorced,High School,187200,15600,Self-employed,0.28,795,250000
+36,Male,Married,Bachelor's,457200,38100,Retired,0.04,614,4550000
+35,Male,Divorced,Master's,598800,49900,Self-employed,0.23,791,995000
+43,Male,Widowed,Bachelor's,427200,35600,Employed,0.2,629,3660000
+29,Female,Married,Master's,504000,42000,Self-employed,0.17,778,820000
+41,Male,Married,Bachelor's,310800,25900,Unemployed,0.15,619,835000
+31,Female,Married,High School,180000,15000,Self-employed,0.71,749,1430000
+23,Female,Married,High School,234000,19500,Retired,0.18,736,2130000
+39,Female,Divorced,Master's,266400,22200,Unemployed,0.49,756,1190000
+53,Female,Divorced,Bachelor's,361200,30100,Employed,0.47,799,355000
+58,Male,Married,Master's,387600,32300,Self-employed,0.34,751,1320000
+38,Female,Married,Diploma,272400,22700,Employed,0.48,655,130000
+36,Female,Married,High School,180000,15000,Unemployed,0.26,483,580000
+59,Male,Married,Bachelor's,535200,44600,Employed,0.58,674,2260000
+54,Female,Single,Bachelor's,523200,43600,Employed,0.24,666,3210000
+61,Male,Single,Bachelor's,530400,44200,Employed,0.29,809,3370000
+65,Female,Single,High School,201600,16800,Retired,0.15,787,215000
+61,Female,Married,High School,60000,5000,Student,0.18,664,120000
+66,Female,Single,Bachelor's,297600,24800,Employed,0.45,734,590000
+41,Male,Divorced,Bachelor's,654000,54500,Employed,0.47,830,6280000
+40,Female,Single,High School,181200,15100,Employed,0.38,622,510000
+36,Female,Single,Bachelor's,289200,24100,Self-employed,0.54,709,965000
+32,Male,Married,Bachelor's,522000,43500,Employed,0.14,628,5010000
+57,Female,Single,Bachelor's,547200,45600,Employed,0.12,747,2220000
+56,Female,Single,High School,262800,21900,Self-employed,0.18,640,140000
+60,Female,Single,Master's,494400,41200,Employed,0.38,553,735000
+29,Other,Married,High School,222000,18500,Self-employed,0.32,776,2040000
+45,Male,Single,High School,252000,21000,Retired,0.43,674,120000
+31,Male,Married,High School,180000,15000,Self-employed,0.12,792,395000
+64,Male,Single,Diploma,361200,30100,Employed,0.03,780,870000
+34,Male,Single,Bachelor's,290400,24200,Employed,0.16,713,110000
+28,Male,Single,High School,280800,23400,Employed,0.16,563,330000
+48,Female,Single,High School,319200,26600,Employed,0.27,714,395000
+64,Male,Married,High School,180000,15000,Employed,0.68,650,180000
+65,Female,Married,High School,84000,7000,Student,0.23,839,155000
+25,Male,Married,Diploma,547200,45600,Retired,0.14,726,495000
+36,Male,Divorced,High School,180000,15000,Self-employed,0.28,800,100000
+28,Female,Single,Diploma,180000,15000,Self-employed,0.41,702,250000
+36,Female,Divorced,Master's,742800,61900,Employed,0.14,809,4750000
+47,Male,Married,Bachelor's,280800,23400,Employed,0.04,742,220000
+34,Female,Married,High School,324000,27000,Employed,0.39,655,170000
+24,Male,Divorced,Bachelor's,381600,31800,Retired,0.63,784,330000
+45,Male,Single,High School,529200,44100,Self-employed,0.17,556,775000
+23,Male,Married,High School,332400,27700,Employed,0.15,800,1680000
+32,Female,Married,Diploma,513600,42800,Employed,0.58,807,165000
+21,Male,Married,High School,230400,19200,Employed,0.5,727,560000
+25,Female,Single,High School,256800,21400,Employed,0.17,640,110000
+42,Female,Single,Diploma,409200,34100,Employed,0.24,592,290000
+62,Male,Widowed,Bachelor's,706800,58900,Employed,0.39,757,2080000
+58,Female,Married,High School,296400,24700,Retired,0.09,730,160000
+25,Male,Single,High School,180000,15000,Employed,0.13,525,65000
+22,Male,Single,Master's,549600,45800,Employed,0.15,663,605000
+37,Male,Married,Bachelor's,529200,44100,Employed,0.52,560,300000
+52,Male,Single,Bachelor's,686400,57200,Employed,0.11,683,3520000
+57,Male,Single,Bachelor's,709200,59100,Employed,0.35,644,520000
+61,Male,Widowed,Bachelor's,606000,50500,Self-employed,0.2,691,2000000
+37,Female,Single,Bachelor's,435600,36300,Employed,0.06,602,450000
+29,Male,Single,Diploma,262800,21900,Self-employed,0.66,789,1240000
+22,Male,Married,Master's,288000,24000,Employed,0.48,560,185000
+28,Female,Single,Master's,604800,50400,Retired,0.28,769,585000
+24,Male,Single,Diploma,439200,36600,Employed,0.56,769,1120000
+63,Female,Married,Diploma,180000,15000,Unemployed,0.39,522,180000
+34,Female,Married,High School,247200,20600,Self-employed,0.37,644,110000
+61,Male,Married,Bachelor's,180000,15000,Unemployed,0.3,638,800000
+48,Male,Married,Master's,117600,9800,Student,0.32,526,125000
+47,Male,Married,Bachelor's,589200,49100,Employed,0.36,670,470000
+43,Male,Married,Diploma,253200,21100,Self-employed,0.37,562,265000
+61,Male,Married,Bachelor's,1184400,98700,Employed,0.72,672,270000
+23,Female,Married,Bachelor's,324000,27000,Retired,0.36,638,180000
+25,Female,Single,Bachelor's,435600,36300,Self-employed,0.05,703,2840000
+41,Male,Married,Bachelor's,286800,23900,Unemployed,0.38,601,100000
+40,Female,Single,Bachelor's,553200,46100,Employed,0.38,714,210000
+47,Male,Single,Bachelor's,538800,44900,Employed,0.17,630,1250000
+57,Female,Divorced,Bachelor's,370800,30900,Employed,0.44,417,200000
+49,Female,Single,Bachelor's,498000,41500,Self-employed,0.26,664,4370000
+33,Male,Married,Bachelor's,218400,18200,Unemployed,0.18,515,355000
+37,Male,Single,Master's,609600,50800,Employed,0.1,770,730000
+57,Male,Married,Bachelor's,525600,43800,Employed,0.36,588,920000
+30,Female,Divorced,Bachelor's,273600,22800,Employed,0.18,770,450000
+45,Male,Married,Master's,874800,72900,Self-employed,0.47,740,810000
+47,Female,Divorced,Master's,490800,40900,Employed,0.39,706,2090000
+57,Male,Married,Diploma,475200,39600,Employed,0.26,776,1420000
+56,Male,Divorced,Master's,933600,77800,Self-employed,0.44,495,1130000
+43,Female,Divorced,PhD,996000,83000,Employed,0.17,694,2180000
+36,Male,Single,High School,241200,20100,Self-employed,0.14,675,575000
+39,Male,Divorced,Diploma,531600,44300,Employed,0.16,644,4400000
+41,Female,Single,Bachelor's,1219200,101600,Employed,0.28,688,1020000
+31,Male,Married,Bachelor's,445200,37100,Employed,0.4,669,2520000
+51,Female,Single,PhD,688800,57400,Employed,0.24,593,1020000
+31,Other,Married,Diploma,61200,5100,Student,0.14,693,100000
+52,Male,Widowed,Bachelor's,290400,24200,Employed,0.42,645,910000
+57,Female,Married,Master's,813600,67800,Employed,0.29,716,870000
+68,Male,Married,Bachelor's,328800,27400,Self-employed,0.05,691,500000
+26,Female,Divorced,Bachelor's,278400,23200,Employed,0.5,764,395000
+58,Other,Married,Bachelor's,397200,33100,Employed,0.07,830,425000
+25,Female,Single,Diploma,358800,29900,Self-employed,0.31,539,590000
+37,Female,Divorced,High School,180000,15000,Unemployed,0.49,713,980000
+29,Male,Single,Diploma,294000,24500,Employed,0.29,733,410000
+28,Female,Married,High School,208800,17400,Self-employed,0.38,708,1240000
+29,Male,Single,Bachelor's,386400,32200,Employed,0.72,765,2570000
+23,Female,Single,Master's,866400,72200,Employed,0.14,835,4090000
+61,Male,Married,High School,250800,20900,Employed,0.45,632,720000
+23,Male,Married,Bachelor's,668400,55700,Self-employed,0.59,850,2180000
+40,Male,Single,High School,180000,15000,Self-employed,0.23,577,340000
+55,Male,Single,Diploma,373200,31100,Self-employed,0.4,654,140000
+69,Male,Single,High School,186000,15500,Employed,0.03,730,990000
+62,Male,Married,Diploma,276000,23000,Employed,0.27,639,50000
+27,Female,Married,Master's,316800,26400,Employed,0.19,687,430000
+69,Female,Single,Bachelor's,259200,21600,Employed,0.18,732,280000
+53,Male,Single,High School,267600,22300,Employed,0.1,698,2370000
+29,Female,Single,High School,238800,19900,Employed,0.44,819,100000
+42,Male,Married,Master's,555600,46300,Employed,0.27,805,240000
+65,Female,Married,Bachelor's,247200,20600,Self-employed,0.28,647,100000
+40,Male,Single,Master's,801600,66800,Self-employed,0.07,721,460000
+29,Female,Widowed,Bachelor's,189600,15800,Self-employed,0.36,764,820000
+63,Male,Single,Bachelor's,514800,42900,Self-employed,0.27,522,930000
+67,Male,Married,Bachelor's,588000,49000,Employed,0.3,705,1720000
+68,Female,Married,Master's,498000,41500,Retired,0.14,664,3310000
+67,Female,Married,Master's,303600,25300,Self-employed,0.33,691,365000
+63,Female,Single,High School,243600,20300,Self-employed,0.41,831,250000
+43,Male,Married,Bachelor's,180000,15000,Retired,0.28,757,1570000
+30,Male,Married,Diploma,554400,46200,Self-employed,0.42,717,230000
+51,Female,Divorced,Master's,926400,77200,Employed,0.52,638,1230000
+31,Male,Married,Bachelor's,526800,43900,Employed,0.66,782,3540000
+44,Male,Divorced,Diploma,180000,15000,Employed,0.43,592,100000
+53,Male,Married,Bachelor's,180000,15000,Unemployed,0.39,623,940000
+67,Male,Married,Bachelor's,684000,57000,Employed,0.23,721,320000
+35,Male,Single,Master's,890400,74200,Employed,0.35,717,1555000
+33,Male,Divorced,Bachelor's,991200,82600,Employed,0.03,658,370000
+57,Female,Single,High School,340800,28400,Employed,0.18,624,650000
+21,Female,Married,Bachelor's,216000,18000,Self-employed,0.07,832,1960000
+48,Female,Married,High School,234000,19500,Self-employed,0.25,581,1790000
+57,Female,Widowed,Bachelor's,346800,28900,Employed,0.48,764,310000
+47,Male,Married,Bachelor's,681600,56800,Employed,0.35,668,1895000
+39,Female,Single,Master's,1062000,88500,Employed,0.55,621,2765000
+61,Female,Widowed,Bachelor's,684000,57000,Self-employed,0.22,664,1700000
+39,Female,Married,High School,225600,18800,Employed,0.07,662,360000
+55,Male,Married,Master's,289200,24100,Employed,0.22,603,425000
+43,Female,Married,Master's,568800,47400,Employed,0.36,810,470000
+22,Female,Married,Bachelor's,415200,34600,Employed,0.17,711,610000
+46,Female,Widowed,Bachelor's,652800,54400,Employed,0.12,606,860000
+23,Female,Single,Bachelor's,540000,45000,Self-employed,0.62,628,3360000
+66,Female,Married,Bachelor's,315600,26300,Unemployed,0.5,486,2510000
+50,Female,Married,High School,304800,25400,Employed,0.45,704,400000
+39,Female,Widowed,Bachelor's,687600,57300,Employed,0.37,657,3780000
+44,Female,Married,High School,230400,19200,Unemployed,0.1,503,155000
+51,Female,Single,Master's,212400,17700,Unemployed,0.27,561,335000
+33,Male,Married,Master's,414000,34500,Self-employed,0.53,644,490000
+35,Female,Widowed,High School,206400,17200,Employed,0.29,610,210000
+41,Male,Divorced,Bachelor's,420000,35000,Employed,0.54,850,2420000
+33,Male,Single,High School,115200,9600,Student,0.21,733,500000
+58,Male,Married,High School,222000,18500,Employed,0.04,577,310000
+26,Male,Married,High School,180000,15000,Employed,0.36,728,600000
+61,Male,Married,Bachelor's,628800,52400,Employed,0.47,673,580000
+38,Male,Single,Master's,660000,55000,Employed,0.22,709,815000
+48,Male,Single,Diploma,333600,27800,Employed,0.08,649,2750000
+28,Female,Single,Master's,698400,58200,Self-employed,0.26,746,1105000
+39,Female,Single,Bachelor's,422400,35200,Employed,0.55,795,1420000
+57,Other,Married,High School,241200,20100,Employed,0.37,690,230000
+34,Male,Widowed,Bachelor's,638400,53200,Employed,0.3,612,1265000
+27,Male,Married,Bachelor's,324000,27000,Self-employed,0.19,691,850000
+46,Female,Single,Bachelor's,534000,44500,Self-employed,0.06,752,655000
+28,Male,Married,Bachelor's,529200,44100,Employed,0.15,761,780000
+36,Female,Married,High School,300000,25000,Employed,0.3,657,2660000
+43,Female,Married,Bachelor's,658800,54900,Retired,0.39,572,460000
+48,Male,Divorced,Diploma,255600,21300,Employed,0.47,771,450000
+52,Male,Single,PhD,624000,52000,Employed,0.22,691,1260000
+54,Male,Widowed,Bachelor's,422400,35200,Employed,0.2,720,925000
+62,Female,Single,High School,181200,15100,Employed,0.04,837,1220000
+24,Male,Married,Master's,550800,45900,Self-employed,0.03,741,1500000
+38,Female,Divorced,High School,358800,29900,Employed,0.48,734,260000
+21,Female,Married,High School,211200,17600,Employed,0.46,667,310000
+21,Male,Single,Bachelor's,297600,24800,Self-employed,0.26,745,380000
+31,Male,Single,Diploma,285600,23800,Employed,0.19,507,330000
+50,Male,Single,Bachelor's,208800,17400,Unemployed,0.26,452,300000
+64,Male,Single,Bachelor's,241200,20100,Employed,0.21,704,140000
+58,Female,Single,Master's,1190400,99200,Employed,0.3,570,380000
+52,Female,Single,Bachelor's,180000,15000,Unemployed,0.11,768,245000
+59,Female,Married,Bachelor's,228000,19000,Employed,0.24,771,120000
+29,Male,Single,PhD,601200,50100,Employed,0.14,836,3300000
+62,Male,Married,Bachelor's,457200,38100,Self-employed,0.29,658,940000
+64,Female,Married,High School,207600,17300,Employed,0.3,705,1060000
+25,Female,Single,Master's,277200,23100,Employed,0.11,688,405000
+44,Female,Married,Master's,734400,61200,Employed,0.36,669,1045000
+61,Female,Married,Bachelor's,702000,58500,Self-employed,0.36,607,1770000
+44,Female,Married,Bachelor's,657600,54800,Self-employed,0.61,664,690000
+62,Male,Married,Bachelor's,217200,18100,Employed,0.25,624,275000
+66,Male,Married,High School,315600,26300,Employed,0.19,719,2930000
+44,Female,Married,Bachelor's,492000,41000,Retired,0.4,642,2450000
+23,Male,Married,Bachelor's,1269600,105800,Retired,0.17,790,350000
+37,Female,Married,Diploma,180000,15000,Self-employed,0.09,613,160000
+31,Male,Divorced,Bachelor's,350400,29200,Employed,0.2,667,3130000
+44,Male,Married,Bachelor's,538800,44900,Self-employed,0.12,717,620000
+49,Male,Married,Bachelor's,736800,61400,Retired,0.25,683,945000
+43,Female,Married,Master's,366000,30500,Employed,0.51,648,340000
+30,Female,Married,Bachelor's,236400,19700,Employed,0.16,750,100000
+35,Male,Married,PhD,709200,59100,Employed,0.66,678,3460000
+54,Male,Single,High School,266400,22200,Retired,0.48,767,350000
+22,Male,Single,High School,188400,15700,Self-employed,0.06,672,50000
+31,Male,Married,Master's,645600,53800,Employed,0.41,743,150000
+64,Female,Married,Bachelor's,180000,15000,Unemployed,0.3,667,330000
+25,Male,Married,Master's,736800,61400,Self-employed,0.09,562,1460000
+41,Male,Widowed,Bachelor's,226800,18900,Unemployed,0.1,781,1990000
+31,Male,Married,High School,180000,15000,Unemployed,0.3,501,220000
+26,Female,Married,Bachelor's,385200,32100,Employed,0.29,772,1730000
+41,Female,Divorced,High School,442800,36900,Employed,0.36,647,650000
+46,Female,Single,Bachelor's,238800,19900,Employed,0.24,685,265000
+29,Female,Married,Bachelor's,752400,62700,Self-employed,0.37,637,7410000
+24,Female,Single,Bachelor's,210000,17500,Self-employed,0.17,765,130000
+27,Male,Married,Diploma,506400,42200,Employed,0.3,619,150000
+52,Female,Single,Bachelor's,180000,15000,Employed,0.17,598,305000
+63,Female,Married,PhD,673200,56100,Employed,0.08,813,570000
+29,Male,Married,High School,258000,21500,Employed,0.72,790,80000
+36,Female,Single,High School,468000,39000,Self-employed,0.25,671,540000
+37,Female,Married,High School,204000,17000,Employed,0.39,584,355000
+38,Female,Married,Bachelor's,242400,20200,Self-employed,0.34,651,330000
+32,Male,Married,Diploma,182400,15200,Employed,0.51,646,230000
+23,Male,Widowed,Bachelor's,370800,30900,Employed,0.21,766,780000
+46,Female,Single,High School,272400,22700,Employed,0.42,808,380000
+38,Male,Single,High School,180000,15000,Employed,0.26,725,260000
+37,Male,Divorced,Diploma,370800,30900,Self-employed,0.05,665,485000
+33,Male,Single,Master's,1048800,87400,Self-employed,0.11,606,6320000
+66,Male,Married,Diploma,252000,21000,Employed,0.1,724,2190000
+50,Female,Single,High School,180000,15000,Employed,0.07,736,220000
+41,Female,Married,Diploma,280800,23400,Self-employed,0.12,570,475000
+31,Female,Married,Master's,139200,11600,Student,0.49,656,145000
+60,Male,Married,Bachelor's,228000,19000,Employed,0.12,746,280000
+64,Male,Single,Master's,661200,55100,Self-employed,0.09,666,3180000
+22,Male,Divorced,High School,208800,17400,Employed,0.31,683,1250000
+66,Male,Divorced,High School,434400,36200,Employed,0.39,754,730000
+55,Female,Married,Bachelor's,266400,22200,Employed,0.36,692,390000
+25,Male,Divorced,Bachelor's,328800,27400,Employed,0.06,505,650000
+57,Male,Divorced,Master's,250800,20900,Employed,0.51,787,190000
+26,Female,Married,High School,262800,21900,Employed,0.35,716,100000
+23,Female,Married,PhD,338400,28200,Unemployed,0.33,524,380000
+26,Male,Married,Bachelor's,772800,64400,Employed,0.13,761,4180000
+43,Female,Widowed,Bachelor's,536400,44700,Employed,0.23,619,4990000
+51,Male,Married,Master's,981600,81800,Employed,0.03,765,7970000
+40,Female,Single,Bachelor's,180000,15000,Unemployed,0.35,524,300000
+26,Female,Single,Bachelor's,888000,74000,Employed,0.15,735,970000
+30,Male,Married,Bachelor's,909600,75800,Employed,0.2,707,580000
+62,Male,Widowed,High School,355200,29600,Employed,0.27,599,505000
+68,Male,Single,High School,493200,41100,Employed,0.17,684,270000
+57,Female,Widowed,Master's,786000,65500,Self-employed,0.15,819,740000
+26,Male,Single,Master's,661200,55100,Employed,0.08,850,4260000
+61,Female,Married,PhD,519600,43300,Employed,0.15,681,230000
+54,Male,Divorced,Bachelor's,296400,24700,Employed,0.04,770,285000
+46,Male,Widowed,Bachelor's,289200,24100,Retired,0.32,563,525000
+28,Male,Married,High School,338400,28200,Employed,0.34,787,2980000
+69,Male,Widowed,Bachelor's,180000,15000,Unemployed,0.19,715,185000
+42,Male,Divorced,Bachelor's,493200,41100,Employed,0.68,822,710000
+23,Female,Divorced,Diploma,390000,32500,Employed,0.11,639,720000
+31,Female,Divorced,Bachelor's,800400,66700,Employed,0.44,646,1545000
+40,Male,Married,High School,333600,27800,Employed,0.36,774,900000
+24,Female,Single,Bachelor's,280800,23400,Employed,0.29,715,1620000
+36,Male,Single,Bachelor's,427200,35600,Employed,0.09,689,430000
+43,Female,Single,Master's,294000,24500,Unemployed,0.09,706,160000
+67,Male,Single,Bachelor's,417600,34800,Employed,0.27,743,500000
+25,Female,Single,Diploma,499200,41600,Employed,0.31,684,4150000
+49,Male,Single,Bachelor's,820800,68400,Employed,0.12,766,550000
+65,Male,Married,High School,180000,15000,Unemployed,0.37,663,100000
+60,Female,Single,High School,403200,33600,Retired,0.25,680,410000
+66,Male,Married,Master's,477600,39800,Employed,0.24,580,510000
+29,Male,Single,High School,96000,8000,Student,0.32,622,120000
+60,Male,Single,Bachelor's,648000,54000,Employed,0.24,711,3380000
+68,Female,Married,Bachelor's,283200,23600,Self-employed,0.36,571,485000
+36,Male,Divorced,PhD,560400,46700,Self-employed,0.22,600,180000
+45,Female,Married,Bachelor's,628800,52400,Retired,0.21,574,960000
+47,Female,Married,Master's,517200,43100,Employed,0.46,689,4970000
+45,Female,Widowed,Bachelor's,391200,32600,Self-employed,0.51,681,2760000
+35,Male,Married,High School,361200,30100,Self-employed,0.35,574,1200000
+68,Female,Single,Diploma,188400,15700,Employed,0.34,600,230000
+67,Male,Single,High School,180000,15000,Unemployed,0.04,719,65000
+39,Female,Married,Bachelor's,498000,41500,Retired,0.05,734,1715000
+60,Male,Married,High School,309600,25800,Employed,0.19,723,590000
+40,Female,Divorced,Master's,464400,38700,Self-employed,0.69,589,2760000
+59,Female,Single,High School,282000,23500,Self-employed,0.2,717,250000
+49,Male,Widowed,High School,217200,18100,Self-employed,0.14,644,590000
+44,Male,Married,Bachelor's,256800,21400,Self-employed,0.3,569,890000
+27,Male,Divorced,Diploma,266400,22200,Self-employed,0.44,578,300000
+53,Female,Married,High School,180000,15000,Employed,0.36,761,105000
+36,Male,Single,PhD,1051200,87600,Employed,0.39,566,380000
+31,Female,Married,High School,272400,22700,Employed,0.18,850,1510000
+30,Male,Single,Bachelor's,186000,15500,Self-employed,0.19,534,370000
+69,Female,Single,Bachelor's,388800,32400,Employed,0.03,772,800000
+26,Male,Divorced,High School,284400,23700,Employed,0.27,702,60000
+60,Male,Married,High School,180000,15000,Employed,0.06,740,720000
+63,Male,Single,Bachelor's,180000,15000,Unemployed,0.3,684,50000
+22,Female,Married,Master's,222000,18500,Unemployed,0.5,722,760000
+49,Male,Married,Bachelor's,406800,33900,Employed,0.27,681,70000
+49,Male,Single,Diploma,346800,28900,Self-employed,0.19,707,2980000
+38,Male,Single,High School,255600,21300,Self-employed,0.18,706,1660000
+53,Female,Divorced,Bachelor's,332400,27700,Employed,0.57,732,980000
+41,Female,Single,Bachelor's,451200,37600,Employed,0.2,700,125000
+42,Male,Divorced,Diploma,306000,25500,Employed,0.14,766,130000
+42,Male,Single,Bachelor's,490800,40900,Employed,0.05,588,1440000
+60,Male,Married,PhD,590400,49200,Employed,0.18,758,710000
+52,Male,Married,Master's,669600,55800,Employed,0.16,657,270000
+39,Other,Single,Bachelor's,159600,13300,Student,0.08,667,180000
+66,Male,Married,PhD,1045200,87100,Employed,0.22,850,1670000
+60,Female,Married,Diploma,430800,35900,Employed,0.5,784,560000
+66,Female,Married,High School,270000,22500,Employed,0.11,547,925000
+56,Female,Divorced,Bachelor's,601200,50100,Employed,0.21,654,355000
+40,Male,Widowed,Bachelor's,775200,64600,Employed,0.15,630,1030000
+58,Female,Single,Master's,1098000,91500,Employed,0.17,747,9030000
+37,Male,Married,Master's,517200,43100,Employed,0.33,790,730000
+34,Male,Single,Bachelor's,462000,38500,Employed,0.18,607,570000
+43,Female,Single,Diploma,553200,46100,Self-employed,0.11,661,540000
+68,Male,Single,Diploma,180000,15000,Unemployed,0.19,635,165000
+48,Male,Married,Bachelor's,260400,21700,Employed,0.54,639,250000
+39,Male,Married,Bachelor's,678000,56500,Employed,0.48,697,270000
+43,Male,Married,Bachelor's,498000,41500,Employed,0.33,750,1480000
+35,Female,Widowed,High School,358800,29900,Employed,0.47,720,95000
+53,Female,Married,Bachelor's,618000,51500,Employed,0.2,645,390000
+38,Female,Single,High School,271200,22600,Employed,0.11,804,510000
+48,Male,Single,Bachelor's,628800,52400,Retired,0.28,511,205000
+39,Male,Married,High School,310800,25900,Self-employed,0.5,508,1220000
+36,Male,Married,Master's,232800,19400,Unemployed,0.26,602,415000
+68,Male,Single,Master's,580800,48400,Employed,0.29,721,515000
+37,Female,Single,Bachelor's,393600,32800,Self-employed,0.4,603,240000
+24,Female,Married,High School,230400,19200,Employed,0.12,850,1410000
+39,Female,Married,Bachelor's,391200,32600,Employed,0.3,700,110000
+47,Female,Married,High School,218400,18200,Employed,0.31,666,145000
+25,Male,Married,High School,231600,19300,Retired,0.39,760,150000
+35,Female,Widowed,Bachelor's,349200,29100,Unemployed,0.52,509,180000
+29,Female,Divorced,Diploma,226800,18900,Employed,0.48,794,240000
+45,Female,Married,Master's,578400,48200,Retired,0.18,599,435000
+56,Male,Married,Master's,556800,46400,Employed,0.17,592,580000
+68,Female,Single,Master's,1173600,97800,Employed,0.19,705,2180000
+40,Male,Widowed,High School,207600,17300,Employed,0.37,636,115000
+63,Female,Married,Bachelor's,253200,21100,Self-employed,0.29,749,180000
+31,Female,Single,High School,223200,18600,Employed,0.18,647,360000
+59,Female,Married,Bachelor's,180000,15000,Unemployed,0.54,704,220000
+48,Male,Married,Bachelor's,640800,53400,Retired,0.25,738,1295000
+58,Male,Widowed,Bachelor's,406800,33900,Self-employed,0.38,717,495000
+58,Female,Single,High School,291600,24300,Employed,0.41,681,290000
+47,Female,Married,High School,294000,24500,Employed,0.36,647,380000
+33,Female,Divorced,Diploma,384000,32000,Employed,0.33,663,325000
+46,Male,Married,High School,284400,23700,Employed,0.16,683,390000
+61,Female,Married,High School,271200,22600,Self-employed,0.11,745,455000
+68,Female,Married,Master's,601200,50100,Employed,0.12,708,990000
+66,Male,Married,High School,386400,32200,Employed,0.43,629,340000
+29,Male,Single,High School,385200,32100,Employed,0.09,739,360000
+50,Female,Single,Master's,334800,27900,Unemployed,0.12,602,330000
+26,Male,Married,Master's,614400,51200,Employed,0.25,811,1960000
+53,Female,Single,Diploma,198000,16500,Employed,0.59,722,210000
+69,Female,Married,Master's,1248000,104000,Employed,0.4,806,1750000
+23,Male,Married,High School,256800,21400,Employed,0.31,678,470000
+53,Male,Married,Bachelor's,180000,15000,Unemployed,0.13,685,260000
+67,Other,Married,Master's,1051200,87600,Employed,0.46,692,9170000
+62,Female,Married,Bachelor's,624000,52000,Employed,0.32,640,1035000
+40,Female,Single,High School,418800,34900,Employed,0.23,736,400000
+26,Female,Married,Bachelor's,794400,66200,Employed,0.19,642,520000
+66,Female,Single,Bachelor's,477600,39800,Employed,0.33,640,420000
+66,Female,Widowed,Master's,279600,23300,Unemployed,0.38,502,1090000
+49,Female,Single,Diploma,373200,31100,Self-employed,0.18,787,440000
+68,Female,Divorced,Diploma,306000,25500,Employed,0.14,650,580000
+21,Male,Married,Bachelor's,228000,19000,Employed,0.16,655,1050000
+51,Male,Married,High School,399600,33300,Employed,0.05,634,375000
+22,Female,Divorced,High School,256800,21400,Employed,0.72,648,65000
+66,Male,Married,High School,195600,16300,Employed,0.16,623,280000
+54,Female,Married,Diploma,292800,24400,Employed,0.24,590,315000
+65,Female,Single,Bachelor's,465600,38800,Employed,0.13,736,3310000
+48,Male,Married,Bachelor's,528000,44000,Employed,0.14,637,1830000
+25,Male,Single,High School,214800,17900,Employed,0.14,759,1040000
+22,Female,Married,Bachelor's,180000,15000,Unemployed,0.29,641,50000
+37,Male,Divorced,Bachelor's,848400,70700,Self-employed,0.33,522,625000
+57,Female,Married,Bachelor's,559200,46600,Employed,0.31,736,1370000
+28,Female,Single,Master's,836400,69700,Employed,0.34,696,505000
+62,Male,Divorced,Master's,807600,67300,Employed,0.06,701,3490000
+32,Female,Single,High School,250800,20900,Employed,0.36,734,1640000
+45,Male,Divorced,Master's,517200,43100,Employed,0.27,629,3680000
+30,Male,Married,Master's,692400,57700,Employed,0.42,796,265000
+43,Male,Single,Diploma,408000,34000,Self-employed,0.2,649,330000
+43,Male,Single,Master's,1602000,133500,Employed,0.18,827,760000
+21,Female,Widowed,Bachelor's,291600,24300,Employed,0.48,592,370000
+48,Male,Single,Master's,746400,62200,Employed,0.39,612,330000
+59,Male,Widowed,Bachelor's,564000,47000,Employed,0.09,703,390000
+66,Male,Married,PhD,356400,29700,Unemployed,0.37,679,455000
+37,Male,Married,High School,218400,18200,Employed,0.13,673,80000
+64,Male,Married,Bachelor's,135600,11300,Student,0.23,675,165000
+64,Female,Married,High School,180000,15000,Employed,0.33,754,320000
+69,Male,Married,Master's,494400,41200,Retired,0.33,672,3870000
+39,Female,Married,High School,180000,15000,Employed,0.36,593,50000
+62,Male,Married,Diploma,259200,21600,Retired,0.23,791,270000
+48,Male,Single,Master's,349200,29100,Retired,0.27,787,230000
+23,Male,Divorced,Bachelor's,339600,28300,Employed,0.1,769,330000
+34,Female,Married,Bachelor's,258000,21500,Employed,0.27,590,240000
+53,Female,Married,Diploma,1086000,90500,Self-employed,0.08,611,4290000
+28,Male,Married,Bachelor's,391200,32600,Employed,0.28,729,95000
+42,Female,Married,Master's,517200,43100,Employed,0.29,838,630000
+58,Male,Single,Master's,85200,7100,Student,0.34,788,50000
+28,Female,Divorced,Bachelor's,337200,28100,Self-employed,0.43,674,3320000
+45,Female,Married,Bachelor's,495600,41300,Self-employed,0.26,622,675000
+31,Male,Divorced,Bachelor's,180000,15000,Unemployed,0.13,547,180000
+47,Male,Married,Master's,727200,60600,Self-employed,0.68,671,2040000
+32,Male,Married,Bachelor's,547200,45600,Self-employed,0.17,850,3200000
+68,Female,Married,Bachelor's,489600,40800,Self-employed,0.4,605,2360000
+24,Male,Single,Bachelor's,613200,51100,Employed,0.43,688,1500000
+68,Female,Married,High School,210000,17500,Employed,0.27,616,80000
+59,Male,Married,PhD,1586400,132200,Self-employed,0.44,727,390000
+62,Female,Married,High School,198000,16500,Self-employed,0.2,533,330000
+62,Male,Single,High School,180000,15000,Employed,0.43,586,750000
+30,Female,Married,Bachelor's,571200,47600,Employed,0.11,608,510000
+66,Male,Single,Bachelor's,681600,56800,Retired,0.17,590,665000
+50,Male,Married,Bachelor's,304800,25400,Employed,0.03,618,605000
+68,Male,Married,High School,326400,27200,Employed,0.18,679,2930000
+64,Female,Single,High School,349200,29100,Self-employed,0.27,790,435000
+49,Male,Single,High School,298800,24900,Employed,0.37,660,485000
+39,Female,Single,Bachelor's,697200,58100,Employed,0.24,623,5170000
+26,Female,Married,PhD,813600,67800,Self-employed,0.13,743,1220000
+25,Male,Divorced,Master's,363600,30300,Employed,0.46,774,2190000
+40,Male,Single,Bachelor's,1020000,85000,Employed,0.42,591,5390000
+60,Male,Married,Diploma,278400,23200,Employed,0.56,613,2070000
+45,Male,Single,Diploma,235200,19600,Employed,0.31,621,2250000
+44,Male,Married,Master's,344400,28700,Employed,0.58,670,190000
+32,Female,Single,Bachelor's,748800,62400,Retired,0.19,670,805000
+48,Male,Divorced,High School,180000,15000,Unemployed,0.31,635,280000
+52,Male,Married,High School,180000,15000,Unemployed,0.1,595,145000
+69,Female,Married,Bachelor's,234000,19500,Employed,0.28,731,1640000
+56,Male,Single,Bachelor's,897600,74800,Self-employed,0.64,662,1000000
+50,Female,Divorced,PhD,956400,79700,Self-employed,0.37,577,3310000
+65,Female,Single,High School,284400,23700,Retired,0.59,723,370000
+41,Male,Married,Master's,678000,56500,Self-employed,0.04,624,1135000
+66,Male,Married,Master's,340800,28400,Employed,0.45,657,430000
+39,Female,Married,Diploma,739200,61600,Employed,0.13,740,2110000
+27,Female,Married,High School,375600,31300,Employed,0.28,709,2540000
+41,Female,Married,High School,519600,43300,Self-employed,0.21,635,360000
+27,Female,Married,Bachelor's,220800,18400,Unemployed,0.63,724,385000
+26,Female,Single,High School,243600,20300,Employed,0.16,766,70000
+64,Female,Married,Master's,679200,56600,Employed,0.24,588,5980000
+59,Female,Married,Bachelor's,685200,57100,Employed,0.26,455,775000
+31,Female,Married,Master's,1186800,98900,Self-employed,0.17,691,1485000
+62,Female,Married,Bachelor's,313200,26100,Employed,0.35,672,265000
+24,Male,Married,High School,256800,21400,Self-employed,0.28,747,355000
+34,Female,Married,Bachelor's,237600,19800,Self-employed,0.29,800,465000
+55,Male,Single,Bachelor's,832800,69400,Employed,0.22,812,635000
+35,Male,Married,High School,288000,24000,Employed,0.29,840,280000
+56,Male,Divorced,Diploma,308400,25700,Self-employed,0.72,593,260000
+63,Male,Single,Bachelor's,361200,30100,Employed,0.35,804,2420000
+24,Female,Single,Bachelor's,309600,25800,Self-employed,0.64,554,2020000
+22,Male,Married,High School,198000,16500,Employed,0.32,470,1790000
+67,Female,Single,Bachelor's,225600,18800,Employed,0.12,584,275000
+46,Male,Married,PhD,513600,42800,Employed,0.07,711,620000
+45,Male,Married,Diploma,207600,17300,Employed,0.09,712,65000
+43,Male,Married,High School,186000,15500,Retired,0.72,646,130000
+42,Female,Divorced,Bachelor's,211200,17600,Self-employed,0.38,679,190000
+54,Female,Divorced,Bachelor's,442800,36900,Employed,0.25,700,1160000
+49,Male,Married,Master's,321600,26800,Unemployed,0.23,637,300000
+29,Male,Widowed,Bachelor's,652800,54400,Employed,0.32,599,460000
+51,Male,Single,High School,331200,27600,Employed,0.04,690,75000
+53,Male,Single,High School,308400,25700,Employed,0.48,798,1410000
+26,Male,Married,High School,226800,18900,Employed,0.45,664,2020000
+39,Female,Married,Bachelor's,502800,41900,Self-employed,0.25,580,375000
+59,Male,Single,High School,180000,15000,Self-employed,0.09,819,1580000
+51,Male,Married,Master's,831600,69300,Self-employed,0.27,701,550000
+27,Female,Single,Bachelor's,416400,34700,Employed,0.09,667,560000
+22,Female,Single,Bachelor's,784800,65400,Self-employed,0.26,815,1150000
+49,Male,Married,High School,180000,15000,Employed,0.39,614,290000
+43,Female,Divorced,High School,236400,19700,Self-employed,0.44,704,540000
+68,Female,Divorced,Bachelor's,832800,69400,Employed,0.3,548,940000
+46,Male,Married,Diploma,292800,24400,Employed,0.11,620,220000
+66,Male,Married,Bachelor's,298800,24900,Self-employed,0.55,570,575000
+31,Female,Single,Bachelor's,480000,40000,Employed,0.24,674,105000
+42,Female,Married,Master's,796800,66400,Employed,0.16,736,1010000
+27,Other,Married,Bachelor's,466800,38900,Retired,0.28,673,660000
+49,Male,Married,High School,240000,20000,Employed,0.47,723,2220000
+30,Female,Married,Diploma,334800,27900,Unemployed,0.27,624,345000
+45,Male,Divorced,Master's,290400,24200,Self-employed,0.26,613,190000
+37,Female,Divorced,High School,223200,18600,Retired,0.14,755,50000
+30,Female,Single,High School,332400,27700,Employed,0.08,731,2970000
+25,Male,Divorced,Master's,259200,21600,Self-employed,0.15,748,650000
+46,Male,Single,High School,261600,21800,Employed,0.1,630,845000
+67,Female,Divorced,Bachelor's,387600,32300,Employed,0.06,559,1030000
+30,Female,Married,High School,180000,15000,Employed,0.06,682,250000
+40,Male,Married,Bachelor's,538800,44900,Retired,0.44,762,150000
+32,Female,Married,High School,488400,40700,Employed,0.43,644,2210000
+60,Male,Married,Master's,747600,62300,Employed,0.47,641,1000000
+41,Male,Divorced,High School,180000,15000,Employed,0.45,706,820000
+68,Male,Divorced,Diploma,343200,28600,Employed,0.27,542,2660000
+33,Female,Married,Master's,823200,68600,Employed,0.46,540,170000
+24,Male,Divorced,Bachelor's,828000,69000,Employed,0.17,746,480000
+49,Female,Married,Bachelor's,189600,15800,Employed,0.12,699,850000
+52,Male,Married,Bachelor's,254400,21200,Unemployed,0.42,666,250000
+69,Female,Single,Bachelor's,471600,39300,Self-employed,0.1,697,2090000
+63,Female,Divorced,PhD,454800,37900,Employed,0.17,588,710000
+64,Male,Married,Bachelor's,399600,33300,Employed,0.08,629,1070000
+52,Male,Married,Bachelor's,610800,50900,Employed,0.33,660,1075000
+38,Male,Married,Diploma,219600,18300,Self-employed,0.16,720,320000
+42,Male,Divorced,Bachelor's,396000,33000,Employed,0.14,648,590000
+27,Female,Single,Master's,363600,30300,Unemployed,0.13,676,860000
+42,Female,Married,High School,200400,16700,Self-employed,0.4,614,95000
+38,Male,Married,Diploma,447600,37300,Retired,0.39,798,190000
+22,Female,Single,High School,180000,15000,Self-employed,0.4,690,1370000
+31,Male,Married,Bachelor's,326400,27200,Employed,0.47,718,605000
+47,Male,Married,Master's,706800,58900,Employed,0.43,734,940000
+39,Male,Single,Bachelor's,618000,51500,Employed,0.12,487,700000
+69,Male,Married,Master's,476400,39700,Employed,0.21,723,1900000
+44,Female,Widowed,Master's,734400,61200,Employed,0.4,686,1630000
+67,Male,Single,PhD,1580400,131700,Employed,0.57,678,1790000
+53,Female,Married,Bachelor's,260400,21700,Employed,0.07,716,365000
+22,Male,Single,High School,288000,24000,Employed,0.14,641,65000
+30,Female,Married,Bachelor's,330000,27500,Employed,0.03,791,595000
+55,Male,Married,Master's,894000,74500,Employed,0.16,838,1010000
+47,Male,Married,Bachelor's,310800,25900,Employed,0.22,700,230000
+35,Male,Married,Bachelor's,902400,75200,Retired,0.31,749,6270000
+46,Male,Married,Bachelor's,470400,39200,Employed,0.69,658,2070000
+65,Male,Married,High School,180000,15000,Unemployed,0.44,534,70000
+40,Male,Divorced,Bachelor's,247200,20600,Self-employed,0.05,719,330000
+23,Female,Divorced,Bachelor's,492000,41000,Employed,0.22,600,1020000
+36,Male,Married,PhD,1084800,90400,Employed,0.28,649,2105000
+66,Female,Single,Bachelor's,276000,23000,Employed,0.33,685,280000
+58,Female,Married,High School,306000,25500,Employed,0.15,670,290000
+62,Male,Divorced,Bachelor's,498000,41500,Employed,0.21,683,800000
+65,Female,Married,Bachelor's,180000,15000,Unemployed,0.27,720,260000
+26,Male,Married,Bachelor's,232800,19400,Employed,0.09,766,1170000
+34,Female,Married,Master's,246000,20500,Unemployed,0.27,717,145000
+23,Female,Married,Bachelor's,597600,49800,Employed,0.04,702,475000
+21,Female,Married,Bachelor's,339600,28300,Self-employed,0.68,585,150000
+61,Male,Divorced,Bachelor's,750000,62500,Employed,0.29,661,4170000
+66,Female,Single,Bachelor's,180000,15000,Self-employed,0.2,636,310000
+28,Male,Single,Bachelor's,564000,47000,Employed,0.17,697,1650000
+56,Male,Married,High School,217200,18100,Employed,0.25,769,115000
+47,Male,Married,High School,312000,26000,Employed,0.45,707,300000
+24,Male,Married,High School,180000,15000,Unemployed,0.12,613,330000
+65,Female,Single,Master's,453600,37800,Employed,0.5,751,710000
+63,Female,Married,PhD,469200,39100,Employed,0.2,699,600000
+48,Male,Married,Master's,363600,30300,Employed,0.22,681,760000
+55,Female,Married,High School,226800,18900,Employed,0.22,735,1360000
+40,Female,Married,PhD,980400,81700,Employed,0.12,741,1410000
+59,Female,Married,Master's,370800,30900,Employed,0.51,642,490000
+42,Female,Married,High School,309600,25800,Employed,0.33,565,1500000
+69,Male,Married,Bachelor's,360000,30000,Retired,0.28,701,700000
+24,Male,Married,PhD,1016400,84700,Employed,0.33,677,1570000
+29,Female,Married,Bachelor's,602400,50200,Employed,0.21,652,830000
+68,Male,Married,PhD,1413600,117800,Employed,0.4,662,560000
+35,Female,Divorced,Bachelor's,370800,30900,Self-employed,0.27,679,2950000
+36,Female,Married,Diploma,396000,33000,Employed,0.19,682,2700000
+59,Female,Single,High School,80400,6700,Student,0.33,610,95000
+30,Male,Married,High School,271200,22600,Employed,0.27,613,175000
+46,Female,Single,Bachelor's,572400,47700,Self-employed,0.47,550,195000
+35,Female,Married,Diploma,392400,32700,Retired,0.41,682,2710000
+30,Male,Single,Bachelor's,393600,32800,Self-employed,0.27,746,590000
+68,Male,Single,Master's,528000,44000,Employed,0.31,705,1835000
+30,Male,Married,High School,267600,22300,Retired,0.08,564,250000
+25,Male,Married,Diploma,180000,15000,Employed,0.37,611,1210000
+54,Female,Married,Master's,673200,56100,Self-employed,0.25,610,245000
+63,Female,Single,PhD,553200,46100,Self-employed,0.36,632,295000
+27,Male,Single,Master's,1098000,91500,Employed,0.25,635,3800000
+55,Female,Single,Diploma,180000,15000,Unemployed,0.28,572,285000
+47,Male,Married,High School,265200,22100,Employed,0.47,850,290000
+61,Male,Single,Master's,256800,21400,Unemployed,0.21,594,360000
+27,Male,Married,Master's,386400,32200,Employed,0.72,537,2790000
+68,Female,Married,Bachelor's,460800,38400,Retired,0.25,768,250000
+51,Female,Single,Diploma,180000,15000,Employed,0.63,688,445000
+62,Female,Married,Bachelor's,768000,64000,Employed,0.14,755,895000
+38,Female,Married,Bachelor's,453600,37800,Employed,0.18,681,80000
+67,Male,Married,Master's,696000,58000,Employed,0.42,801,760000
+51,Female,Married,High School,213600,17800,Employed,0.18,692,340000
+27,Male,Married,High School,313200,26100,Employed,0.43,756,2890000
+66,Male,Married,Bachelor's,339600,28300,Employed,0.06,761,470000
+59,Male,Widowed,Master's,505200,42100,Self-employed,0.28,664,450000
+35,Male,Married,Master's,1026000,85500,Employed,0.53,710,1390000
+47,Male,Married,High School,274800,22900,Retired,0.34,772,280000
+40,Male,Married,Bachelor's,296400,24700,Employed,0.21,727,280000
+47,Male,Divorced,Bachelor's,543600,45300,Self-employed,0.12,768,4060000
+68,Female,Single,High School,268800,22400,Self-employed,0.17,850,1660000
+65,Male,Married,Master's,837600,69800,Employed,0.03,655,235000
+31,Male,Married,Bachelor's,709200,59100,Employed,0.19,661,5420000
+68,Other,Married,Master's,788400,65700,Employed,0.36,570,160000
+42,Female,Married,Bachelor's,585600,48800,Employed,0.3,603,550000
+55,Male,Married,Master's,358800,29900,Retired,0.42,637,390000
+58,Female,Married,High School,198000,16500,Employed,0.39,707,595000
+44,Male,Married,Bachelor's,919200,76600,Retired,0.31,668,1155000
+43,Male,Single,Bachelor's,500400,41700,Self-employed,0.63,642,3120000
+43,Female,Divorced,High School,180000,15000,Unemployed,0.32,609,110000
+63,Male,Married,Bachelor's,349200,29100,Employed,0.18,641,950000
+39,Female,Single,Bachelor's,784800,65400,Self-employed,0.7,664,180000
+34,Male,Single,Bachelor's,250800,20900,Employed,0.42,569,280000
+38,Female,Married,Master's,492000,41000,Employed,0.27,804,80000
