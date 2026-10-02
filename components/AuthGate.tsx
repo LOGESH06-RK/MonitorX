@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import {
   View,
   Text,
@@ -103,6 +103,25 @@ export function AuthGate({ children }: { children: React.ReactNode }) {
   const [showSignUpPassword, setShowSignUpPassword] = useState(false);
   const [otpInput, setOtpInput] = useState('');
 
+  // Form Input Refs for Smooth Enter Key Navigation
+  const signInPasswordRef = useRef<TextInput>(null);
+  const adminPasswordRef = useRef<TextInput>(null);
+  const step1AgeRef = useRef<TextInput>(null);
+  const step1PhoneRef = useRef<TextInput>(null);
+  const step1EmailRef = useRef<TextInput>(null);
+  const step1DistrictRef = useRef<TextInput>(null);
+  const step2MonthlyIncomeRef = useRef<TextInput>(null);
+  const step2MonthlyExpensesRef = useRef<TextInput>(null);
+  const step2ExistingLoansRef = useRef<TextInput>(null);
+  const step2CreditScoreRef = useRef<TextInput>(null);
+  const step2LoanAmountRef = useRef<TextInput>(null);
+  const step2LoanPurposeRef = useRef<TextInput>(null);
+  const step3LandOwnershipRef = useRef<TextInput>(null);
+  const step3CropsRef = useRef<TextInput>(null);
+  const step3FarmingTypeRef = useRef<TextInput>(null);
+  const step3IrrigationRef = useRef<TextInput>(null);
+  const step4PasswordRef = useRef<TextInput>(null);
+
   // General Status & Error handling
   const [errorMessage, setErrorMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -129,6 +148,7 @@ export function AuthGate({ children }: { children: React.ReactNode }) {
 
   // Handle Customer or Admin Sign In
   const handleSignIn = async () => {
+    if (isSubmitting) return;
     setErrorMessage('');
     const id = selectedRole === 'admin' ? adminId.trim() : signInIdentifier.trim();
     const pass = selectedRole === 'admin' ? adminPassword : signInPassword;
@@ -273,6 +293,7 @@ export function AuthGate({ children }: { children: React.ReactNode }) {
 
   // Verify OTP and complete Registration
   const handleVerifyOtpAndRegister = async () => {
+    if (isSubmitting) return;
     setErrorMessage('');
     if (!otpInput.trim()) {
       setErrorMessage(language === 'ta' ? 'OTP ஐ உள்ளிடவும்' : 'Please enter the verification OTP.');
@@ -295,6 +316,7 @@ export function AuthGate({ children }: { children: React.ReactNode }) {
 
   // Forgot password dispatch
   const handleResetPasswordSubmit = async () => {
+    if (resetLoading) return;
     setResetMessage(null);
     if (!resetEmail.trim() || !resetEmail.includes('@')) {
       setResetMessage({
@@ -452,6 +474,10 @@ export function AuthGate({ children }: { children: React.ReactNode }) {
                             setErrorMessage('');
                           }}
                           autoCapitalize="none"
+                          returnKeyType="next"
+                          enterKeyHint="next"
+                          blurOnSubmit={false}
+                          onSubmitEditing={() => signInPasswordRef.current?.focus()}
                         />
                       </View>
                     </View>
@@ -477,6 +503,7 @@ export function AuthGate({ children }: { children: React.ReactNode }) {
                       <View style={styles.inputWrapper}>
                         <Lock size={18} color={Colors.neutral[400]} style={styles.inputIcon} />
                         <TextInput
+                          ref={signInPasswordRef}
                           style={[styles.textInput, { paddingRight: 40 }]}
                           placeholder={language === 'ta' ? 'கடவுச்சொல்லை உள்ளிடவும்' : 'Enter password'}
                           placeholderTextColor={Colors.neutral[400]}
@@ -487,6 +514,12 @@ export function AuthGate({ children }: { children: React.ReactNode }) {
                             setErrorMessage('');
                           }}
                           autoCapitalize="none"
+                          returnKeyType="go"
+                          enterKeyHint="go"
+                          blurOnSubmit={true}
+                          onSubmitEditing={() => {
+                            if (!isSubmitting) handleSignIn();
+                          }}
                         />
                         <TouchableOpacity
                           style={styles.eyeBtn}
@@ -569,6 +602,10 @@ export function AuthGate({ children }: { children: React.ReactNode }) {
                             placeholderTextColor={Colors.neutral[400]}
                             value={signUpData.fullName}
                             onChangeText={(t) => setSignUpData({ ...signUpData, fullName: t })}
+                            returnKeyType="next"
+                            enterKeyHint="next"
+                            blurOnSubmit={false}
+                            onSubmitEditing={() => step1AgeRef.current?.focus()}
                           />
                         </View>
 
@@ -578,12 +615,17 @@ export function AuthGate({ children }: { children: React.ReactNode }) {
                               {language === 'ta' ? 'வயது *' : 'Age *'}
                             </Text>
                             <TextInput
+                              ref={step1AgeRef}
                               style={styles.simpleInput}
                               placeholder={language === 'ta' ? 'எ.கா. 38' : 'e.g. 38'}
                               placeholderTextColor={Colors.neutral[400]}
                               keyboardType="number-pad"
                               value={signUpData.age ? String(signUpData.age) : ''}
                               onChangeText={(t) => setSignUpData({ ...signUpData, age: parseInt(t) || undefined })}
+                              returnKeyType="next"
+                              enterKeyHint="next"
+                              blurOnSubmit={false}
+                              onSubmitEditing={() => step1PhoneRef.current?.focus()}
                             />
                           </View>
                         </View>
@@ -628,6 +670,7 @@ export function AuthGate({ children }: { children: React.ReactNode }) {
                             {language === 'ta' ? 'கைபேசி எண் *' : 'Mobile Number *'}
                           </Text>
                           <TextInput
+                            ref={step1PhoneRef}
                             style={styles.simpleInput}
                             placeholder={language === 'ta' ? '10 இலக்க கைபேசி எண்ணை உள்ளிடவும்' : 'Enter 10-digit mobile number'}
                             placeholderTextColor={Colors.neutral[400]}
@@ -635,6 +678,10 @@ export function AuthGate({ children }: { children: React.ReactNode }) {
                             maxLength={10}
                             value={signUpData.phone}
                             onChangeText={(t) => setSignUpData({ ...signUpData, phone: t.replace(/\D/g, '') })}
+                            returnKeyType="next"
+                            enterKeyHint="next"
+                            blurOnSubmit={false}
+                            onSubmitEditing={() => step1EmailRef.current?.focus()}
                           />
                         </View>
 
@@ -643,6 +690,7 @@ export function AuthGate({ children }: { children: React.ReactNode }) {
                             {language === 'ta' ? 'மின்னஞ்சல் முகவரி *' : 'Email Address *'}
                           </Text>
                           <TextInput
+                            ref={step1EmailRef}
                             style={styles.simpleInput}
                             placeholder={language === 'ta' ? 'மின்னஞ்சலை உள்ளிடவும்' : 'Enter email address'}
                             placeholderTextColor={Colors.neutral[400]}
@@ -650,6 +698,10 @@ export function AuthGate({ children }: { children: React.ReactNode }) {
                             autoCapitalize="none"
                             value={signUpData.email}
                             onChangeText={(t) => setSignUpData({ ...signUpData, email: t })}
+                            returnKeyType="next"
+                            enterKeyHint="next"
+                            blurOnSubmit={false}
+                            onSubmitEditing={() => step1DistrictRef.current?.focus()}
                           />
                         </View>
 
@@ -658,11 +710,16 @@ export function AuthGate({ children }: { children: React.ReactNode }) {
                             {language === 'ta' ? 'மாவட்டம் (தமிழ்நாடு) *' : 'District (Tamil Nadu) *'}
                           </Text>
                           <TextInput
+                            ref={step1DistrictRef}
                             style={styles.simpleInput}
                             placeholder={language === 'ta' ? 'எ.கா. தஞ்சாவூர், மதுரை, சேலம்...' : 'e.g. Thanjavur, Madurai, Salem...'}
                             placeholderTextColor={Colors.neutral[400]}
                             value={signUpData.district}
                             onChangeText={(t) => setSignUpData({ ...signUpData, district: t })}
+                            returnKeyType="next"
+                            enterKeyHint="next"
+                            blurOnSubmit={true}
+                            onSubmitEditing={handleNextSignUpStep}
                           />
                         </View>
                       </View>
@@ -682,6 +739,10 @@ export function AuthGate({ children }: { children: React.ReactNode }) {
                             keyboardType="number-pad"
                             value={signUpData.annualIncome ? String(signUpData.annualIncome) : ''}
                             onChangeText={(t) => setSignUpData({ ...signUpData, annualIncome: parseInt(t) || 0 })}
+                            returnKeyType="next"
+                            enterKeyHint="next"
+                            blurOnSubmit={false}
+                            onSubmitEditing={() => step2MonthlyIncomeRef.current?.focus()}
                           />
                         </View>
 
@@ -691,12 +752,17 @@ export function AuthGate({ children }: { children: React.ReactNode }) {
                               {language === 'ta' ? 'மாதாந்திர வருமானம் (₹)' : 'Monthly Income (₹)'}
                             </Text>
                             <TextInput
+                              ref={step2MonthlyIncomeRef}
                               style={styles.simpleInput}
                               placeholder={language === 'ta' ? 'மாதாந்திர வருமானம்' : 'Monthly income'}
                               placeholderTextColor={Colors.neutral[400]}
                               keyboardType="number-pad"
                               value={signUpData.monthlyIncome ? String(signUpData.monthlyIncome) : ''}
                               onChangeText={(t) => setSignUpData({ ...signUpData, monthlyIncome: parseInt(t) || 0 })}
+                              returnKeyType="next"
+                              enterKeyHint="next"
+                              blurOnSubmit={false}
+                              onSubmitEditing={() => step2MonthlyExpensesRef.current?.focus()}
                             />
                           </View>
 
@@ -705,12 +771,17 @@ export function AuthGate({ children }: { children: React.ReactNode }) {
                               {language === 'ta' ? 'மாதாந்திர செலவுகள் (₹)' : 'Monthly Expenses (₹)'}
                             </Text>
                             <TextInput
+                              ref={step2MonthlyExpensesRef}
                               style={styles.simpleInput}
                               placeholder={language === 'ta' ? 'மாதாந்திர செலவுகள்' : 'Monthly expenses'}
                               placeholderTextColor={Colors.neutral[400]}
                               keyboardType="number-pad"
                               value={signUpData.monthlyExpenses ? String(signUpData.monthlyExpenses) : ''}
                               onChangeText={(t) => setSignUpData({ ...signUpData, monthlyExpenses: parseInt(t) || 0 })}
+                              returnKeyType="next"
+                              enterKeyHint="next"
+                              blurOnSubmit={false}
+                              onSubmitEditing={() => step2ExistingLoansRef.current?.focus()}
                             />
                           </View>
                         </View>
@@ -721,12 +792,17 @@ export function AuthGate({ children }: { children: React.ReactNode }) {
                               {language === 'ta' ? 'தற்போதுள்ள கடன்கள் (₹)' : 'Existing Debt/Loans (₹)'}
                             </Text>
                             <TextInput
+                              ref={step2ExistingLoansRef}
                               style={styles.simpleInput}
                               placeholder="0"
                               placeholderTextColor={Colors.neutral[400]}
                               keyboardType="number-pad"
                               value={signUpData.existingLoans ? String(signUpData.existingLoans) : ''}
                               onChangeText={(t) => setSignUpData({ ...signUpData, existingLoans: parseInt(t) || 0 })}
+                              returnKeyType="next"
+                              enterKeyHint="next"
+                              blurOnSubmit={false}
+                              onSubmitEditing={() => step2CreditScoreRef.current?.focus()}
                             />
                           </View>
 
@@ -735,12 +811,17 @@ export function AuthGate({ children }: { children: React.ReactNode }) {
                               {language === 'ta' ? 'கடன் மதிப்பீடு (தெரிந்தால்)' : 'Credit Score (if known)'}
                             </Text>
                             <TextInput
+                              ref={step2CreditScoreRef}
                               style={styles.simpleInput}
                               placeholder={language === 'ta' ? 'எ.கா. 700' : 'e.g. 700'}
                               placeholderTextColor={Colors.neutral[400]}
                               keyboardType="number-pad"
                               value={signUpData.creditScore ? String(signUpData.creditScore) : ''}
                               onChangeText={(t) => setSignUpData({ ...signUpData, creditScore: parseInt(t) || undefined })}
+                              returnKeyType="next"
+                              enterKeyHint="next"
+                              blurOnSubmit={false}
+                              onSubmitEditing={() => step2LoanAmountRef.current?.focus()}
                             />
                           </View>
                         </View>
@@ -750,12 +831,17 @@ export function AuthGate({ children }: { children: React.ReactNode }) {
                             {language === 'ta' ? 'தேவையான கடன் தொகை (₹)' : 'Loan Amount Required (₹)'}
                           </Text>
                           <TextInput
+                            ref={step2LoanAmountRef}
                             style={styles.simpleInput}
                             placeholder={language === 'ta' ? 'தேவையான கடன் தொகையை உள்ளிடவும்' : 'Enter desired loan amount'}
                             placeholderTextColor={Colors.neutral[400]}
                             keyboardType="number-pad"
                             value={signUpData.loanAmountRequired ? String(signUpData.loanAmountRequired) : ''}
                             onChangeText={(t) => setSignUpData({ ...signUpData, loanAmountRequired: parseInt(t) || 0 })}
+                            returnKeyType="next"
+                            enterKeyHint="next"
+                            blurOnSubmit={false}
+                            onSubmitEditing={() => step2LoanPurposeRef.current?.focus()}
                           />
                         </View>
 
@@ -764,11 +850,16 @@ export function AuthGate({ children }: { children: React.ReactNode }) {
                             {language === 'ta' ? 'கடன் நோக்கம்' : 'Loan Purpose'}
                           </Text>
                           <TextInput
+                            ref={step2LoanPurposeRef}
                             style={styles.simpleInput}
                             placeholder={language === 'ta' ? 'பயிர் சாகுபடி / நீர்ப்பாசனம் / பண்ணை உபகரணங்கள்' : 'Crop Cultivation / Irrigation / Farm Equipment'}
                             placeholderTextColor={Colors.neutral[400]}
                             value={signUpData.loanPurpose}
                             onChangeText={(t) => setSignUpData({ ...signUpData, loanPurpose: t })}
+                            returnKeyType="next"
+                            enterKeyHint="next"
+                            blurOnSubmit={true}
+                            onSubmitEditing={handleNextSignUpStep}
                           />
                         </View>
                       </View>
@@ -789,6 +880,10 @@ export function AuthGate({ children }: { children: React.ReactNode }) {
                               keyboardType="decimal-pad"
                               value={signUpData.landSizeAcres ? String(signUpData.landSizeAcres) : ''}
                               onChangeText={(t) => setSignUpData({ ...signUpData, landSizeAcres: parseFloat(t) || 0 })}
+                              returnKeyType="next"
+                              enterKeyHint="next"
+                              blurOnSubmit={false}
+                              onSubmitEditing={() => step3LandOwnershipRef.current?.focus()}
                             />
                           </View>
 
@@ -797,11 +892,16 @@ export function AuthGate({ children }: { children: React.ReactNode }) {
                               {language === 'ta' ? 'நில உரிமை' : 'Land Ownership'}
                             </Text>
                             <TextInput
+                              ref={step3LandOwnershipRef}
                               style={styles.simpleInput}
                               placeholder={language === 'ta' ? 'சொந்தம் / குத்தகை' : 'Owned / Leased'}
                               placeholderTextColor={Colors.neutral[400]}
                               value={signUpData.landOwnership}
                               onChangeText={(t) => setSignUpData({ ...signUpData, landOwnership: t })}
+                              returnKeyType="next"
+                              enterKeyHint="next"
+                              blurOnSubmit={false}
+                              onSubmitEditing={() => step3CropsRef.current?.focus()}
                             />
                           </View>
                         </View>
@@ -811,6 +911,7 @@ export function AuthGate({ children }: { children: React.ReactNode }) {
                             {language === 'ta' ? 'பயிரிடப்படும் பயிர்கள்' : 'Crops Cultivated'}
                           </Text>
                           <TextInput
+                            ref={step3CropsRef}
                             style={styles.simpleInput}
                             placeholder={language === 'ta' ? 'எ.கா. நெல், பருத்தி, வாழை, கரும்பு' : 'e.g. Paddy, Cotton, Banana, Sugarcane'}
                             placeholderTextColor={Colors.neutral[400]}
@@ -819,6 +920,10 @@ export function AuthGate({ children }: { children: React.ReactNode }) {
                               setCropInput(t);
                               setSignUpData({ ...signUpData, crops: t.split(',').map((s) => s.trim()).filter(Boolean) });
                             }}
+                            returnKeyType="next"
+                            enterKeyHint="next"
+                            blurOnSubmit={false}
+                            onSubmitEditing={() => step3FarmingTypeRef.current?.focus()}
                           />
                         </View>
 
@@ -827,11 +932,16 @@ export function AuthGate({ children }: { children: React.ReactNode }) {
                             {language === 'ta' ? 'விவசாய / நில வகை' : 'Farming / Land Type'}
                           </Text>
                           <TextInput
+                            ref={step3FarmingTypeRef}
                             style={styles.simpleInput}
                             placeholder={language === 'ta' ? 'நஞ்சை / புஞ்சை / தோட்டம்' : 'Wetland (Nanjai) / Dryland (Punjai) / Garden'}
                             placeholderTextColor={Colors.neutral[400]}
                             value={signUpData.farmingType}
                             onChangeText={(t) => setSignUpData({ ...signUpData, farmingType: t })}
+                            returnKeyType="next"
+                            enterKeyHint="next"
+                            blurOnSubmit={false}
+                            onSubmitEditing={() => step3IrrigationRef.current?.focus()}
                           />
                         </View>
 
@@ -840,11 +950,16 @@ export function AuthGate({ children }: { children: React.ReactNode }) {
                             {language === 'ta' ? 'நீர்ப்பாசன ஆதாரம்' : 'Irrigation Source'}
                           </Text>
                           <TextInput
+                            ref={step3IrrigationRef}
                             style={styles.simpleInput}
                             placeholder={language === 'ta' ? 'ஆழ்துளை கிணறு / கால்வாய் / திறந்த கிணறு / மானாவாரி' : 'Borewell / Canal / Open Well / Rain-fed'}
                             placeholderTextColor={Colors.neutral[400]}
                             value={signUpData.irrigationType}
                             onChangeText={(t) => setSignUpData({ ...signUpData, irrigationType: t })}
+                            returnKeyType="next"
+                            enterKeyHint="next"
+                            blurOnSubmit={true}
+                            onSubmitEditing={handleNextSignUpStep}
                           />
                         </View>
                       </View>
@@ -863,6 +978,10 @@ export function AuthGate({ children }: { children: React.ReactNode }) {
                             placeholderTextColor={Colors.neutral[400]}
                             value={signUpData.schemeNames}
                             onChangeText={(t) => setSignUpData({ ...signUpData, schemeNames: t })}
+                            returnKeyType="next"
+                            enterKeyHint="next"
+                            blurOnSubmit={false}
+                            onSubmitEditing={() => step4PasswordRef.current?.focus()}
                           />
                         </View>
 
@@ -873,6 +992,7 @@ export function AuthGate({ children }: { children: React.ReactNode }) {
                           <View style={styles.inputWrapper}>
                             <Lock size={18} color={Colors.neutral[400]} style={styles.inputIcon} />
                             <TextInput
+                              ref={step4PasswordRef}
                               style={[styles.textInput, { paddingRight: 40 }]}
                               placeholder={language === 'ta' ? 'பாதுகாப்பான கடவுச்சொல்லை உள்ளிடவும்' : 'Enter secure password'}
                               placeholderTextColor={Colors.neutral[400]}
@@ -880,6 +1000,10 @@ export function AuthGate({ children }: { children: React.ReactNode }) {
                               value={signUpPassword}
                               onChangeText={setSignUpPassword}
                               autoCapitalize="none"
+                              returnKeyType="next"
+                              enterKeyHint="next"
+                              blurOnSubmit={true}
+                              onSubmitEditing={handleNextSignUpStep}
                             />
                             <TouchableOpacity
                               style={styles.eyeBtn}
@@ -927,6 +1051,12 @@ export function AuthGate({ children }: { children: React.ReactNode }) {
                             value={otpInput}
                             onChangeText={setOtpInput}
                             autoFocus
+                            returnKeyType="done"
+                            enterKeyHint="done"
+                            blurOnSubmit={true}
+                            onSubmitEditing={() => {
+                              if (!isSubmitting) handleVerifyOtpAndRegister();
+                            }}
                           />
                         </View>
 
@@ -1017,6 +1147,10 @@ export function AuthGate({ children }: { children: React.ReactNode }) {
                           setErrorMessage('');
                         }}
                         autoCapitalize="none"
+                        returnKeyType="next"
+                        enterKeyHint="next"
+                        blurOnSubmit={false}
+                        onSubmitEditing={() => adminPasswordRef.current?.focus()}
                       />
                     </View>
                   </View>
@@ -1029,6 +1163,7 @@ export function AuthGate({ children }: { children: React.ReactNode }) {
                     <View style={styles.inputWrapper}>
                       <Lock size={18} color={Colors.neutral[400]} style={styles.inputIcon} />
                       <TextInput
+                        ref={adminPasswordRef}
                         style={[styles.textInput, { paddingRight: 40 }]}
                         placeholder={language === 'ta' ? 'கடவுச்சொல்லை உள்ளிடவும்' : 'Enter admin password'}
                         placeholderTextColor={Colors.neutral[400]}
@@ -1039,6 +1174,12 @@ export function AuthGate({ children }: { children: React.ReactNode }) {
                           setErrorMessage('');
                         }}
                         autoCapitalize="none"
+                        returnKeyType="go"
+                        enterKeyHint="go"
+                        blurOnSubmit={true}
+                        onSubmitEditing={() => {
+                          if (!isSubmitting) handleSignIn();
+                        }}
                       />
                       <TouchableOpacity
                         style={styles.eyeBtn}
@@ -1115,6 +1256,12 @@ export function AuthGate({ children }: { children: React.ReactNode }) {
               autoCapitalize="none"
               value={resetEmail}
               onChangeText={setResetEmail}
+              returnKeyType="send"
+              enterKeyHint="send"
+              blurOnSubmit={true}
+              onSubmitEditing={() => {
+                if (!resetLoading) handleResetPasswordSubmit();
+              }}
             />
 
             {resetMessage && (

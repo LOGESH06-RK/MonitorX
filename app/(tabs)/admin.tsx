@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import {
   View,
   Text,
@@ -9,19 +9,21 @@ import {
   ActivityIndicator,
   Modal,
   Platform,
+  Alert,
+  StatusBar,
 } from 'react-native';
-import { useLanguage } from '@/lib/i18n';
 import { useAuth } from '@/lib/auth-context';
 import { Colors } from '@/lib/theme';
-import { Header } from '@/components/Header';
-import { supabase, FarmerProfile, LoanApplication, SchemeApplication, EligibilityResult } from '@/lib/supabase';
-import { deserializeFromSupabase } from '@/lib/profile-context';
 import {
-  queryDataset,
-  getDatasetStats,
-  DatasetRecord,
-  TOTAL_DATASET_COUNT,
-} from '@/lib/dataset';
+  supabase,
+  FarmerProfile,
+  LoanApplication,
+  EligibilityResult,
+  AdminActivityLog,
+} from '@/lib/supabase';
+import { deserializeFromSupabase } from '@/lib/profile-context';
+import { governmentSchemes } from '@/lib/schemes';
+import { assessLoanEligibility } from '@/lib/eligibility';
 import {
   Search,
   Users,
@@ -29,1708 +31,1231 @@ import {
   FileText,
   Landmark,
   Wallet,
-  CheckCircle2,
   RefreshCw,
   ChevronRight,
-  ChevronLeft,
   X,
   Phone,
   MapPin,
-  TrendingUp,
-  Sparkles,
-  CreditCard,
-  Sprout,
-  ArrowLeft,
   Lock,
-  Database,
-  Layers,
-  Filter,
-  BarChart3,
   CheckCircle,
-  AlertTriangle,
   XCircle,
+  AlertTriangle,
   LogOut,
+  LayoutDashboard,
+  ClipboardList,
+  UserCircle,
+  Clock,
+  TrendingUp,
+  BarChart3,
+  Eye,
+  Gavel,
+  ArrowLeft,
+  CreditCard,
+  Calendar,
+  Activity,
+  Menu,
 } from 'lucide-react-native';
 
+// ─── ADMIN COLOR PALETTE (navy/slate — deliberately different from customer green) ───
+const A = {
+  bg: '#0F172A',
+  sidebar: '#1E293B',
+  header: '#1E293B',
+  card: '#FFFFFF',
+  pageBg: '#F1F5F9',
+  primary: '#3B82F6',
+  primaryDark: '#1D4ED8',
+  primaryLight: '#EFF6FF',
+  success: '#10B981',
+  successLight: '#D1FAE5',
+  warning: '#F59E0B',
+  warningLight: '#FEF3C7',
+  danger: '#EF4444',
+  dangerLight: '#FEE2E2',
+  review: '#8B5CF6',
+  reviewLight: '#EDE9FE',
+  text: '#0F172A',
+  textMid: '#475569',
+  textLight: '#94A3B8',
+  border: '#E2E8F0',
+  sidebarText: '#CBD5E1',
+  sidebarActiveBg: 'rgba(59,130,246,0.15)',
+};
+
+type AdminSection = 'dashboard' | 'applications' | 'customers' | 'profile';
+type AppWithFarmer = LoanApplication & {
+  farmer?: FarmerProfile;
+  farmer_name?: string;
+  farmer_phone?: string;
+  farmer_district?: string;
+};
+
+// ─── HELPERS ─────────────────────────────────────────────────────────────────
+function normalizeStatus(status?: string | null): 'pending' | 'under_review' | 'approved' | 'rejected' {
+  if (!status) return 'pending';
+  const s = status.toLowerCase();
+  if (s === 'approved') return 'approved';
+  if (s === 'rejected') return 'rejected';
+  if (s === 'under_review' || s === 'under review' || s === 'review') return 'under_review';
+  return 'pending';
+}
+
+function getStatusMeta(status: string) {
+  const norm = normalizeStatus(status);
+  switch (norm) {
+    case 'approved': return { bg: '#D1FAE5', text: '#10B981', border: '#A7F3D0', label: 'Approved' };
+    case 'rejected': return { bg: '#FEE2E2', text: '#EF4444', border: '#FECACA', label: 'Rejected' };
+    case 'under_review': return { bg: '#EDE9FE', text: '#8B5CF6', border: '#DDD6FE', label: 'Under Review' };
+    default: return { bg: '#FEF3C7', text: '#F59E0B', border: '#FDE68A', label: 'Pending' };
+  }
+}
+
+function formatCurrency(n: number) {
+  if (n >= 10000000) return `₹${(n / 10000000).toFixed(1)}Cr`;
+  if (n >= 100000) return `₹${(n / 100000).toFixed(1)}L`;
+  if (n >= 1000) return `₹${(n / 1000).toFixed(0)}K`;
+  return `₹${n.toLocaleString('en-IN')}`;
+}
+
+function formatDate(d?: string | null) {
+  if (!d) return 'N/A';
+  return new Date(d).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
+}
+
+function StatusBadge({ status }: { status: string }) {
+  const norm = normalizeStatus(status);
+  const m = getStatusMeta(norm);
+  return (
+    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, paddingHorizontal: 8, paddingVertical: 3, borderRadius: 20, borderWidth: 1, backgroundColor: m.bg, borderColor: m.border }}>
+      {norm === 'approved' && <CheckCircle size={11} color={m.text} />}
+      {norm === 'rejected' && <XCircle size={11} color={m.text} />}
+      {norm === 'under_review' && <Clock size={11} color={m.text} />}
+      {norm === 'pending' && <AlertTriangle size={11} color={m.text} />}
+      <Text style={{ fontSize: 11, fontWeight: '700', color: m.text }}>{m.label}</Text>
+    </View>
+  );
+}
+
+function InfoItem({ label, value, highlight, wide }: { label: string; value: string; highlight?: boolean; wide?: boolean }) {
+  return (
+    <View style={{ width: wide ? '100%' : '50%', paddingRight: 10, marginBottom: 14 }}>
+      <Text style={{ fontSize: 11, color: A.textLight, fontWeight: '500', marginBottom: 2 }}>{label}</Text>
+      <Text style={{ fontSize: 13, color: highlight ? A.primary : A.text, fontWeight: highlight ? '800' : '600' }}>{value}</Text>
+    </View>
+  );
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// MAIN ADMIN SCREEN
+// ═══════════════════════════════════════════════════════════════════════════════
 export default function AdminScreen() {
-  const { t, language } = useLanguage();
   const { user, logout } = useAuth();
+  const [activeSection, setActiveSection] = useState<AdminSection>('dashboard');
+  const [applicationFilter, setApplicationFilter] = useState<'all' | 'pending' | 'under_review' | 'approved' | 'rejected'>('all');
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  // Mode: 'farmers' (Live Supabase profiles) vs 'dataset' (Full 20,000 Records) vs 'admin' (Admin Profile)
-  const [activeTab, setActiveTab] = useState<'farmers' | 'dataset' | 'admin'>('farmers');
-
-  // Live Farmers state
-  const [loading, setLoading] = useState(true);
-  const [farmers, setFarmers] = useState<FarmerProfile[]>([]);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedFarmer, setSelectedFarmer] = useState<FarmerProfile | null>(null);
-
-  // Selected farmer child records
-  const [farmerLoans, setFarmerLoans] = useState<LoanApplication[]>([]);
-  const [farmerSchemes, setFarmerSchemes] = useState<SchemeApplication[]>([]);
-  const [farmerEligibility, setFarmerEligibility] = useState<EligibilityResult[]>([]);
-  const [dossierLoading, setDossierLoading] = useState(false);
-
-  // Stats
-  const [totalLoanApps, setTotalLoanApps] = useState(0);
-  const [totalSchemeApps, setTotalSchemeApps] = useState(0);
-  const [totalEligResults, setTotalEligResults] = useState(0);
-
-  // Audit tool state
-  const [auditRunning, setAuditRunning] = useState(false);
-  const [auditResults, setAuditResults] = useState<{
-    testedCount: number;
-    isolatedCount: number;
-    passed: boolean;
-    details: string[];
-  } | null>(null);
-
-  // Dataset Tab state (20,000 Records)
-  const [datasetSearch, setDatasetSearch] = useState('');
-  const [riskFilter, setRiskFilter] = useState<'All' | 'Low' | 'Moderate' | 'High'>('All');
-  const [statusFilter, setStatusFilter] = useState<'All' | 'Approved' | 'Review' | 'Ineligible'>('All');
-  const [datasetPage, setDatasetPage] = useState(1);
-  const [selectedDatasetRecord, setSelectedDatasetRecord] = useState<DatasetRecord | null>(null);
-  const [jumpPageInput, setJumpPageInput] = useState('');
-
-  const datasetStats = useMemo(() => getDatasetStats(), []);
-
-  const datasetResult = useMemo(() => {
-    return queryDataset({
-      query: datasetSearch,
-      riskFilter,
-      statusFilter,
-      page: datasetPage,
-      pageSize: 25,
-    });
-  }, [datasetSearch, riskFilter, statusFilter, datasetPage]);
-
-  const fetchAdminData = useCallback(async () => {
-    setLoading(true);
-    try {
-      // 1. Fetch all farmer profiles
-      const { data: profilesData, error: pErr } = await supabase
-        .from('farmer_profiles')
-        .select('*')
-        .order('created_at', { ascending: false });
-
-      if (!pErr && profilesData) {
-        setFarmers(profilesData.map((p) => deserializeFromSupabase(p)));
-      }
-
-      // 2. Fetch counts
-      const [loanCountRes, schemeCountRes, eligCountRes] = await Promise.all([
-        supabase.from('loan_applications').select('*', { count: 'exact', head: true }),
-        supabase.from('scheme_applications').select('*', { count: 'exact', head: true }),
-        supabase.from('eligibility_results').select('*', { count: 'exact', head: true }),
-      ]);
-
-      setTotalLoanApps(loanCountRes.count || 0);
-      setTotalSchemeApps(schemeCountRes.count || 0);
-      setTotalEligResults(eligCountRes.count || 0);
-    } catch (err) {
-      console.error('Error fetching admin data:', err);
-    } finally {
-      setLoading(false);
+  const navigateToSection = (section: AdminSection, filter?: 'all' | 'pending' | 'under_review' | 'approved' | 'rejected') => {
+    if (filter) {
+      setApplicationFilter(filter);
     }
-  }, []);
-
-  useEffect(() => {
-    fetchAdminData();
-  }, [fetchAdminData]);
-
-  // Load single farmer's isolated dossier
-  const loadFarmerDossier = async (farmer: FarmerProfile) => {
-    setSelectedFarmer(farmer);
-    if (!farmer.id) return;
-
-    setDossierLoading(true);
-    try {
-      const [loansRes, schemesRes, eligRes] = await Promise.all([
-        supabase
-          .from('loan_applications')
-          .select('*')
-          .eq('farmer_id', farmer.id)
-          .order('created_at', { ascending: false }),
-        supabase
-          .from('scheme_applications')
-          .select('*')
-          .eq('farmer_id', farmer.id)
-          .order('created_at', { ascending: false }),
-        supabase
-          .from('eligibility_results')
-          .select('*')
-          .eq('farmer_id', farmer.id)
-          .order('created_at', { ascending: false }),
-      ]);
-
-      setFarmerLoans((loansRes.data as LoanApplication[]) || []);
-      setFarmerSchemes((schemesRes.data as SchemeApplication[]) || []);
-      setFarmerEligibility((eligRes.data as EligibilityResult[]) || []);
-    } catch (err) {
-      console.error('Error loading farmer dossier:', err);
-    } finally {
-      setDossierLoading(false);
-    }
+    setActiveSection(section);
+    setSidebarOpen(false);
   };
 
-  // Run live multi-customer isolation test
-  const runDataIsolationAudit = async () => {
-    setAuditRunning(true);
-    const details: string[] = [];
-
-    try {
-      // 1. Fetch distinct farmers
-      const { data: testFarmers } = await supabase
-        .from('farmer_profiles')
-        .select('id, full_name, phone')
-        .limit(10);
-
-      const count = testFarmers?.length || 0;
-      details.push(`Analyzed ${count} registered farmer profiles in Supabase.`);
-
-      if (count === 0) {
-        details.push('Notice: No farmers registered yet. Create sample profiles to test multi-tenant isolation.');
-        setAuditResults({
-          testedCount: 0,
-          isolatedCount: 0,
-          passed: true,
-          details,
-        });
-        return;
-      }
-
-      let isolatedCount = 0;
-      for (const f of testFarmers || []) {
-        const { data: loans } = await supabase
-          .from('loan_applications')
-          .select('id, farmer_id')
-          .eq('farmer_id', f.id);
-
-        const { data: schemes } = await supabase
-          .from('scheme_applications')
-          .select('id, farmer_id')
-          .eq('farmer_id', f.id);
-
-        const foreignLoan = loans?.some((l) => l.farmer_id !== f.id);
-        const foreignScheme = schemes?.some((s) => s.farmer_id !== f.id);
-
-        if (!foreignLoan && !foreignScheme) {
-          isolatedCount++;
-          details.push(`✓ Customer [${f.phone || f.id.slice(0, 8)} - ${f.full_name}]: 100% Isolated (${loans?.length || 0} loans, ${schemes?.length || 0} schemes)`);
-        } else {
-          details.push(`✗ Leakage detected in Customer ID ${f.id}`);
-        }
-      }
-
-      const passed = isolatedCount === count;
-      details.push(`Audit Result: ${isolatedCount}/${count} customer records are strictly isolated with zero cross-tenant contamination.`);
-
-      setAuditResults({
-        testedCount: count,
-        isolatedCount,
-        passed,
-        details,
-      });
-    } catch (e: any) {
-      details.push(`Audit error: ${e?.message || 'Unknown error'}`);
-      setAuditResults({
-        testedCount: 0,
-        isolatedCount: 0,
-        passed: false,
-        details,
-      });
-    } finally {
-      setAuditRunning(false);
-    }
-  };
-
-  const filteredFarmers = useMemo(() => {
-    if (!searchQuery.trim()) return farmers;
-    const q = searchQuery.toLowerCase().trim();
-    return farmers.filter((f) => {
-      const name = (f.full_name || '').toLowerCase();
-      const phone = (f.phone || '').toLowerCase();
-      const district = (f.district || '').toLowerCase();
-      const id = (f.id || '').toLowerCase();
-      return name.includes(q) || phone.includes(q) || district.includes(q) || id.includes(q);
-    });
-  }, [farmers, searchQuery]);
-
-  // SECURITY: Hard gate — never render admin dashboard for non-admin users.
-  // This is a CLIENT guard complementing the Supabase RLS server-side policies.
   if (!user || user.role !== 'admin') {
     return (
-      <View style={[styles.container, { alignItems: 'center', justifyContent: 'center', padding: 24 }]}>
-        <Lock size={56} color={Colors.error[500]} />
-        <Text style={{ fontSize: 22, fontWeight: '700', color: Colors.error[600], marginTop: 16, textAlign: 'center' }}>
-          {language === 'ta' ? 'அணுகல் அனுமதிக்கப்படவில்லை' : 'Access Denied'}
-        </Text>
-        <Text style={{ fontSize: 15, color: Colors.neutral[500], marginTop: 12, textAlign: 'center', lineHeight: 22 }}>
-          {language === 'ta'
-            ? 'இக் பகுதி அணுகல் மட்டுமே அனுமதிக்கப்பட்ட வங்கி அதிகாரிகளுக்கு மட்டுமே கிடைக்கும்.'
-            : 'This section is only accessible to authorised bank officers and administrators. If you believe this is an error, please contact your system administrator.'}
+      <View style={{ flex: 1, backgroundColor: A.pageBg, alignItems: 'center', justifyContent: 'center', padding: 24 }}>
+        <Lock size={56} color={A.danger} />
+        <Text style={{ fontSize: 22, fontWeight: '800', color: A.danger, marginTop: 16, textAlign: 'center' }}>Access Denied</Text>
+        <Text style={{ fontSize: 14, color: A.textMid, marginTop: 10, textAlign: 'center', lineHeight: 22 }}>
+          This portal is restricted to authorised bank administrators only.
         </Text>
       </View>
     );
   }
 
+  type NavItem = { section: AdminSection; label: string };
+  const navItems: NavItem[] = [
+    { section: 'dashboard', label: 'Dashboard' },
+    { section: 'applications', label: 'Applications' },
+    { section: 'customers', label: 'Customers' },
+    { section: 'profile', label: 'Admin Profile' },
+  ];
+
+  const navIcons: Record<AdminSection, React.ReactNode> = {
+    dashboard: <LayoutDashboard size={18} />,
+    applications: <ClipboardList size={18} />,
+    customers: <Users size={18} />,
+    profile: <UserCircle size={18} />,
+  };
+
+  const renderSection = () => {
+    switch (activeSection) {
+      case 'dashboard': return <DashboardSection user={user} onNavigate={navigateToSection} />;
+      case 'applications': return <ApplicationsSection user={user} initialFilter={applicationFilter} onFilterChange={setApplicationFilter} />;
+      case 'customers': return <CustomersSection user={user} />;
+      case 'profile': return <AdminProfileSection user={user} logout={logout} onNavigate={navigateToSection} />;
+      default: return null;
+    }
+  };
+
   return (
-    <View style={styles.container}>
-      <Header
-        title={t('adminDashboard')}
-        subtitle={language === 'ta' ? 'அனைத்து விவசாயிகளின் தனிமைப்படுத்தப்பட்ட பதிவுகள் & 20,000 தரவுத்தளம்' : 'Multi-Customer Records & 20,000 Dataset Explorer'}
-      />
-
-      <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
-        {/* Admin Bar */}
-        <View style={styles.adminBar}>
-          <View style={styles.adminBadge}>
-            <ShieldCheck size={16} color={Colors.primary[700]} />
-            <Text style={styles.adminBadgeText}>Bank Officer / Admin Portal</Text>
+    <View style={S.root}>
+      <StatusBar barStyle="light-content" backgroundColor={A.bg} />
+      {/* HEADER */}
+      <View style={S.header}>
+        <View style={S.headerLeft}>
+          <TouchableOpacity style={S.menuBtn} onPress={() => setSidebarOpen(!sidebarOpen)} activeOpacity={0.7}>
+            <Menu size={20} color="#fff" />
+          </TouchableOpacity>
+          <ShieldCheck size={18} color={A.primary} />
+          <Text style={S.headerBrand}>MonitorX</Text>
+          <View style={S.adminPill}><Text style={S.adminPillTxt}>ADMIN PORTAL</Text></View>
+        </View>
+        <View style={S.headerRight}>
+          <View style={S.nameTag}>
+            <UserCircle size={14} color={A.primary} />
+            <Text style={S.nameTagTxt} numberOfLines={1}>{user?.name || user?.identifier || 'Admin'}</Text>
           </View>
-
-          <TouchableOpacity
-            style={styles.switchModeBtn}
-            onPress={logout}
-          >
-            <Text style={styles.switchModeText}>{t('logout') || 'Sign Out'}</Text>
+          <TouchableOpacity style={S.logoutHdr} onPress={logout} activeOpacity={0.8}>
+            <LogOut size={15} color="#fff" />
           </TouchableOpacity>
         </View>
+      </View>
 
-        {/* Mode Selector Tabs — PROMINENT TOGGLE */}
-        <View style={styles.tabSelectorRow}>
-          <TouchableOpacity
-            style={[styles.modeTab, activeTab === 'farmers' && styles.modeTabActive]}
-            onPress={() => setActiveTab('farmers')}
-            activeOpacity={0.75}
-          >
-            <Users size={16} color={activeTab === 'farmers' ? '#fff' : Colors.primary[700]} />
-            <Text style={[styles.modeTabText, activeTab === 'farmers' && styles.modeTabTextActive]}>
-              👥 Live Farmers ({farmers.length})
-            </Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={[styles.modeTab, activeTab === 'dataset' && styles.modeTabActive]}
-            onPress={() => setActiveTab('dataset')}
-            activeOpacity={0.75}
-          >
-            <Database size={16} color={activeTab === 'dataset' ? '#fff' : Colors.primary[700]} />
-            <Text style={[styles.modeTabText, activeTab === 'dataset' && styles.modeTabTextActive]}>
-              📊 Dataset (20k)
-            </Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={[styles.modeTab, activeTab === 'admin' && styles.modeTabActive]}
-            onPress={() => setActiveTab('admin')}
-            activeOpacity={0.75}
-          >
-            <ShieldCheck size={16} color={activeTab === 'admin' ? '#fff' : Colors.primary[700]} />
-            <Text style={[styles.modeTabText, activeTab === 'admin' && styles.modeTabTextActive]}>
-              🛡️ Admin Info
-            </Text>
-          </TouchableOpacity>
-        </View>
-
-        {/* ------------------------------------------------------------- */}
-        {/* VIEW 1: LIVE REGISTERED FARMERS                              */}
-        {/* ------------------------------------------------------------- */}
-        {activeTab === 'farmers' ? (
-          <>
-            {/* Stats Grid */}
-            <View style={styles.statsGrid}>
-              <View style={styles.statCard}>
-                <Users size={22} color={Colors.primary[600]} />
-                <Text style={styles.statNumber}>{farmers.length}</Text>
-                <Text style={styles.statLabel}>{t('allCustomers')}</Text>
-              </View>
-
-              <View style={styles.statCard}>
-                <Wallet size={22} color={Colors.accent[600]} />
-                <Text style={styles.statNumber}>{totalLoanApps}</Text>
-                <Text style={styles.statLabel}>{t('appliedLoans')}</Text>
-              </View>
-
-              <View style={styles.statCard}>
-                <Landmark size={22} color={Colors.secondary[700]} />
-                <Text style={styles.statNumber}>{totalSchemeApps}</Text>
-                <Text style={styles.statLabel}>{t('appliedSchemes')}</Text>
-              </View>
-
-              <View style={styles.statCard}>
-                <Sparkles size={22} color={Colors.success[600]} />
-                <Text style={styles.statNumber}>{totalEligResults}</Text>
-                <Text style={styles.statLabel}>{t('eligibilityHistory')}</Text>
-              </View>
-            </View>
-
-            {/* Live Data Isolation Audit Trigger Card */}
-            <View style={styles.auditCard}>
-              <View style={styles.auditHeader}>
-                <View style={styles.auditIconBadge}>
-                  <Lock size={20} color={Colors.success[700]} />
-                </View>
-                <View style={{ flex: 1 }}>
-                  <Text style={styles.auditTitle}>{t('dataIsolationAudit')}</Text>
-                  <Text style={styles.auditSubtitle}>{t('verifiedDataIsolation')}</Text>
-                </View>
-                <TouchableOpacity
-                  style={[styles.auditBtn, auditRunning && { opacity: 0.6 }]}
-                  onPress={runDataIsolationAudit}
-                  disabled={auditRunning}
-                >
-                  {auditRunning ? (
-                    <ActivityIndicator size="small" color="#fff" />
-                  ) : (
-                    <Text style={styles.auditBtnText}>
-                      {language === 'ta' ? 'தணிக்கை செய்' : 'Run Live Audit'}
-                    </Text>
-                  )}
-                </TouchableOpacity>
-              </View>
-
-              {auditResults && (
-                <View style={styles.auditResultsBox}>
-                  <View style={styles.auditPassedRow}>
-                    <CheckCircle2 size={18} color={auditResults.passed ? Colors.success[600] : Colors.error[500]} />
-                    <Text style={[styles.auditPassedText, { color: auditResults.passed ? Colors.success[700] : Colors.error[600] }]}>
-                      {auditResults.passed ? 'Isolation Audit Passed: Zero Leakage Verified' : 'Audit Found Discrepancies'}
-                    </Text>
-                  </View>
-                  {auditResults.details.map((line, idx) => (
-                    <Text key={idx} style={styles.auditDetailLine}>
-                      {line}
-                    </Text>
-                  ))}
-                </View>
-              )}
-            </View>
-
-            {/* Farmer Search Bar */}
-            <View style={styles.searchSection}>
-              <Text style={styles.sectionTitle}>{t('allCustomers')}</Text>
-              <View style={styles.searchBar}>
-                <Search size={18} color={Colors.neutral[400]} />
-                <TextInput
-                  style={styles.searchInput}
-                  placeholder={t('customerSearch')}
-                  placeholderTextColor={Colors.neutral[400]}
-                  value={searchQuery}
-                  onChangeText={setSearchQuery}
-                />
-                {searchQuery.length > 0 && (
-                  <TouchableOpacity onPress={() => setSearchQuery('')}>
-                    <X size={18} color={Colors.neutral[400]} />
-                  </TouchableOpacity>
-                )}
-              </View>
-            </View>
-
-            {/* Farmers List */}
-            {loading ? (
-              <View style={styles.loadingBox}>
-                <ActivityIndicator size="large" color={Colors.primary[600]} />
-                <Text style={styles.loadingText}>Fetching database records...</Text>
-              </View>
-            ) : filteredFarmers.length === 0 ? (
-              <View style={styles.emptyCard}>
-                <Users size={36} color={Colors.neutral[300]} />
-                <Text style={styles.emptyText}>{t('noRecordsFound')}</Text>
-              </View>
-            ) : (
-              <View style={styles.listContainer}>
-                {filteredFarmers.map((farmer) => (
-                  <TouchableOpacity
-                    key={farmer.id || farmer.phone}
-                    style={styles.farmerCard}
-                    onPress={() => loadFarmerDossier(farmer)}
-                    activeOpacity={0.8}
-                  >
-                    <View style={styles.farmerCardHeader}>
-                      <View style={styles.farmerAvatar}>
-                        <Sprout size={20} color={Colors.primary[700]} />
-                      </View>
-                      <View style={{ flex: 1 }}>
-                        <Text style={styles.farmerName}>{farmer.full_name}</Text>
-                        <View style={styles.metaRow}>
-                          <Phone size={12} color={Colors.neutral[500]} />
-                          <Text style={styles.metaText}>{farmer.phone || 'N/A'}</Text>
-                          <MapPin size={12} color={Colors.neutral[500]} style={{ marginLeft: 6 }} />
-                          <Text style={styles.metaText}>{farmer.district || farmer.state}</Text>
-                        </View>
-                      </View>
-                      <ChevronRight size={18} color={Colors.neutral[400]} />
-                    </View>
-
-                    <View style={styles.farmerBadgesRow}>
-                      <View style={styles.pillBadge}>
-                        <Text style={styles.pillText}>{farmer.farmer_category}</Text>
-                      </View>
-                      <View style={styles.pillBadge}>
-                        <Text style={styles.pillText}>{farmer.land_size_acres || 0} acres</Text>
-                      </View>
-                      {farmer.credit_score ? (
-                        <View style={[styles.pillBadge, { backgroundColor: Colors.success[50] }]}>
-                          <Text style={[styles.pillText, { color: Colors.success[700] }]}>
-                            Score: {farmer.credit_score}
-                          </Text>
-                        </View>
-                      ) : null}
-                      {farmer.has_kcc ? (
-                        <View style={[styles.pillBadge, { backgroundColor: Colors.primary[50] }]}>
-                          <Text style={[styles.pillText, { color: Colors.primary[700] }]}>KCC Active</Text>
-                        </View>
-                      ) : null}
-                    </View>
-                  </TouchableOpacity>
-                ))}
-              </View>
-            )}
-          </>
-        ) : activeTab === 'dataset' ? (
-          /* ------------------------------------------------------------- */
-          /* VIEW 2: FULL 20,000 FINANCIAL LOAN & BORROWER DATASET        */
-          /* ------------------------------------------------------------- */
-          <View style={styles.datasetView}>
-            {/* Dataset Statistics Hero */}
-            <View style={styles.datasetStatsCard}>
-              <View style={styles.datasetStatsHeader}>
-                <BarChart3 size={20} color={Colors.primary[700]} />
-                <View style={{ flex: 1, marginLeft: 8 }}>
-                  <Text style={styles.datasetStatsTitle}>
-                    MonitorX Customer Risk Dataset
-                  </Text>
-                  <Text style={{ fontSize: 13, color: Colors.primary[700], fontWeight: '600', marginTop: 2 }}>
-                    20,000 Synthetic Demonstration Records
-                  </Text>
-                </View>
-              </View>
-
-              {/* Explicit Synthetic Notice */}
-              <View style={{
-                backgroundColor: '#EFF6FF',
-                borderColor: '#BFDBFE',
-                borderWidth: 1,
-                borderRadius: 8,
-                paddingVertical: 6,
-                paddingHorizontal: 12,
-                marginTop: 10,
-                marginBottom: 12,
-                flexDirection: 'row',
-                alignItems: 'center',
-                gap: 6
-              }}>
-                <ShieldCheck size={14} color="#2563EB" />
-                <Text style={{ fontSize: 12, color: '#1E40AF', fontWeight: '600' }}>
-                  Synthetic Demonstration Data — Not Real Customer Data
-                </Text>
-              </View>
-
-              <View style={styles.datasetStatsGrid}>
-                <View style={styles.miniStat}>
-                  <Text style={styles.miniStatLabel}>Avg Annual Income</Text>
-                  <Text style={styles.miniStatVal}>₹{datasetStats.avgIncome.toLocaleString('en-IN')}</Text>
-                </View>
-                <View style={styles.miniStat}>
-                  <Text style={styles.miniStatLabel}>Avg Credit Score</Text>
-                  <Text style={styles.miniStatVal}>{datasetStats.avgCreditScore}</Text>
-                </View>
-                <View style={styles.miniStat}>
-                  <Text style={styles.miniStatLabel}>Avg Loan Requested</Text>
-                  <Text style={styles.miniStatVal}>₹{datasetStats.avgLoanAmount.toLocaleString('en-IN')}</Text>
-                </View>
-                <View style={styles.miniStat}>
-                  <Text style={styles.miniStatLabel}>Low / Mod / High Risk</Text>
-                  <Text style={styles.miniStatVal}>
-                    {datasetStats.lowRiskCount.toLocaleString('en-IN')} / {datasetStats.modRiskCount.toLocaleString('en-IN')} / {datasetStats.highRiskCount.toLocaleString('en-IN')}
-                  </Text>
-                </View>
-              </View>
-            </View>
-
-            {/* Dataset Search & Filters */}
-            <View style={styles.datasetControls}>
-              <View style={styles.searchBar}>
-                <Search size={18} color={Colors.neutral[400]} />
-                <TextInput
-                  style={styles.searchInput}
-                  placeholder="Search Customer ID / Name / Phone / District / State..."
-                  placeholderTextColor={Colors.neutral[400]}
-                  value={datasetSearch}
-                  onChangeText={(text) => {
-                    setDatasetSearch(text);
-                    setDatasetPage(1);
-                  }}
-                />
-                {datasetSearch.length > 0 && (
-                  <TouchableOpacity onPress={() => { setDatasetSearch(''); setDatasetPage(1); }}>
-                    <X size={18} color={Colors.neutral[400]} />
-                  </TouchableOpacity>
-                )}
-              </View>
-
-              {/* Risk Category Filters */}
-              <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.filterRow}>
-                {(['All', 'Low', 'Moderate', 'High'] as const).map((r) => (
-                  <TouchableOpacity
-                    key={r}
-                    style={[styles.filterChip, riskFilter === r && styles.filterChipActive]}
-                    onPress={() => { setRiskFilter(r); setDatasetPage(1); }}
-                  >
-                    <Text style={[styles.filterChipText, riskFilter === r && styles.filterChipTextActive]}>
-                      {r === 'All' ? 'All Risk Levels' : `${r} Risk`}
-                    </Text>
-                  </TouchableOpacity>
-                ))}
-
-                {(['All', 'Approved', 'Review', 'Ineligible'] as const).map((s) => (
-                  <TouchableOpacity
-                    key={s}
-                    style={[styles.filterChip, statusFilter === s && styles.filterChipActive]}
-                    onPress={() => { setStatusFilter(s); setDatasetPage(1); }}
-                  >
-                    <Text style={[styles.filterChipText, statusFilter === s && styles.filterChipTextActive]}>
-                      Status: {s}
-                    </Text>
-                  </TouchableOpacity>
-                ))}
-              </ScrollView>
-            </View>
-
-            {/* Pagination Controls Top */}
-            <View style={styles.paginationRow}>
-              <Text style={styles.paginationInfo}>
-                Showing {(datasetResult.page - 1) * datasetResult.pageSize + 1} -{' '}
-                {Math.min(datasetResult.page * datasetResult.pageSize, datasetResult.total)} of{' '}
-                {datasetResult.total.toLocaleString('en-IN')} records
-              </Text>
-
-              <View style={styles.pageNavBtns}>
-                <TouchableOpacity
-                  style={[styles.pageBtn, datasetResult.page <= 1 && styles.pageBtnDisabled]}
-                  onPress={() => setDatasetPage((p) => Math.max(1, p - 1))}
-                  disabled={datasetResult.page <= 1}
-                >
-                  <ChevronLeft size={16} color={datasetResult.page <= 1 ? Colors.neutral[300] : Colors.neutral[700]} />
-                </TouchableOpacity>
-
-                <Text style={styles.pageIndicator}>
-                  Page {datasetResult.page} / {datasetResult.totalPages}
-                </Text>
-
-                <TouchableOpacity
-                  style={[styles.pageBtn, datasetResult.page >= datasetResult.totalPages && styles.pageBtnDisabled]}
-                  onPress={() => setDatasetPage((p) => Math.min(datasetResult.totalPages, p + 1))}
-                  disabled={datasetResult.page >= datasetResult.totalPages}
-                >
-                  <ChevronRight size={16} color={datasetResult.page >= datasetResult.totalPages ? Colors.neutral[300] : Colors.neutral[700]} />
-                </TouchableOpacity>
-              </View>
-            </View>
-
-            {/* Jump to Page Quick Input */}
-            <View style={styles.jumpRow}>
-              <Text style={styles.jumpLabel}>Jump to page:</Text>
-              <TextInput
-                style={styles.jumpInput}
-                placeholder="1"
-                placeholderTextColor={Colors.neutral[400]}
-                keyboardType="number-pad"
-                value={jumpPageInput}
-                onChangeText={setJumpPageInput}
-                onSubmitEditing={() => {
-                  const p = parseInt(jumpPageInput, 10);
-                  if (!isNaN(p) && p >= 1 && p <= datasetResult.totalPages) {
-                    setDatasetPage(p);
-                    setJumpPageInput('');
-                  }
-                }}
-              />
-              <TouchableOpacity
-                style={styles.jumpBtn}
-                onPress={() => {
-                  const p = parseInt(jumpPageInput, 10);
-                  if (!isNaN(p) && p >= 1 && p <= datasetResult.totalPages) {
-                    setDatasetPage(p);
-                    setJumpPageInput('');
-                  }
-                }}
-              >
-                <Text style={styles.jumpBtnText}>Go</Text>
-              </TouchableOpacity>
-            </View>
-
-            {/* Records List Table */}
-            <View style={styles.datasetList}>
-              {datasetResult.records.map((rec) => {
-                const isGoodScore = rec.credit_score >= 720;
-                const isBadScore = rec.credit_score < 600;
-
-                return (
-                  <TouchableOpacity
-                    key={rec.id}
-                    style={styles.datasetCard}
-                    onPress={() => setSelectedDatasetRecord(rec)}
-                    activeOpacity={0.8}
-                  >
-                    <View style={styles.datasetCardHeader}>
-                      <View style={styles.idBadge}>
-                        <Text style={styles.idBadgeText}>{rec.id}</Text>
-                      </View>
-                      <View style={{ flex: 1 }}>
-                        <Text style={styles.datasetName}>{rec.name}</Text>
-                        <Text style={styles.datasetSub}>
-                          {rec.age} yrs • {rec.gender} • {rec.district} • {rec.employment_status}
-                        </Text>
-                      </View>
-
-                      {/* Status Badge */}
-                      <View
-                        style={[
-                          styles.statusBadge,
-                          rec.status === 'Approved'
-                            ? styles.statusApproved
-                            : rec.status === 'Review'
-                            ? styles.statusReview
-                            : styles.statusIneligible,
-                        ]}
-                      >
-                        <Text
-                          style={[
-                            styles.statusBadgeText,
-                            rec.status === 'Approved'
-                              ? styles.statusApprovedText
-                              : rec.status === 'Review'
-                              ? styles.statusReviewText
-                              : styles.statusIneligibleText,
-                          ]}
-                        >
-                          {rec.status}
-                        </Text>
-                      </View>
-                    </View>
-
-                    <View style={styles.datasetGridRow}>
-                      <View style={styles.datasetGridCol}>
-                        <Text style={styles.datasetGridLabel}>Annual Income</Text>
-                        <Text style={styles.datasetGridVal}>₹{rec.annual_income.toLocaleString('en-IN')}</Text>
-                      </View>
-                      <View style={styles.datasetGridCol}>
-                        <Text style={styles.datasetGridLabel}>Credit Score</Text>
-                        <Text
-                          style={[
-                            styles.datasetGridVal,
-                            { color: isGoodScore ? Colors.success[700] : isBadScore ? Colors.error[600] : Colors.warning[700] },
-                          ]}
-                        >
-                          {rec.credit_score}
-                        </Text>
-                      </View>
-                      <View style={styles.datasetGridCol}>
-                        <Text style={styles.datasetGridLabel}>Loan Requested</Text>
-                        <Text style={styles.datasetGridVal}>₹{rec.loan_amount.toLocaleString('en-IN')}</Text>
-                      </View>
-                      <View style={styles.datasetGridCol}>
-                        <Text style={styles.datasetGridLabel}>DTI Ratio</Text>
-                        <Text style={styles.datasetGridVal}>{Math.round(rec.debt_to_income_ratio * 100)}%</Text>
-                      </View>
-                    </View>
-                  </TouchableOpacity>
-                );
-              })}
-            </View>
-
-            {/* Bottom Pagination */}
-            <View style={[styles.paginationRow, { marginTop: 16 }]}>
-              <TouchableOpacity
-                style={[styles.pageBtn, datasetResult.page <= 1 && styles.pageBtnDisabled]}
-                onPress={() => setDatasetPage((p) => Math.max(1, p - 1))}
-                disabled={datasetResult.page <= 1}
-              >
-                <Text style={styles.pageBtnText}>Previous Page</Text>
-              </TouchableOpacity>
-
-              <Text style={styles.pageIndicator}>
-                Page {datasetResult.page} of {datasetResult.totalPages}
-              </Text>
-
-              <TouchableOpacity
-                style={[styles.pageBtn, datasetResult.page >= datasetResult.totalPages && styles.pageBtnDisabled]}
-                onPress={() => setDatasetPage((p) => Math.min(datasetResult.totalPages, p + 1))}
-                disabled={datasetResult.page >= datasetResult.totalPages}
-              >
-                <Text style={styles.pageBtnText}>Next Page</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-        ) : (
-          /* ------------------------------------------------------------- */
-          /* VIEW 3: DEDICATED ADMIN SECTION (ADMIN PROFILE & CONTROLS)    */
-          /* ------------------------------------------------------------- */
-          <View style={{ paddingVertical: 8 }}>
-            <View style={styles.datasetStatsCard}>
-              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
-                <View style={{
-                  width: 56,
-                  height: 56,
-                  borderRadius: 28,
-                  backgroundColor: Colors.accent[50],
-                  borderWidth: 1.5,
-                  borderColor: Colors.accent[300],
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}>
-                  <ShieldCheck size={30} color={Colors.accent[700]} />
-                </View>
-                <View style={{ flex: 1 }}>
-                  <Text style={{ fontSize: 18, fontWeight: '800', color: Colors.neutral[900] }}>
-                    {user?.name || 'Chief Bank Underwriting Officer'}
-                  </Text>
-                  <Text style={{ fontSize: 13, color: Colors.accent[700], fontWeight: '600', marginTop: 2 }}>
-                    Role: Bank Administrator & Risk Underwriter
-                  </Text>
-                </View>
-              </View>
-            </View>
-
-            <View style={styles.farmerCard}>
-              <View style={{ borderBottomWidth: 1, borderBottomColor: Colors.neutral[100], paddingBottom: 10, marginBottom: 12 }}>
-                <Text style={{ fontSize: 15, fontWeight: '700', color: Colors.neutral[900] }}>
-                  Administrator Credentials & System Authorization
-                </Text>
-              </View>
-
-              <View style={styles.datasetGridRow}>
-                <View style={styles.datasetGridCol}>
-                  <Text style={styles.datasetGridLabel}>Admin ID / User ID</Text>
-                  <Text style={[styles.datasetGridVal, { color: Colors.neutral[900] }]}>
-                    {user?.identifier || 'admin.officer'}
-                  </Text>
-                </View>
-                <View style={styles.datasetGridCol}>
-                  <Text style={styles.datasetGridLabel}>Official Email</Text>
-                  <Text style={[styles.datasetGridVal, { color: Colors.neutral[900] }]}>
-                    {user?.email || 'admin@monitorx.app'}
-                  </Text>
-                </View>
-              </View>
-
-              <View style={[styles.datasetGridRow, { marginTop: 12 }]}>
-                <View style={styles.datasetGridCol}>
-                  <Text style={styles.datasetGridLabel}>Access Authority</Text>
-                  <Text style={[styles.datasetGridVal, { color: Colors.success[700] }]}>
-                    Full 20k Synthetic Dataset & Multi-Tenant Dossiers
-                  </Text>
-                </View>
-                <View style={styles.datasetGridCol}>
-                  <Text style={styles.datasetGridLabel}>Security Protocol</Text>
-                  <Text style={[styles.datasetGridVal, { color: Colors.primary[700] }]}>
-                    Supabase Auth JWT + Row Level Security (RLS)
-                  </Text>
-                </View>
-              </View>
-            </View>
-
-            <TouchableOpacity
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: 8,
-                backgroundColor: '#FEF2F2',
-                borderWidth: 1,
-                borderColor: '#FECACA',
-                borderRadius: 10,
-                paddingVertical: 14,
-                marginTop: 16,
-              }}
-              onPress={logout}
-              activeOpacity={0.8}
-            >
-              <LogOut size={18} color="#DC2626" />
-              <Text style={{ fontSize: 14, fontWeight: '700', color: '#DC2626' }}>
-                Sign Out of Bank Admin Portal
-              </Text>
-            </TouchableOpacity>
-          </View>
+      <View style={S.body}>
+        {/* SIDEBAR OVERLAY */}
+        {sidebarOpen && (
+          <TouchableOpacity style={S.overlay} activeOpacity={1} onPress={() => setSidebarOpen(false)} />
         )}
+        {/* SIDEBAR */}
+        <View style={[S.sidebar, sidebarOpen && S.sidebarOpen]}>
+          <Text style={S.sidebarHdrTxt}>NAVIGATION</Text>
+          {navItems.map(item => {
+            const active = activeSection === item.section;
+            return (
+              <TouchableOpacity
+                key={item.section}
+                style={[S.navItem, active && S.navItemActive]}
+                onPress={() => { setActiveSection(item.section); setSidebarOpen(false); }}
+                activeOpacity={0.8}
+              >
+                <View style={{ opacity: active ? 1 : 0.6 }}>
+                  {React.cloneElement(navIcons[item.section] as React.ReactElement<any>, { color: active ? A.primary : A.sidebarText })}
+                </View>
+                <Text style={[S.navLabel, active && S.navLabelActive]}>{item.label}</Text>
+                {active && <View style={S.navIndicator} />}
+              </TouchableOpacity>
+            );
+          })}
+          <View style={{ flex: 1 }} />
+          <TouchableOpacity style={S.sidebarLogout} onPress={logout} activeOpacity={0.8}>
+            <LogOut size={16} color="#f87171" />
+            <Text style={S.sidebarLogoutTxt}>Sign Out</Text>
+          </TouchableOpacity>
+        </View>
+        {/* MAIN */}
+        <View style={S.main}>{renderSection()}</View>
+      </View>
 
-        <View style={{ height: 40 }} />
+      {/* BOTTOM NAV */}
+      <View style={S.bottomNav}>
+        {navItems.map(item => {
+          const active = activeSection === item.section;
+          return (
+            <TouchableOpacity key={item.section} style={S.bottomNavItem} onPress={() => setActiveSection(item.section)} activeOpacity={0.8}>
+              {React.cloneElement(navIcons[item.section] as React.ReactElement<any>, { color: active ? A.primary : '#64748B' })}
+              <Text style={[S.bottomNavLbl, active && S.bottomNavLblActive]}>{item.label}</Text>
+            </TouchableOpacity>
+          );
+        })}
+      </View>
+    </View>
+  );
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// DASHBOARD SECTION
+// ═══════════════════════════════════════════════════════════════════════════════
+function DashboardSection({ user, onNavigate }: { user: any; onNavigate?: (section: AdminSection, filter?: 'all' | 'pending' | 'under_review' | 'approved' | 'rejected') => void }) {
+  const [loading, setLoading] = useState(true);
+  const [stats, setStats] = useState({ total: 0, pending: 0, approved: 0, rejected: 0, review: 0, customers: 0, reqAmt: 0, appAmt: 0 });
+  const [recentApps, setRecentApps] = useState<AppWithFarmer[]>([]);
+  const [activity, setActivity] = useState<AdminActivityLog[]>([]);
+  const [selectedApp, setSelectedApp] = useState<AppWithFarmer | null>(null);
+
+  useEffect(() => { load(); }, []);
+
+  const load = async () => {
+    setLoading(true);
+    try {
+      const [appsRes, custRes, actRes] = await Promise.all([
+        supabase.from('loan_applications').select('*, farmer_profiles(*)').order('created_at', { ascending: false }),
+        supabase.from('farmer_profiles').select('id', { count: 'exact', head: true }),
+        supabase.from('admin_activity_log').select('*').order('created_at', { ascending: false }).limit(8),
+      ]);
+      const rawApps = (appsRes.data || []) as any[];
+      const apps = rawApps.map((a: any) => {
+        const normStatus = normalizeStatus(a.status || a.admin_status);
+        return {
+          ...a,
+          status: normStatus,
+          admin_status: normStatus,
+          farmer: a.farmer_profiles ? deserializeFromSupabase(a.farmer_profiles) : undefined,
+          farmer_name: a.farmer_profiles?.full_name || 'Unknown',
+          farmer_phone: a.farmer_profiles?.phone || '',
+          farmer_district: a.farmer_profiles?.district || '',
+        };
+      });
+      setStats({
+        total: apps.length,
+        pending: apps.filter((a: any) => a.admin_status === 'pending').length,
+        approved: apps.filter((a: any) => a.admin_status === 'approved').length,
+        rejected: apps.filter((a: any) => a.admin_status === 'rejected').length,
+        review: apps.filter((a: any) => a.admin_status === 'under_review').length,
+        customers: custRes.count || 0,
+        reqAmt: apps.reduce((s: number, a: any) => s + Number(a.loan_amount || 0), 0),
+        appAmt: apps.filter((a: any) => a.admin_status === 'approved').reduce((s: number, a: any) => s + Number(a.loan_amount || 0), 0),
+      });
+      setRecentApps(apps.slice(0, 8));
+      setActivity((actRes.data || []) as AdminActivityLog[]);
+    } catch (e) { console.error(e); }
+    finally { setLoading(false); }
+  };
+
+  if (selectedApp) {
+    return (
+      <ApplicationDetailModal
+        app={selectedApp}
+        onClose={() => setSelectedApp(null)}
+        onDecision={() => {
+          setSelectedApp(null);
+          load();
+        }}
+        adminUser={user}
+        readOnly={false}
+      />
+    );
+  }
+
+  if (loading) return <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}><ActivityIndicator size="large" color={A.primary} /><Text style={{ marginTop: 12, color: A.textMid }}>Loading dashboard...</Text></View>;
+
+  return (
+    <ScrollView style={DS.scroll} showsVerticalScrollIndicator={false}>
+      <View style={DS.pageHdr}><Text style={DS.pageTitle}>Dashboard Overview</Text><Text style={DS.pageSub}>MonitorX Loan Management System</Text></View>
+
+      {/* STAT CARDS */}
+      <View style={DS.statsGrid}>
+        {[
+          { label: 'Total Applications', val: stats.total, color: A.primary, bg: A.primaryLight, section: 'applications' as const, filter: 'all' as const },
+          { label: 'Pending Review', val: stats.pending, color: A.warning, bg: A.warningLight, section: 'applications' as const, filter: 'pending' as const },
+          { label: 'Approved', val: stats.approved, color: A.success, bg: A.successLight, section: 'applications' as const, filter: 'approved' as const },
+          { label: 'Rejected', val: stats.rejected, color: A.danger, bg: A.dangerLight, section: 'applications' as const, filter: 'rejected' as const },
+          { label: 'Under Review', val: stats.review, color: A.review, bg: A.reviewLight, section: 'applications' as const, filter: 'under_review' as const },
+          { label: 'Customers', val: stats.customers, color: '#0891B2', bg: '#ECFEFF', section: 'customers' as const, filter: undefined },
+        ].map((c, i) => (
+          <TouchableOpacity
+            key={i}
+            style={[DS.statCard]}
+            onPress={() => onNavigate?.(c.section, c.filter)}
+            activeOpacity={0.7}
+          >
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+              <Text style={[DS.statVal, { color: c.color }]}>{c.val}</Text>
+              <ChevronRight size={14} color={c.color} />
+            </View>
+            <Text style={DS.statLbl}>{c.label}</Text>
+          </TouchableOpacity>
+        ))}
+        <View style={DS.statCardWide}>
+          <View style={{ flex: 1 }}><Text style={DS.statLbl}>Loan Amount Requested</Text><Text style={[DS.statVal, { color: A.primary, fontSize: 18 }]}>{formatCurrency(stats.reqAmt)}</Text></View>
+          <View style={{ width: 1, backgroundColor: A.border, marginHorizontal: 12 }} />
+          <View style={{ flex: 1 }}><Text style={DS.statLbl}>Loan Amount Approved</Text><Text style={[DS.statVal, { color: A.success, fontSize: 18 }]}>{formatCurrency(stats.appAmt)}</Text></View>
+        </View>
+      </View>
+
+      {/* RECENT APPLICATIONS */}
+      <View style={DS.card}>
+        <View style={DS.cardHdr}>
+          <ClipboardList size={18} color={A.primary} />
+          <Text style={DS.cardTitle}>Recent Applications</Text>
+          <View style={{ flex: 1 }} />
+          <TouchableOpacity onPress={load} activeOpacity={0.7}><RefreshCw size={16} color={A.textMid} /></TouchableOpacity>
+        </View>
+        {recentApps.length === 0 ? (
+          <View style={DS.empty}><FileText size={32} color={A.border} /><Text style={DS.emptyTxt}>No applications yet</Text></View>
+        ) : recentApps.map(app => (
+          <TouchableOpacity key={app.id} style={DS.appRow} onPress={() => setSelectedApp(app)} activeOpacity={0.7}>
+            <View style={{ flex: 1 }}>
+              <Text style={DS.appId}>APP-{(app.id || '').slice(0, 6).toUpperCase()}</Text>
+              <Text style={DS.appName}>{app.farmer_name}</Text>
+              <Text style={DS.appMeta}>{app.loan_type} · {formatCurrency(Number(app.loan_amount))}</Text>
+              <Text style={DS.appDate}>{formatDate(app.created_at)}</Text>
+            </View>
+            <View style={{ alignItems: 'flex-end', gap: 6 }}>
+              <StatusBadge status={app.admin_status || 'pending'} />
+              <ChevronRight size={16} color={A.textLight} />
+            </View>
+          </TouchableOpacity>
+        ))}
+      </View>
+
+      {/* GOVERNMENT SCHEMES */}
+      <View style={DS.card}>
+        <View style={DS.cardHdr}>
+          <Landmark size={18} color={A.primary} />
+          <Text style={DS.cardTitle}>Government Schemes Overview</Text>
+        </View>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-around', padding: 14, borderBottomWidth: 1, borderBottomColor: A.border }}>
+          {[{ label: 'Central Schemes', val: governmentSchemes.filter(s => s.type === 'central').length }, { label: 'Tamil Nadu', val: governmentSchemes.filter(s => s.type === 'state').length }, { label: 'Total', val: governmentSchemes.length }].map((s, i) => (
+            <View key={i} style={{ alignItems: 'center' }}>
+              <Text style={{ fontSize: 22, fontWeight: '800', color: A.primary }}>{s.val}</Text>
+              <Text style={{ fontSize: 11, color: A.textMid, marginTop: 2 }}>{s.label}</Text>
+            </View>
+          ))}
+        </View>
+        {governmentSchemes.slice(0, 5).map(s => (
+          <View key={s.id} style={{ flexDirection: 'row', alignItems: 'center', gap: 10, paddingHorizontal: 14, paddingVertical: 10, borderBottomWidth: 1, borderBottomColor: A.border }}>
+            <View style={{ backgroundColor: s.type === 'central' ? A.primaryLight : '#F0FDF4', paddingHorizontal: 7, paddingVertical: 3, borderRadius: 6, minWidth: 65, alignItems: 'center' }}>
+              <Text style={{ fontSize: 10, fontWeight: '700', color: s.type === 'central' ? A.primary : Colors.primary[700] }}>{s.type === 'central' ? 'Central' : 'TN State'}</Text>
+            </View>
+            <View style={{ flex: 1 }}>
+              <Text style={{ fontSize: 13, fontWeight: '700', color: A.text }} numberOfLines={1}>{s.name}</Text>
+              <Text style={{ fontSize: 11, color: A.textMid }} numberOfLines={1}>{s.department}</Text>
+            </View>
+          </View>
+        ))}
+      </View>
+
+      {/* RECENT ACTIVITY */}
+      <View style={DS.card}>
+        <View style={DS.cardHdr}>
+          <Activity size={18} color={A.primary} />
+          <Text style={DS.cardTitle}>Recent Admin Activity</Text>
+        </View>
+        {activity.length === 0 ? (
+          <View style={DS.empty}><Activity size={32} color={A.border} /><Text style={DS.emptyTxt}>No activity recorded yet</Text></View>
+        ) : activity.map(act => (
+          <View key={act.id} style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 10, paddingHorizontal: 14, paddingVertical: 10, borderBottomWidth: 1, borderBottomColor: A.border }}>
+            <View style={{ width: 8, height: 8, borderRadius: 4, marginTop: 5, backgroundColor: act.action_type === 'approved' ? A.success : act.action_type === 'rejected' ? A.danger : act.action_type === 'review' ? A.review : A.primary }} />
+            <View style={{ flex: 1 }}>
+              <Text style={{ fontSize: 13, color: A.text, fontWeight: '500' }}>{act.description}</Text>
+              <Text style={{ fontSize: 11, color: A.textLight, marginTop: 2 }}>{formatDate(act.created_at)} · {act.admin_name || 'Admin'}</Text>
+            </View>
+          </View>
+        ))}
+      </View>
+
+      <View style={{ height: 80 }} />
+    </ScrollView>
+  );
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// APPLICATIONS SECTION
+// ═══════════════════════════════════════════════════════════════════════════════
+function ApplicationsSection({
+  user,
+  initialFilter = 'all',
+  onFilterChange,
+}: {
+  user: any;
+  initialFilter?: 'all' | 'pending' | 'under_review' | 'approved' | 'rejected';
+  onFilterChange?: (filter: 'all' | 'pending' | 'under_review' | 'approved' | 'rejected') => void;
+}) {
+  const [apps, setApps] = useState<AppWithFarmer[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [search, setSearch] = useState('');
+  const [statusFilter, setStatusFilter] = useState<'all' | 'pending' | 'under_review' | 'approved' | 'rejected'>(initialFilter);
+  const [selectedApp, setSelectedApp] = useState<AppWithFarmer | null>(null);
+
+  useEffect(() => {
+    setStatusFilter(initialFilter);
+  }, [initialFilter]);
+
+  useEffect(() => { loadApps(); }, []);
+
+  const loadApps = async () => {
+    setLoading(true);
+    try {
+      const { data, error } = await supabase
+        .from('loan_applications')
+        .select('*, farmer_profiles(*)')
+        .order('created_at', { ascending: false });
+      if (!error && data) {
+        setApps(data.map((a: any) => {
+          const normStatus = normalizeStatus(a.status || a.admin_status);
+          return {
+            ...a,
+            status: normStatus,
+            admin_status: normStatus,
+            farmer: a.farmer_profiles ? deserializeFromSupabase(a.farmer_profiles) : undefined,
+            farmer_name: a.farmer_profiles?.full_name || 'Unknown',
+            farmer_phone: a.farmer_profiles?.phone || '',
+            farmer_district: a.farmer_profiles?.district || '',
+          };
+        }));
+      } else if (error) {
+        console.error('Error fetching loan applications:', error);
+      }
+    } catch (e) { console.error(e); }
+    finally { setLoading(false); }
+  };
+
+  const filtered = useMemo(() => {
+    let r = [...apps];
+    if (statusFilter !== 'all') r = r.filter(a => (a.admin_status || 'pending') === statusFilter);
+    if (search.trim()) {
+      const q = search.toLowerCase();
+      r = r.filter(a => {
+        const name = (a.farmer_name || '').toLowerCase();
+        const loanType = (a.loan_type || '').toLowerCase();
+        const rawId = (a.id || '').toLowerCase();
+        const formattedId = `app-${rawId.slice(0, 8)}`.toLowerCase();
+        const phone = (a.farmer_phone || '').toLowerCase();
+        const bank = (a.bank_name || '').toLowerCase();
+        return name.includes(q) || loanType.includes(q) || rawId.includes(q) || formattedId.includes(q) || phone.includes(q) || bank.includes(q);
+      });
+    }
+    return r;
+  }, [apps, search, statusFilter]);
+
+  const filterTabs = [{ key: 'all' as const, label: 'All' }, { key: 'pending' as const, label: 'Pending' }, { key: 'under_review' as const, label: 'Under Review' }, { key: 'approved' as const, label: 'Approved' }, { key: 'rejected' as const, label: 'Rejected' }];
+
+  const handleSelectFilter = (key: 'all' | 'pending' | 'under_review' | 'approved' | 'rejected') => {
+    setStatusFilter(key);
+    onFilterChange?.(key);
+  };
+
+  if (selectedApp) {
+    return <ApplicationDetailModal app={selectedApp} onClose={() => setSelectedApp(null)} onDecision={() => { setSelectedApp(null); loadApps(); }} adminUser={user} readOnly={false} />;
+  }
+
+  return (
+    <ScrollView style={DS.scroll} showsVerticalScrollIndicator={false}>
+      <View style={DS.pageHdr}><Text style={DS.pageTitle}>Loan Applications</Text><Text style={DS.pageSub}>Review and manage customer loan applications</Text></View>
+
+      <View style={AP.searchBar}>
+        <Search size={16} color={A.textLight} />
+        <TextInput style={AP.searchInput} placeholder="Search by name, loan type, application ID..." placeholderTextColor={A.textLight} value={search} onChangeText={setSearch} returnKeyType="search" enterKeyHint="search" blurOnSubmit={true} />
+        {search.length > 0 && <TouchableOpacity onPress={() => setSearch('')}><X size={16} color={A.textLight} /></TouchableOpacity>}
+      </View>
+
+      <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ marginBottom: 10 }}>
+        {filterTabs.map(tab => (
+          <TouchableOpacity key={tab.key} style={[AP.filterTab, statusFilter === tab.key && AP.filterTabActive]} onPress={() => handleSelectFilter(tab.key)} activeOpacity={0.7}>
+            <Text style={[AP.filterTabTxt, statusFilter === tab.key && AP.filterTabTxtActive]}>
+              {tab.label}{tab.key !== 'all' ? ` (${apps.filter(a => (a.admin_status || 'pending') === tab.key).length})` : ''}
+            </Text>
+          </TouchableOpacity>
+        ))}
       </ScrollView>
 
-      {/* ------------------------------------------------------------- */}
-      {/* MODAL 1: LIVE FARMER DOSSIER                                   */}
-      {/* ------------------------------------------------------------- */}
-      <Modal
-        visible={!!selectedFarmer}
-        animationType="slide"
-        presentationStyle="pageSheet"
-        onRequestClose={() => setSelectedFarmer(null)}
-      >
-        <View style={styles.modalContainer}>
-          <View style={styles.modalHeader}>
-            <View>
-              <Text style={styles.modalTitle}>{t('customerDossier')}</Text>
-              <Text style={styles.modalSub}>
-                UUID: {selectedFarmer?.id || 'Pending Database Registration'}
-              </Text>
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
+        <Text style={{ fontSize: 13, color: A.textMid }}>{loading ? 'Loading...' : `${filtered.length} application${filtered.length !== 1 ? 's' : ''} found`}</Text>
+        <TouchableOpacity onPress={loadApps} style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }} activeOpacity={0.7}>
+          <RefreshCw size={14} color={A.primary} />
+          <Text style={{ fontSize: 13, color: A.primary, fontWeight: '600' }}>Refresh</Text>
+        </TouchableOpacity>
+      </View>
+
+      {loading ? (
+        <View style={DS.empty}><ActivityIndicator size="large" color={A.primary} /><Text style={{ marginTop: 12, color: A.textMid }}>Loading...</Text></View>
+      ) : filtered.length === 0 ? (
+        <View style={DS.empty}><ClipboardList size={40} color={A.border} /><Text style={DS.emptyTxt}>No applications found</Text></View>
+      ) : (
+        filtered.map(app => (
+          <TouchableOpacity key={app.id} style={AP.appCard} onPress={() => setSelectedApp(app)} activeOpacity={0.8}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 10 }}>
+              <View>
+                <Text style={{ fontSize: 11, fontWeight: '700', color: A.primary }}>APP-{(app.id || '').slice(0, 8).toUpperCase()}</Text>
+                <Text style={{ fontSize: 16, fontWeight: '700', color: A.text, marginTop: 2 }}>{app.farmer_name}</Text>
+              </View>
+              <StatusBadge status={app.admin_status || 'pending'} />
             </View>
-            <TouchableOpacity onPress={() => setSelectedFarmer(null)} style={styles.closeBtn}>
-              <X size={22} color={Colors.neutral[500]} />
-            </TouchableOpacity>
-          </View>
-
-          {selectedFarmer && (
-            <ScrollView style={styles.modalScroll} showsVerticalScrollIndicator={false}>
-              <View style={styles.dossierSection}>
-                <Text style={styles.dossierSectionTitle}>{t('customerDetails')}</Text>
-                <View style={styles.dossierGrid}>
-                  <View style={styles.dossierItem}>
-                    <Text style={styles.dossierLabel}>Full Name</Text>
-                    <Text style={styles.dossierVal}>{selectedFarmer.full_name}</Text>
-                  </View>
-                  <View style={styles.dossierItem}>
-                    <Text style={styles.dossierLabel}>Mobile</Text>
-                    <Text style={styles.dossierVal}>{selectedFarmer.phone}</Text>
-                  </View>
-                  <View style={styles.dossierItem}>
-                    <Text style={styles.dossierLabel}>Location</Text>
-                    <Text style={styles.dossierVal}>{selectedFarmer.district}, {selectedFarmer.state}</Text>
-                  </View>
-                  <View style={styles.dossierItem}>
-                    <Text style={styles.dossierLabel}>Landholding</Text>
-                    <Text style={styles.dossierVal}>{selectedFarmer.land_size_acres || 0} acres ({selectedFarmer.land_ownership || 'owned'})</Text>
-                  </View>
-                  <View style={styles.dossierItem}>
-                    <Text style={styles.dossierLabel}>Crops Cultivated</Text>
-                    <Text style={styles.dossierVal}>
-                      {selectedFarmer.crops?.join(', ') || selectedFarmer.crop_type || 'None'}
-                    </Text>
-                  </View>
-                  <View style={styles.dossierItem}>
-                    <Text style={styles.dossierLabel}>Farming Types</Text>
-                    <Text style={styles.dossierVal}>
-                      {selectedFarmer.farming_types?.join(', ') || selectedFarmer.farming_type || 'General'}
-                    </Text>
-                  </View>
-                  <View style={styles.dossierItem}>
-                    <Text style={styles.dossierLabel}>Annual Agri Income</Text>
-                    <Text style={styles.dossierVal}>₹{(selectedFarmer.annual_agricultural_income || 0).toLocaleString('en-IN')}</Text>
-                  </View>
-                  <View style={styles.dossierItem}>
-                    <Text style={styles.dossierLabel}>Credit Score</Text>
-                    <Text style={styles.dossierVal}>{selectedFarmer.credit_score || 'Not recorded'}</Text>
-                  </View>
+            <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginBottom: 10 }}>
+              {[{ Icon: Wallet, txt: app.loan_type }, { Icon: TrendingUp, txt: formatCurrency(Number(app.loan_amount)) }, { Icon: MapPin, txt: app.farmer_district || 'N/A' }, { Icon: Calendar, txt: formatDate(app.created_at) }].map(({ Icon, txt }, i) => (
+                <View key={i} style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
+                  <Icon size={12} color={A.textLight} />
+                  <Text style={{ fontSize: 12, color: A.textMid }}>{txt}</Text>
                 </View>
+              ))}
+            </View>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', borderTopWidth: 1, borderTopColor: A.border, paddingTop: 10 }}>
+              <Text style={{ fontSize: 12, color: A.textMid }}>{app.bank_name}</Text>
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
+                <Text style={{ fontSize: 13, color: A.primary, fontWeight: '700' }}>Review Application</Text>
+                <ChevronRight size={14} color={A.primary} />
               </View>
+            </View>
+          </TouchableOpacity>
+        ))
+      )}
+      <View style={{ height: 80 }} />
+    </ScrollView>
+  );
+}
 
-              <View style={styles.dossierSection}>
-                <View style={styles.dossierSectionHeader}>
-                  <Wallet size={18} color={Colors.primary[700]} />
-                  <Text style={styles.dossierSectionTitle}>
-                    {t('appliedLoans')} ({farmerLoans.length})
-                  </Text>
-                </View>
-                {dossierLoading ? (
-                  <ActivityIndicator size="small" color={Colors.primary[600]} />
-                ) : farmerLoans.length === 0 ? (
-                  <Text style={styles.noChildText}>No loan applications submitted by this farmer yet.</Text>
-                ) : (
-                  farmerLoans.map((loan) => (
-                    <View key={loan.id} style={styles.childRecordCard}>
-                      <View style={styles.childRow}>
-                        <Text style={styles.childTitle}>{loan.loan_type}</Text>
-                        <Text style={styles.childAmount}>₹{Number(loan.loan_amount).toLocaleString('en-IN')}</Text>
-                      </View>
-                      <Text style={styles.childSub}>Bank: {loan.bank_name} • Status: {loan.status}</Text>
-                      <Text style={styles.childDate}>{new Date(loan.created_at || '').toLocaleDateString()}</Text>
-                    </View>
-                  ))
-                )}
-              </View>
+// ═══════════════════════════════════════════════════════════════════════════════
+// APPLICATION DETAIL + DECISION
+// ═══════════════════════════════════════════════════════════════════════════════
+function ApplicationDetailModal({ app, onClose, onDecision, adminUser, readOnly }: {
+  app: AppWithFarmer; onClose: () => void; onDecision: () => void; adminUser: any; readOnly?: boolean;
+}) {
+  const [farmerProfile, setFarmerProfile] = useState<FarmerProfile | null>(app.farmer || null);
+  const [eligibility, setEligibility] = useState<EligibilityResult | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [deciding, setDeciding] = useState(false);
+  const [showConfirm, setShowConfirm] = useState<'approve' | 'reject' | null>(null);
+  const [adminNote, setAdminNote] = useState('');
+  const [rejectionReason, setRejectionReason] = useState('');
 
-              <View style={styles.dossierSection}>
-                <View style={styles.dossierSectionHeader}>
-                  <Landmark size={18} color={Colors.secondary[700]} />
-                  <Text style={styles.dossierSectionTitle}>
-                    {t('appliedSchemes')} ({farmerSchemes.length})
-                  </Text>
-                </View>
-                {dossierLoading ? (
-                  <ActivityIndicator size="small" color={Colors.primary[600]} />
-                ) : farmerSchemes.length === 0 ? (
-                  <Text style={styles.noChildText}>No scheme applications registered by this farmer.</Text>
-                ) : (
-                  farmerSchemes.map((scheme) => (
-                    <View key={scheme.id} style={styles.childRecordCard}>
-                      <View style={styles.childRow}>
-                        <Text style={styles.childTitle}>{scheme.scheme_name}</Text>
-                        <Text style={styles.childTypeBadge}>{scheme.scheme_type}</Text>
-                      </View>
-                      <Text style={styles.childDate}>{new Date(scheme.created_at || '').toLocaleDateString()}</Text>
-                    </View>
-                  ))
-                )}
-              </View>
+  useEffect(() => {
+    if (app.farmer_id) {
+      setLoading(true);
+      Promise.all([
+        supabase.from('farmer_profiles').select('*').eq('id', app.farmer_id!).maybeSingle(),
+        supabase.from('eligibility_results').select('*').eq('farmer_id', app.farmer_id!).order('created_at', { ascending: false }).limit(1).maybeSingle(),
+      ]).then(([pRes, eRes]) => {
+        let fProfile = app.farmer || null;
+        if (pRes.data) {
+          fProfile = deserializeFromSupabase(pRes.data);
+          setFarmerProfile(fProfile);
+        }
+        if (eRes.data) {
+          setEligibility(eRes.data as EligibilityResult);
+        } else if (fProfile) {
+          try {
+            const computed = assessLoanEligibility(
+              fProfile,
+              app.loan_type,
+              Number(app.loan_amount || 0),
+              Number(app.tenure_months || 12)
+            );
+            setEligibility(computed);
+          } catch (err) {
+            console.error('Eligibility assessment calculation error:', err);
+          }
+        }
+      }).catch(console.error).finally(() => setLoading(false));
+    }
+  }, [app.farmer_id]);
 
-              <View style={styles.dossierSection}>
-                <View style={styles.dossierSectionHeader}>
-                  <Sparkles size={18} color={Colors.success[600]} />
-                  <Text style={styles.dossierSectionTitle}>
-                    {t('eligibilityHistory')} ({farmerEligibility.length})
-                  </Text>
-                </View>
-                {dossierLoading ? (
-                  <ActivityIndicator size="small" color={Colors.primary[600]} />
-                ) : farmerEligibility.length === 0 ? (
-                  <Text style={styles.noChildText}>No eligibility assessments saved for this farmer.</Text>
-                ) : (
-                  farmerEligibility.map((el) => (
-                    <View key={el.id} style={styles.childRecordCard}>
-                      <View style={styles.childRow}>
-                        <Text style={styles.childTitle}>{el.loan_type}</Text>
-                        <Text style={styles.eligibilityScoreBadge}>Score: {el.eligibility_score}/100</Text>
-                      </View>
-                      <Text style={styles.childSub}>Status: {el.eligibility_status} • Risk: {el.risk_level}</Text>
-                    </View>
-                  ))
-                )}
-              </View>
+  const handleMarkReview = async () => {
+    const adminName = adminUser?.name || adminUser?.identifier || 'Admin Officer';
+    const { error: updateError } = await supabase
+      .from('loan_applications')
+      .update({ status: 'under_review' })
+      .eq('id', app.id!);
 
-              <View style={{ height: 40 }} />
-            </ScrollView>
+    if (updateError) {
+      Alert.alert('Error', updateError.message || 'Failed to update status');
+      return;
+    }
+
+    if (app.farmer_id) {
+      try {
+        await supabase.from('notifications').insert({
+          farmer_id: app.farmer_id,
+          title: 'Application Under Review',
+          message: `Your loan application APP-${(app.id || '').slice(0, 6).toUpperCase()} is now under review by our loan officer.`,
+          type: 'info',
+          is_read: false,
+        });
+      } catch (err) {
+        console.warn('Failed to insert notification:', err);
+      }
+    }
+    try {
+      await supabase.from('admin_activity_log').insert({
+        admin_id: adminUser?.id || 'admin',
+        admin_name: adminName,
+        action_type: 'review',
+        description: `Started review of APP-${(app.id || '').slice(0, 6).toUpperCase()} for ${app.farmer_name || farmerProfile?.full_name || 'Customer'}`,
+        entity_type: 'loan_application',
+        entity_id: app.id,
+      });
+    } catch {}
+    Alert.alert('Under Review', 'Application marked as under review. Customer notified.', [{ text: 'OK', onPress: onDecision }]);
+  };
+
+  const handleDecision = async (decision: 'approve' | 'reject') => {
+    if (deciding) return;
+    if (decision === 'reject' && !rejectionReason.trim()) {
+      Alert.alert('Required', 'Please provide a rejection reason.');
+      return;
+    }
+    setDeciding(true);
+    try {
+      const adminName = adminUser?.name || adminUser?.identifier || 'Admin Officer';
+      const newStatus = decision === 'approve' ? 'approved' : 'rejected';
+      const { error: updateError } = await supabase
+        .from('loan_applications')
+        .update({
+          status: newStatus,
+        })
+        .eq('id', app.id!);
+
+      if (updateError) throw updateError;
+
+      if (app.farmer_id) {
+        const appCode = `APP-${(app.id || '').slice(0, 6).toUpperCase()}`;
+        const msg =
+          decision === 'approve'
+            ? `Your loan application ${appCode} for ${formatCurrency(Number(app.loan_amount))} has been approved.${adminNote.trim() ? ` Note: ${adminNote.trim()}` : ''}`
+            : `Your loan application ${appCode} has been rejected. Reason: ${rejectionReason.trim()}`;
+        try {
+          await supabase.from('notifications').insert({
+            farmer_id: app.farmer_id,
+            title: decision === 'approve' ? 'Loan Application Approved' : 'Loan Application Rejected',
+            message: msg,
+            type: decision === 'approve' ? 'success' : 'warning',
+            is_read: false,
+          });
+        } catch (err) {
+          console.warn('Failed to insert notification:', err);
+        }
+      }
+      try {
+        await supabase.from('admin_activity_log').insert({
+          admin_id: adminUser?.id || 'admin',
+          admin_name: adminName,
+          action_type: decision,
+          description: `${decision === 'approve' ? 'Approved' : 'Rejected'} APP-${(app.id || '').slice(0, 6).toUpperCase()} for ${app.farmer_name || farmerProfile?.full_name || 'Customer'} — ${formatCurrency(Number(app.loan_amount))}`,
+          entity_type: 'loan_application',
+          entity_id: app.id,
+          metadata: { loan_type: app.loan_type, loan_amount: app.loan_amount },
+        });
+      } catch {}
+      setShowConfirm(null);
+      Alert.alert(
+        decision === 'approve' ? '✅ Application Approved' : '❌ Application Rejected',
+        decision === 'approve'
+          ? 'Loan application approved successfully. Customer has been notified.'
+          : 'Loan application rejected. Customer has been notified with the reason.',
+        [{ text: 'OK', onPress: onDecision }]
+      );
+    } catch (err: any) {
+      Alert.alert('Error', err?.message || 'Failed to process decision.');
+    } finally {
+      setDeciding(false);
+    }
+  };
+
+  const currentStatus = normalizeStatus(app.status || app.admin_status);
+
+  return (
+    <View style={{ flex: 1, backgroundColor: A.pageBg }}>
+      <View style={DT.hdr}>
+        <TouchableOpacity onPress={onClose} style={{ padding: 4 }} activeOpacity={0.7}><ArrowLeft size={20} color={A.text} /></TouchableOpacity>
+        <View style={{ flex: 1 }}>
+          <Text style={DT.hdrTitle}>Application Review</Text>
+          <Text style={DT.hdrSub}>APP-{(app.id || '').slice(0, 8).toUpperCase()}</Text>
+        </View>
+        <StatusBadge status={currentStatus} />
+      </View>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        {/* Customer Info */}
+        <View style={DT.section}>
+          <View style={DT.sectHdr}><Users size={16} color={A.primary} /><Text style={DT.sectTitle}>Customer Information</Text></View>
+          {loading ? <ActivityIndicator color={A.primary} /> : (
+            <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+              <InfoItem label="Full Name" value={farmerProfile?.full_name || app.farmer_name || 'N/A'} />
+              <InfoItem label="Phone" value={farmerProfile?.phone || 'N/A'} />
+              <InfoItem label="Location" value={`${farmerProfile?.district || ''}, ${farmerProfile?.state || 'Tamil Nadu'}`} />
+              <InfoItem label="Farmer Category" value={(farmerProfile?.farmer_category || 'N/A').toUpperCase()} />
+              <InfoItem label="Land Area" value={`${farmerProfile?.land_size_acres || 0} Acres`} />
+              <InfoItem label="Crops" value={farmerProfile?.crops?.join(', ') || farmerProfile?.crop_type || 'N/A'} />
+              <InfoItem label="Annual Income" value={formatCurrency(farmerProfile?.annual_agricultural_income || 0)} />
+              <InfoItem label="Credit Score" value={farmerProfile?.credit_score ? String(farmerProfile.credit_score) : 'Not Provided'} />
+              <InfoItem label="Existing Loans" value={formatCurrency(farmerProfile?.existing_loans || 0)} />
+              <InfoItem label="KCC Status" value={farmerProfile?.has_kcc ? '✓ Active' : 'Not Linked'} />
+            </View>
           )}
         </View>
-      </Modal>
-
-      {/* ------------------------------------------------------------- */}
-      {/* MODAL 2: 20,000 DATASET RECORD DETAIL                          */}
-      {/* ------------------------------------------------------------- */}
-      <Modal
-        visible={!!selectedDatasetRecord}
-        animationType="slide"
-        presentationStyle="pageSheet"
-        onRequestClose={() => setSelectedDatasetRecord(null)}
-      >
-        <View style={styles.modalContainer}>
-          <View style={styles.modalHeader}>
-            <View>
-              <Text style={styles.modalTitle}>Dataset Record Detail</Text>
-              <Text style={styles.modalSub}>{selectedDatasetRecord?.id}</Text>
-            </View>
-            <TouchableOpacity onPress={() => setSelectedDatasetRecord(null)} style={styles.closeBtn}>
-              <X size={22} color={Colors.neutral[500]} />
-            </TouchableOpacity>
+        {/* Loan Info */}
+        <View style={DT.section}>
+          <View style={DT.sectHdr}><Wallet size={16} color={A.primary} /><Text style={DT.sectTitle}>Loan Application Details</Text></View>
+          <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+            <InfoItem label="Loan Type" value={app.loan_type} />
+            <InfoItem label="Bank / Lender" value={app.bank_name} />
+            <InfoItem label="Requested Amount" value={formatCurrency(Number(app.loan_amount))} highlight />
+            <InfoItem label="Interest Rate" value={app.interest_rate ? `${app.interest_rate}% p.a.` : 'N/A'} />
+            <InfoItem label="Tenure" value={app.tenure_months ? `${app.tenure_months} months` : 'N/A'} />
+            <InfoItem label="Purpose" value={app.purpose || 'Agricultural purposes'} />
+            <InfoItem label="Applied On" value={formatDate(app.created_at)} />
           </View>
-
-          {selectedDatasetRecord && (
-            <ScrollView style={styles.modalScroll} showsVerticalScrollIndicator={false}>
-              <View style={styles.dossierSection}>
-                <Text style={styles.dossierSectionTitle}>Borrower Profile</Text>
-                <View style={styles.dossierGrid}>
-                  <View style={styles.dossierItem}>
-                    <Text style={styles.dossierLabel}>Name</Text>
-                    <Text style={styles.dossierVal}>{selectedDatasetRecord.name}</Text>
-                  </View>
-                  <View style={styles.dossierItem}>
-                    <Text style={styles.dossierLabel}>Phone</Text>
-                    <Text style={styles.dossierVal}>{selectedDatasetRecord.phone}</Text>
-                  </View>
-                  <View style={styles.dossierItem}>
-                    <Text style={styles.dossierLabel}>District</Text>
-                    <Text style={styles.dossierVal}>{selectedDatasetRecord.district}</Text>
-                  </View>
-                  <View style={styles.dossierItem}>
-                    <Text style={styles.dossierLabel}>Demographics</Text>
-                    <Text style={styles.dossierVal}>
-                      {selectedDatasetRecord.age} yrs • {selectedDatasetRecord.gender} • {selectedDatasetRecord.marital_status}
-                    </Text>
-                  </View>
-                  <View style={styles.dossierItem}>
-                    <Text style={styles.dossierLabel}>Education</Text>
-                    <Text style={styles.dossierVal}>{selectedDatasetRecord.education_level}</Text>
-                  </View>
-                  <View style={styles.dossierItem}>
-                    <Text style={styles.dossierLabel}>Occupation</Text>
-                    <Text style={styles.dossierVal}>{selectedDatasetRecord.employment_status}</Text>
-                  </View>
-                </View>
-              </View>
-
-              <View style={styles.dossierSection}>
-                <Text style={styles.dossierSectionTitle}>Financial & Underwriting Parameters</Text>
-                <View style={styles.dossierGrid}>
-                  <View style={styles.dossierItem}>
-                    <Text style={styles.dossierLabel}>Annual Income</Text>
-                    <Text style={styles.dossierVal}>₹{selectedDatasetRecord.annual_income.toLocaleString('en-IN')}</Text>
-                  </View>
-                  <View style={styles.dossierItem}>
-                    <Text style={styles.dossierLabel}>Monthly Income</Text>
-                    <Text style={styles.dossierVal}>₹{selectedDatasetRecord.monthly_income.toLocaleString('en-IN')}</Text>
-                  </View>
-                  <View style={styles.dossierItem}>
-                    <Text style={styles.dossierLabel}>Debt-to-Income (DTI)</Text>
-                    <Text style={styles.dossierVal}>{Math.round(selectedDatasetRecord.debt_to_income_ratio * 100)}%</Text>
-                  </View>
-                  <View style={styles.dossierItem}>
-                    <Text style={styles.dossierLabel}>Credit Bureau Score</Text>
-                    <Text style={styles.dossierVal}>{selectedDatasetRecord.credit_score} / 850</Text>
-                  </View>
-                  <View style={styles.dossierItem}>
-                    <Text style={styles.dossierLabel}>Loan Amount Requested</Text>
-                    <Text style={[styles.dossierVal, { color: Colors.primary[700], fontWeight: '800' }]}>
-                      ₹{selectedDatasetRecord.loan_amount.toLocaleString('en-IN')}
-                    </Text>
-                  </View>
-                  <View style={styles.dossierItem}>
-                    <Text style={styles.dossierLabel}>Underwriting Assessment</Text>
-                    <Text style={styles.dossierVal}>
-                      {selectedDatasetRecord.status} ({selectedDatasetRecord.risk_category} Risk)
-                    </Text>
-                  </View>
-                </View>
-              </View>
-
-              <View style={{ height: 40 }} />
-            </ScrollView>
-          )}
+        </View>
+        {/* Eligibility Assessment */}
+        {eligibility && (
+          <View style={DT.section}>
+            <View style={DT.sectHdr}><BarChart3 size={16} color={A.primary} /><Text style={DT.sectTitle}>MonitorX Eligibility Assessment (Decision Support)</Text></View>
+            <View style={{ backgroundColor: eligibility.eligibility_status === 'Eligible' || eligibility.eligibility_status === 'likely_eligible' ? A.successLight : eligibility.eligibility_status === 'Conditionally Eligible' || eligibility.eligibility_status === 'potentially_eligible' ? A.warningLight : A.dangerLight, borderRadius: 10, padding: 14 }}>
+              <Text style={{ fontSize: 16, fontWeight: '800', color: eligibility.eligibility_status === 'Eligible' || eligibility.eligibility_status === 'likely_eligible' ? A.success : eligibility.eligibility_status === 'Conditionally Eligible' || eligibility.eligibility_status === 'potentially_eligible' ? A.warning : A.danger }}>
+                {eligibility.eligibility_status === 'likely_eligible' ? 'Likely Eligible' : eligibility.eligibility_status === 'potentially_eligible' ? 'Potentially Eligible' : eligibility.eligibility_status}
+              </Text>
+              <Text style={{ fontSize: 13, color: A.textMid, marginTop: 4 }}>Score: {eligibility.eligibility_score}/100 · Risk: {(eligibility.risk_level || '').replace('_', ' ').toUpperCase()}</Text>
+              <Text style={{ fontSize: 11, color: A.textMid, marginTop: 6, fontStyle: 'italic' }}>⚠️ System AI recommendation only. The authorized bank officer makes the final decision.</Text>
+            </View>
+          </View>
+        )}
+        {/* Decision Record */}
+        {(currentStatus === 'approved' || currentStatus === 'rejected') && (
+          <View style={DT.section}>
+            <View style={DT.sectHdr}><Gavel size={16} color={A.primary} /><Text style={DT.sectTitle}>Decision Record</Text></View>
+            <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+              <InfoItem label="Decision" value={currentStatus === 'approved' ? '✅ Approved' : '❌ Rejected'} highlight />
+              <InfoItem label="Decided By" value={app.decided_by || 'Admin Officer'} />
+              <InfoItem label="Decision Date" value={formatDate(app.decided_at)} />
+              {app.admin_note ? <InfoItem label="Admin Note" value={app.admin_note} wide /> : null}
+              {app.rejection_reason ? <InfoItem label="Rejection Reason" value={app.rejection_reason} wide /> : null}
+            </View>
+          </View>
+        )}
+        {/* Action Buttons */}
+        {!readOnly && currentStatus !== 'approved' && currentStatus !== 'rejected' && (
+          <View style={DT.section}>
+            <Text style={{ fontSize: 16, fontWeight: '800', color: A.text, marginBottom: 4 }}>Admin Decision</Text>
+            <Text style={{ fontSize: 13, color: A.textMid, marginBottom: 16, lineHeight: 19 }}>Review the application details and eligibility assessment above before making a decision.</Text>
+            {currentStatus === 'pending' && (
+              <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8, backgroundColor: A.reviewLight, borderWidth: 1, borderColor: '#DDD6FE', borderRadius: 10, paddingVertical: 12, marginBottom: 10 }} onPress={handleMarkReview} activeOpacity={0.8}>
+                <Eye size={16} color={A.review} />
+                <Text style={{ fontSize: 14, fontWeight: '700', color: A.review }}>Mark as Under Review</Text>
+              </TouchableOpacity>
+            )}
+            <View style={{ flexDirection: 'row', gap: 10 }}>
+              <TouchableOpacity style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 6, backgroundColor: A.success, borderRadius: 10, paddingVertical: 14 }} onPress={() => setShowConfirm('approve')} activeOpacity={0.8}>
+                <CheckCircle size={18} color="#fff" />
+                <Text style={{ fontSize: 14, fontWeight: '700', color: '#fff' }}>Approve Application</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 6, backgroundColor: A.danger, borderRadius: 10, paddingVertical: 14 }} onPress={() => setShowConfirm('reject')} activeOpacity={0.8}>
+                <XCircle size={18} color="#fff" />
+                <Text style={{ fontSize: 14, fontWeight: '700', color: '#fff' }}>Reject Application</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        )}
+        <View style={{ height: 80 }} />
+      </ScrollView>
+      {/* Confirm Modal */}
+      <Modal visible={!!showConfirm} transparent animationType="fade">
+        <View style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.6)', alignItems: 'center', justifyContent: 'center', padding: 24 }}>
+          <View style={{ backgroundColor: A.card, borderRadius: 16, padding: 24, width: '100%', maxWidth: 420 }}>
+            <Text style={{ fontSize: 18, fontWeight: '800', color: A.text, marginBottom: 6 }}>{showConfirm === 'approve' ? '✅ Confirm Approval' : '❌ Confirm Rejection'}</Text>
+            <Text style={{ fontSize: 13, color: A.textMid, marginBottom: 16 }}>APP-{(app.id || '').slice(0, 8).toUpperCase()} · {app.farmer_name} · {formatCurrency(Number(app.loan_amount))}</Text>
+            {showConfirm === 'approve' && <>
+              <Text style={{ fontSize: 13, fontWeight: '700', color: A.text, marginBottom: 6 }}>Approval Note (optional)</Text>
+              <TextInput style={{ borderWidth: 1, borderColor: A.border, borderRadius: 8, padding: 10, fontSize: 14, color: A.text, minHeight: 80, textAlignVertical: 'top', marginBottom: 16, backgroundColor: A.pageBg }} placeholder="Add a note for the customer..." placeholderTextColor={A.textLight} multiline value={adminNote} onChangeText={setAdminNote} />
+            </>}
+            {showConfirm === 'reject' && <>
+              <Text style={{ fontSize: 13, fontWeight: '700', color: A.text, marginBottom: 6 }}>Rejection Reason (required)</Text>
+              <TextInput style={{ borderWidth: 1, borderColor: A.border, borderRadius: 8, padding: 10, fontSize: 14, color: A.text, minHeight: 80, textAlignVertical: 'top', marginBottom: 16, backgroundColor: A.pageBg }} placeholder="Provide a clear reason for rejection..." placeholderTextColor={A.textLight} multiline value={rejectionReason} onChangeText={setRejectionReason} />
+            </>}
+            <View style={{ flexDirection: 'row', gap: 10 }}>
+              <TouchableOpacity style={{ flex: 1, alignItems: 'center', paddingVertical: 12, borderRadius: 8, backgroundColor: A.pageBg, borderWidth: 1, borderColor: A.border }} onPress={() => { setShowConfirm(null); setAdminNote(''); setRejectionReason(''); }} activeOpacity={0.8}>
+                <Text style={{ fontSize: 14, fontWeight: '700', color: A.textMid }}>Cancel</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={{ flex: 1, alignItems: 'center', paddingVertical: 12, borderRadius: 8, backgroundColor: showConfirm === 'approve' ? A.success : A.danger }} onPress={() => handleDecision(showConfirm!)} disabled={deciding} activeOpacity={0.8}>
+                {deciding ? <ActivityIndicator size="small" color="#fff" /> : <Text style={{ fontSize: 14, fontWeight: '700', color: '#fff' }}>{showConfirm === 'approve' ? 'Confirm Approval' : 'Confirm Rejection'}</Text>}
+              </TouchableOpacity>
+            </View>
+          </View>
         </View>
       </Modal>
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: Colors.neutral[50],
-  },
-  scroll: {
-    flex: 1,
-    paddingHorizontal: 16,
-  },
-  adminBar: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingVertical: 12,
-  },
-  adminBadge: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 6,
-    backgroundColor: Colors.primary[50],
-    paddingHorizontal: 10,
-    paddingVertical: 6,
-    borderRadius: 8,
-    borderWidth: 1,
-    borderColor: Colors.primary[200],
-  },
-  adminBadgeText: {
-    fontSize: 12,
-    fontWeight: '700',
-    color: Colors.primary[800],
-  },
-  switchModeBtn: {
-    paddingHorizontal: 10,
-    paddingVertical: 6,
-    borderRadius: 8,
-    backgroundColor: Colors.neutral[200],
-  },
-  switchModeText: {
-    fontSize: 12,
-    fontWeight: '600',
-    color: Colors.neutral[800],
-  },
-  tabSelectorRow: {
-    flexDirection: 'row',
-    backgroundColor: '#e8f4e8',
-    borderRadius: 14,
-    padding: 5,
-    marginBottom: 18,
-    marginTop: 4,
-    gap: 5,
-    borderWidth: 2,
-    borderColor: Colors.primary[400],
-  },
-  modeTab: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 6,
-    paddingVertical: 13,
-    borderRadius: 10,
-    borderWidth: 1.5,
-    borderColor: 'transparent',
-  },
-  modeTabActive: {
-    backgroundColor: Colors.primary[700],
-    borderColor: Colors.primary[900],
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 4,
-    elevation: 4,
-  },
-  modeTabText: {
-    fontSize: 13,
-    fontWeight: '800',
-    color: Colors.primary[800],
-  },
-  modeTabTextActive: {
-    color: '#fff',
-  },
-  statsGrid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 10,
-    marginBottom: 16,
-  },
-  statCard: {
-    flex: 1,
-    minWidth: '45%',
-    backgroundColor: Colors.neutral[0],
-    borderRadius: 14,
-    padding: 14,
-    borderWidth: 1,
-    borderColor: Colors.neutral[200],
-    alignItems: 'flex-start',
-    gap: 6,
-  },
-  statNumber: {
-    fontSize: 22,
-    fontWeight: '800',
-    color: Colors.neutral[900],
-  },
-  statLabel: {
-    fontSize: 11,
-    fontWeight: '600',
-    color: Colors.neutral[500],
-  },
-  auditCard: {
-    backgroundColor: Colors.neutral[0],
-    borderRadius: 14,
-    padding: 16,
-    borderWidth: 1,
-    borderColor: Colors.primary[200],
-    marginBottom: 16,
-  },
-  auditHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 12,
-  },
-  auditIconBadge: {
-    width: 38,
-    height: 38,
-    borderRadius: 10,
-    backgroundColor: Colors.success[50],
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  auditTitle: {
-    fontSize: 15,
-    fontWeight: '700',
-    color: Colors.neutral[900],
-  },
-  auditSubtitle: {
-    fontSize: 12,
-    color: Colors.neutral[500],
-    marginTop: 2,
-  },
-  auditBtn: {
-    backgroundColor: Colors.primary[600],
-    paddingHorizontal: 12,
-    paddingVertical: 8,
-    borderRadius: 8,
-  },
-  auditBtnText: {
-    fontSize: 12,
-    fontWeight: '700',
-    color: '#fff',
-  },
-  auditResultsBox: {
-    marginTop: 14,
-    paddingTop: 12,
-    borderTopWidth: 1,
-    borderTopColor: Colors.neutral[200],
-    gap: 4,
-  },
-  auditPassedRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 6,
-    marginBottom: 6,
-  },
-  auditPassedText: {
-    fontSize: 13,
-    fontWeight: '700',
-  },
-  auditDetailLine: {
-    fontSize: 11,
-    color: Colors.neutral[600],
-    fontFamily: Platform.OS === 'ios' ? 'Courier' : 'monospace',
-  },
-  searchSection: {
-    marginBottom: 12,
-  },
-  sectionTitle: {
-    fontSize: 16,
-    fontWeight: '700',
-    color: Colors.neutral[900],
-    marginBottom: 8,
-  },
-  searchBar: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 10,
-    backgroundColor: Colors.neutral[0],
-    borderRadius: 12,
-    paddingHorizontal: 14,
-    paddingVertical: 10,
-    borderWidth: 1,
-    borderColor: Colors.neutral[300],
-  },
-  searchInput: {
-    flex: 1,
-    fontSize: 14,
-    color: Colors.neutral[900],
-  },
-  loadingBox: {
-    padding: 30,
-    alignItems: 'center',
-    gap: 10,
-  },
-  loadingText: {
-    fontSize: 13,
-    color: Colors.neutral[500],
-  },
-  emptyCard: {
-    backgroundColor: Colors.neutral[0],
-    borderRadius: 14,
-    padding: 30,
-    alignItems: 'center',
-    gap: 10,
-    borderWidth: 1,
-    borderColor: Colors.neutral[200],
-  },
-  emptyText: {
-    fontSize: 14,
-    color: Colors.neutral[500],
-  },
-  listContainer: {
-    gap: 10,
-  },
-  farmerCard: {
-    backgroundColor: Colors.neutral[0],
-    borderRadius: 14,
-    padding: 14,
-    borderWidth: 1,
-    borderColor: Colors.neutral[200],
-  },
-  farmerCardHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 12,
-  },
-  farmerAvatar: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: Colors.primary[50],
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: 1,
-    borderColor: Colors.primary[200],
-  },
-  farmerName: {
-    fontSize: 15,
-    fontWeight: '700',
-    color: Colors.neutral[900],
-  },
-  metaRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginTop: 3,
-    gap: 4,
-  },
-  metaText: {
-    fontSize: 12,
-    color: Colors.neutral[500],
-  },
-  farmerBadgesRow: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 6,
-    marginTop: 10,
-    paddingTop: 8,
-    borderTopWidth: 1,
-    borderTopColor: Colors.neutral[100],
-  },
-  pillBadge: {
-    backgroundColor: Colors.neutral[100],
-    paddingHorizontal: 8,
-    paddingVertical: 3,
-    borderRadius: 6,
-  },
-  pillText: {
-    fontSize: 11,
-    fontWeight: '600',
-    color: Colors.neutral[700],
-    textTransform: 'capitalize',
-  },
-  datasetView: {
-    gap: 14,
-  },
-  datasetStatsCard: {
-    backgroundColor: Colors.neutral[0],
-    borderRadius: 14,
-    padding: 16,
-    borderWidth: 1,
-    borderColor: Colors.primary[200],
-  },
-  datasetStatsHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-    marginBottom: 12,
-  },
-  datasetStatsTitle: {
-    fontSize: 15,
-    fontWeight: '800',
-    color: Colors.neutral[900],
-  },
-  datasetStatsGrid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 12,
-  },
-  miniStat: {
-    width: '47%',
-  },
-  miniStatLabel: {
-    fontSize: 11,
-    fontWeight: '600',
-    color: Colors.neutral[500],
-  },
-  miniStatVal: {
-    fontSize: 14,
-    fontWeight: '800',
-    color: Colors.primary[700],
-    marginTop: 2,
-  },
-  datasetControls: {
-    gap: 10,
-  },
-  filterRow: {
-    flexDirection: 'row',
-    gap: 8,
-  },
-  filterChip: {
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 20,
-    backgroundColor: Colors.neutral[100],
-    borderWidth: 1,
-    borderColor: Colors.neutral[200],
-    marginRight: 6,
-  },
-  filterChipActive: {
-    backgroundColor: Colors.primary[700],
-    borderColor: Colors.primary[700],
-  },
-  filterChipText: {
-    fontSize: 12,
-    fontWeight: '600',
-    color: Colors.neutral[700],
-  },
-  filterChipTextActive: {
-    color: '#fff',
-  },
-  paginationRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingVertical: 8,
-  },
-  paginationInfo: {
-    fontSize: 12,
-    fontWeight: '600',
-    color: Colors.neutral[500],
-  },
-  pageNavBtns: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  pageBtn: {
-    padding: 6,
-    borderRadius: 8,
-    backgroundColor: Colors.neutral[100],
-    borderWidth: 1,
-    borderColor: Colors.neutral[300],
-  },
-  pageBtnDisabled: {
-    opacity: 0.4,
-  },
-  pageBtnText: {
-    fontSize: 12,
-    fontWeight: '700',
-    color: Colors.neutral[700],
-    paddingHorizontal: 6,
-  },
-  pageIndicator: {
-    fontSize: 12,
-    fontWeight: '700',
-    color: Colors.neutral[800],
-  },
-  jumpRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  jumpLabel: {
-    fontSize: 12,
-    color: Colors.neutral[600],
-    fontWeight: '600',
-  },
-  jumpInput: {
-    width: 90,
-    backgroundColor: Colors.neutral[0],
-    borderWidth: 1,
-    borderColor: Colors.neutral[300],
-    borderRadius: 8,
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    fontSize: 12,
-    textAlign: 'center',
-  },
-  jumpBtn: {
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 8,
-    backgroundColor: Colors.primary[600],
-  },
-  jumpBtnText: {
-    fontSize: 12,
-    fontWeight: '700',
-    color: '#fff',
-  },
-  datasetList: {
-    gap: 8,
-  },
-  datasetCard: {
-    backgroundColor: Colors.neutral[0],
-    borderRadius: 12,
-    padding: 12,
-    borderWidth: 1,
-    borderColor: Colors.neutral[200],
-  },
-  datasetCardHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 10,
-    marginBottom: 8,
-  },
-  idBadge: {
-    backgroundColor: Colors.neutral[100],
-    paddingHorizontal: 6,
-    paddingVertical: 3,
-    borderRadius: 6,
-  },
-  idBadgeText: {
-    fontSize: 11,
-    fontWeight: '700',
-    fontFamily: Platform.OS === 'ios' ? 'Courier' : 'monospace',
-    color: Colors.neutral[700],
-  },
-  datasetName: {
-    fontSize: 14,
-    fontWeight: '700',
-    color: Colors.neutral[900],
-  },
-  datasetSub: {
-    fontSize: 11,
-    color: Colors.neutral[500],
-    marginTop: 2,
-  },
-  statusBadge: {
-    paddingHorizontal: 8,
-    paddingVertical: 3,
-    borderRadius: 6,
-  },
-  statusApproved: {
-    backgroundColor: Colors.success[50],
-  },
-  statusReview: {
-    backgroundColor: Colors.warning[50],
-  },
-  statusIneligible: {
-    backgroundColor: Colors.error[50],
-  },
-  statusBadgeText: {
-    fontSize: 11,
-    fontWeight: '700',
-  },
-  statusApprovedText: {
-    color: Colors.success[700],
-  },
-  statusReviewText: {
-    color: Colors.warning[700],
-  },
-  statusIneligibleText: {
-    color: Colors.error[700],
-  },
-  datasetGridRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingTop: 8,
-    borderTopWidth: 1,
-    borderTopColor: Colors.neutral[100],
-  },
-  datasetGridCol: {
-    alignItems: 'flex-start',
-  },
-  datasetGridLabel: {
-    fontSize: 10,
-    color: Colors.neutral[400],
-    fontWeight: '600',
-  },
-  datasetGridVal: {
-    fontSize: 12,
-    fontWeight: '700',
-    color: Colors.neutral[800],
-    marginTop: 2,
-  },
-  modalContainer: {
-    flex: 1,
-    backgroundColor: Colors.neutral[50],
-  },
-  modalHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: 16,
-    backgroundColor: Colors.neutral[0],
-    borderBottomWidth: 1,
-    borderBottomColor: Colors.neutral[200],
-  },
-  modalTitle: {
-    fontSize: 18,
-    fontWeight: '800',
-    color: Colors.neutral[900],
-  },
-  modalSub: {
-    fontSize: 11,
-    color: Colors.neutral[500],
-    fontFamily: Platform.OS === 'ios' ? 'Courier' : 'monospace',
-    marginTop: 2,
-  },
-  closeBtn: {
-    padding: 6,
-  },
-  modalScroll: {
-    flex: 1,
-    padding: 16,
-  },
-  dossierSection: {
-    backgroundColor: Colors.neutral[0],
-    borderRadius: 14,
-    padding: 16,
-    borderWidth: 1,
-    borderColor: Colors.neutral[200],
-    marginBottom: 16,
-  },
-  dossierSectionHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-    marginBottom: 12,
-  },
-  dossierSectionTitle: {
-    fontSize: 15,
-    fontWeight: '700',
-    color: Colors.neutral[900],
-  },
-  dossierGrid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 12,
-    marginTop: 8,
-  },
-  dossierItem: {
-    width: '47%',
-  },
-  dossierLabel: {
-    fontSize: 11,
-    fontWeight: '600',
-    color: Colors.neutral[400],
-  },
-  dossierVal: {
-    fontSize: 13,
-    fontWeight: '600',
-    color: Colors.neutral[800],
-    marginTop: 2,
-  },
-  noChildText: {
-    fontSize: 13,
-    color: Colors.neutral[400],
-    fontStyle: 'italic',
-  },
-  childRecordCard: {
-    backgroundColor: Colors.neutral[50],
-    borderRadius: 10,
-    padding: 12,
-    borderWidth: 1,
-    borderColor: Colors.neutral[200],
-    marginBottom: 8,
-  },
-  childRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  childTitle: {
-    fontSize: 13,
-    fontWeight: '700',
-    color: Colors.neutral[900],
-    flex: 1,
-  },
-  childAmount: {
-    fontSize: 13,
-    fontWeight: '700',
-    color: Colors.primary[700],
-  },
-  childSub: {
-    fontSize: 12,
-    color: Colors.neutral[600],
-    marginTop: 3,
-  },
-  childDate: {
-    fontSize: 10,
-    color: Colors.neutral[400],
-    marginTop: 4,
-  },
-  childTypeBadge: {
-    fontSize: 10,
-    fontWeight: '700',
-    textTransform: 'uppercase',
-    color: Colors.secondary[700],
-    backgroundColor: Colors.secondary[50],
-    paddingHorizontal: 6,
-    paddingVertical: 2,
-    borderRadius: 4,
-  },
-  eligibilityScoreBadge: {
-    fontSize: 11,
-    fontWeight: '700',
-    color: Colors.success[700],
-    backgroundColor: Colors.success[50],
-    paddingHorizontal: 6,
-    paddingVertical: 2,
-    borderRadius: 4,
-  },
+// ═══════════════════════════════════════════════════════════════════════════════
+// CUSTOMERS SECTION
+// ═══════════════════════════════════════════════════════════════════════════════
+function CustomersSection({ user }: { user: any }) {
+  const [customers, setCustomers] = useState<FarmerProfile[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [search, setSearch] = useState('');
+  const [selected, setSelected] = useState<FarmerProfile | null>(null);
+  const [custApps, setCustApps] = useState<LoanApplication[]>([]);
+  const [appsLoading, setAppsLoading] = useState(false);
+  const [selectedApp, setSelectedApp] = useState<AppWithFarmer | null>(null);
+
+  useEffect(() => {
+    supabase.from('farmer_profiles').select('*').order('created_at', { ascending: false }).then(({ data }) => {
+      setCustomers((data || []).map((d: any) => deserializeFromSupabase(d)));
+      setLoading(false);
+    });
+  }, []);
+
+  const openCustomer = (c: FarmerProfile) => {
+    setSelected(c);
+    if (!c.id) return;
+    setAppsLoading(true);
+    supabase.from('loan_applications').select('*').eq('farmer_id', c.id).order('created_at', { ascending: false }).then(({ data }) => {
+      const custLoans = (data || []).map((a: any) => {
+        const normStatus = normalizeStatus(a.status || a.admin_status);
+        return {
+          ...a,
+          status: normStatus,
+          admin_status: normStatus,
+        };
+      });
+      setCustApps(custLoans as LoanApplication[]);
+      setAppsLoading(false);
+    });
+  };
+
+  const filtered = useMemo(() => {
+    if (!search.trim()) return customers;
+    const q = search.toLowerCase();
+    return customers.filter(c => (c.full_name || '').toLowerCase().includes(q) || (c.phone || '').includes(q) || (c.district || '').toLowerCase().includes(q));
+  }, [customers, search]);
+
+  if (selectedApp) {
+    return (
+      <ApplicationDetailModal
+        app={selectedApp}
+        onClose={() => setSelectedApp(null)}
+        onDecision={() => {
+          setSelectedApp(null);
+          if (selected?.id) openCustomer(selected);
+        }}
+        adminUser={user}
+        readOnly={false}
+      />
+    );
+  }
+
+  if (selected) {
+    return (
+      <View style={{ flex: 1, backgroundColor: A.pageBg }}>
+        <View style={DT.hdr}>
+          <TouchableOpacity onPress={() => setSelected(null)} style={{ padding: 4 }} activeOpacity={0.7}><ArrowLeft size={20} color={A.text} /></TouchableOpacity>
+          <View style={{ flex: 1 }}><Text style={DT.hdrTitle}>Customer Profile</Text><Text style={DT.hdrSub}>{selected.full_name}</Text></View>
+        </View>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <View style={DT.section}>
+            <View style={DT.sectHdr}><Users size={16} color={A.primary} /><Text style={DT.sectTitle}>Personal Details</Text></View>
+            <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+              <InfoItem label="Full Name" value={selected.full_name} />
+              <InfoItem label="Phone" value={selected.phone || 'N/A'} />
+              <InfoItem label="Location" value={`${selected.district || ''}, ${selected.state || 'Tamil Nadu'}`} />
+              <InfoItem label="Farmer Category" value={(selected.farmer_category || 'N/A').toUpperCase()} />
+              <InfoItem label="Land Area" value={`${selected.land_size_acres || 0} Acres (${selected.land_ownership || 'N/A'})`} />
+              <InfoItem label="Crops" value={selected.crops?.join(', ') || selected.crop_type || 'N/A'} />
+            </View>
+          </View>
+          <View style={DT.section}>
+            <View style={DT.sectHdr}><CreditCard size={16} color={A.primary} /><Text style={DT.sectTitle}>Financial Profile</Text></View>
+            <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+              <InfoItem label="Annual Income" value={formatCurrency(selected.annual_agricultural_income || 0)} highlight />
+              <InfoItem label="Credit Score" value={selected.credit_score ? String(selected.credit_score) : 'Not Provided'} />
+              <InfoItem label="Existing Loans" value={formatCurrency(selected.existing_loans || 0)} />
+              <InfoItem label="Monthly EMI" value={formatCurrency(selected.existing_monthly_emi || 0)} />
+              <InfoItem label="KCC Status" value={selected.has_kcc ? '✓ Active' : 'Not Linked'} />
+              <InfoItem label="PMFBY Status" value={selected.has_pmfby ? '✓ Covered' : 'Not Covered'} />
+            </View>
+          </View>
+          <View style={DT.section}>
+            <View style={DT.sectHdr}><ClipboardList size={16} color={A.primary} /><Text style={DT.sectTitle}>Loan Applications ({custApps.length})</Text></View>
+            {appsLoading ? <ActivityIndicator color={A.primary} /> :
+              custApps.length === 0 ? <Text style={{ color: A.textLight, fontSize: 13 }}>No loan applications submitted.</Text> :
+              custApps.map(app => (
+                <TouchableOpacity
+                  key={app.id}
+                  style={{ flexDirection: 'row', alignItems: 'center', paddingVertical: 10, borderBottomWidth: 1, borderBottomColor: A.border, gap: 10 }}
+                  onPress={() => setSelectedApp({ ...app, farmer: selected, farmer_name: selected.full_name, farmer_phone: selected.phone || '', farmer_district: selected.district || '' })}
+                  activeOpacity={0.7}
+                >
+                  <View style={{ flex: 1 }}>
+                    <Text style={{ fontSize: 11, fontWeight: '700', color: A.primary }}>APP-{(app.id || '').slice(0, 8).toUpperCase()}</Text>
+                    <Text style={{ fontSize: 13, fontWeight: '600', color: A.text, marginTop: 2 }}>{app.loan_type} · {formatCurrency(Number(app.loan_amount))}</Text>
+                    <Text style={{ fontSize: 11, color: A.textLight, marginTop: 2 }}>{formatDate(app.created_at)}</Text>
+                  </View>
+                  <StatusBadge status={app.admin_status || 'pending'} />
+                  <ChevronRight size={16} color={A.textLight} />
+                </TouchableOpacity>
+              ))
+            }
+          </View>
+          <View style={{ height: 80 }} />
+        </ScrollView>
+      </View>
+    );
+  }
+
+  return (
+    <ScrollView style={DS.scroll} showsVerticalScrollIndicator={false}>
+      <View style={DS.pageHdr}><Text style={DS.pageTitle}>Customer Management</Text><Text style={DS.pageSub}>View and manage registered customers</Text></View>
+      <View style={AP.searchBar}>
+        <Search size={16} color={A.textLight} />
+        <TextInput style={AP.searchInput} placeholder="Search by name, phone, or district..." placeholderTextColor={A.textLight} value={search} onChangeText={setSearch} returnKeyType="search" enterKeyHint="search" blurOnSubmit={true} />
+        {search.length > 0 && <TouchableOpacity onPress={() => setSearch('')}><X size={16} color={A.textLight} /></TouchableOpacity>}
+      </View>
+      <Text style={{ fontSize: 13, color: A.textMid, marginBottom: 8 }}>{loading ? 'Loading...' : `${filtered.length} customer${filtered.length !== 1 ? 's' : ''}`}</Text>
+      {loading ? <View style={DS.empty}><ActivityIndicator size="large" color={A.primary} /></View> :
+        filtered.length === 0 ? <View style={DS.empty}><Users size={40} color={A.border} /><Text style={DS.emptyTxt}>No customers found</Text></View> :
+        filtered.map(c => (
+          <TouchableOpacity key={c.id} style={CU.card} onPress={() => openCustomer(c)} activeOpacity={0.8}>
+            <View style={CU.avatar}><Text style={CU.avatarTxt}>{(c.full_name || 'C')[0].toUpperCase()}</Text></View>
+            <View style={{ flex: 1 }}>
+              <Text style={CU.name}>{c.full_name}</Text>
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginTop: 4 }}>
+                <Phone size={11} color={A.textLight} />
+                <Text style={{ fontSize: 12, color: A.textMid }}>{c.phone || 'No phone'}</Text>
+                <MapPin size={11} color={A.textLight} />
+                <Text style={{ fontSize: 12, color: A.textMid }}>{c.district || c.state || 'N/A'}</Text>
+              </View>
+              <View style={{ flexDirection: 'row', gap: 6, marginTop: 6 }}>
+                <View style={{ backgroundColor: '#F1F5F9', paddingHorizontal: 7, paddingVertical: 2, borderRadius: 4 }}><Text style={{ fontSize: 10, fontWeight: '700', color: A.textMid }}>{(c.farmer_category || 'farmer').toUpperCase()}</Text></View>
+                <View style={{ backgroundColor: '#F1F5F9', paddingHorizontal: 7, paddingVertical: 2, borderRadius: 4 }}><Text style={{ fontSize: 10, fontWeight: '700', color: A.textMid }}>{c.land_size_acres || 0} acres</Text></View>
+                {c.has_kcc && <View style={{ backgroundColor: A.primaryLight, paddingHorizontal: 7, paddingVertical: 2, borderRadius: 4 }}><Text style={{ fontSize: 10, fontWeight: '700', color: A.primary }}>KCC</Text></View>}
+              </View>
+            </View>
+            <ChevronRight size={18} color={A.textLight} />
+          </TouchableOpacity>
+        ))
+      }
+      <View style={{ height: 80 }} />
+    </ScrollView>
+  );
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// ADMIN PROFILE SECTION
+// ═══════════════════════════════════════════════════════════════════════════════
+function AdminProfileSection({
+  user,
+  logout,
+  onNavigate,
+}: {
+  user: any;
+  logout: () => void;
+  onNavigate?: (section: AdminSection, filter?: 'all' | 'pending' | 'under_review' | 'approved' | 'rejected') => void;
+}) {
+  const [loading, setLoading] = useState(true);
+  const [activity, setActivity] = useState<AdminActivityLog[]>([]);
+  const [stats, setStats] = useState({ pending: 0, approved: 0, rejected: 0, review: 0 });
+
+  useEffect(() => {
+    Promise.all([
+      supabase.from('admin_activity_log').select('*').order('created_at', { ascending: false }).limit(15),
+      supabase.from('loan_applications').select('status'),
+    ]).then(([actRes, appsRes]) => {
+      setActivity((actRes.data || []) as AdminActivityLog[]);
+      const rawApps = (appsRes.data || []) as any[];
+      const apps = rawApps.map((a: any) => normalizeStatus(a.status));
+      setStats({
+        pending: apps.filter(s => s === 'pending').length,
+        approved: apps.filter(s => s === 'approved').length,
+        rejected: apps.filter(s => s === 'rejected').length,
+        review: apps.filter(s => s === 'under_review').length,
+      });
+      setLoading(false);
+    }).catch(err => {
+      console.error('Error loading admin profile stats:', err);
+      setLoading(false);
+    });
+  }, []);
+
+  const adminName = user?.name || 'Chief Loan Officer';
+  const adminEmail = user?.email || 'admin@monitorx.app';
+  const adminId = user?.identifier || (user?.id ? user.id.slice(0, 12) : 'ADMIN-001');
+
+  return (
+    <ScrollView style={DS.scroll} showsVerticalScrollIndicator={false}>
+      <View style={DS.pageHdr}><Text style={DS.pageTitle}>Admin Profile</Text><Text style={DS.pageSub}>Your account and work summary</Text></View>
+      {/* Hero */}
+      <View style={{ backgroundColor: A.sidebar, borderRadius: 16, padding: 20, marginBottom: 16, flexDirection: 'row', alignItems: 'center', gap: 16 }}>
+        <View style={{ width: 64, height: 64, borderRadius: 32, backgroundColor: A.primaryLight, alignItems: 'center', justifyContent: 'center', borderWidth: 2, borderColor: A.primary }}>
+          <ShieldCheck size={32} color={A.primary} />
+        </View>
+        <View style={{ flex: 1 }}>
+          <Text style={{ fontSize: 18, fontWeight: '800', color: '#fff' }}>{adminName}</Text>
+          <Text style={{ fontSize: 13, color: '#94A3B8', marginTop: 2 }}>Bank Loan Officer & Administrator</Text>
+          <View style={{ flexDirection: 'row', gap: 6, marginTop: 8 }}>
+            <View style={{ backgroundColor: A.primaryLight, paddingHorizontal: 8, paddingVertical: 3, borderRadius: 6 }}><Text style={{ fontSize: 10, fontWeight: '800', color: A.primary }}>ADMIN ACCESS</Text></View>
+            <View style={{ backgroundColor: A.successLight, paddingHorizontal: 8, paddingVertical: 3, borderRadius: 6 }}><Text style={{ fontSize: 10, fontWeight: '800', color: A.success }}>ACTIVE</Text></View>
+          </View>
+        </View>
+      </View>
+      {/* Account Details */}
+      <View style={DT.section}>
+        <View style={DT.sectHdr}><UserCircle size={16} color={A.primary} /><Text style={DT.sectTitle}>Account Details</Text></View>
+        <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+          <InfoItem label="Admin Name" value={adminName} />
+          <InfoItem label="Admin ID" value={adminId} />
+          <InfoItem label="Email" value={adminEmail} />
+          <InfoItem label="Role" value="Bank Administrator" />
+          <InfoItem label="Department" value="Loan & Credit Division" />
+          <InfoItem label="Security" value="Supabase Auth + RLS" />
+        </View>
+      </View>
+      {/* Work Summary */}
+      <View style={DT.section}>
+        <View style={[DT.sectHdr, { justifyContent: 'space-between' }]}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+            <BarChart3 size={16} color={A.primary} />
+            <Text style={DT.sectTitle}>Work Summary</Text>
+          </View>
+          <Text style={{ fontSize: 11, color: A.primary, fontWeight: '600' }}>Tap to view applications</Text>
+        </View>
+        <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
+          {[
+            { label: 'Pending Review', val: stats.pending, color: A.warning, bg: A.warningLight, filter: 'pending' as const },
+            { label: 'Under Review', val: stats.review, color: A.review, bg: A.reviewLight, filter: 'under_review' as const },
+            { label: 'Approved', val: stats.approved, color: A.success, bg: A.successLight, filter: 'approved' as const },
+            { label: 'Rejected', val: stats.rejected, color: A.danger, bg: A.dangerLight, filter: 'rejected' as const },
+          ].map((item, i) => (
+            <TouchableOpacity
+              key={i}
+              style={{
+                width: '47%',
+                borderRadius: 10,
+                padding: 14,
+                borderLeftWidth: 4,
+                borderLeftColor: item.color,
+                backgroundColor: item.bg,
+              }}
+              onPress={() => onNavigate?.('applications', item.filter)}
+              activeOpacity={0.7}
+            >
+              <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+                <Text style={{ fontSize: 26, fontWeight: '800', color: item.color }}>{item.val}</Text>
+                <ChevronRight size={16} color={item.color} />
+              </View>
+              <Text style={{ fontSize: 12, color: A.textMid, marginTop: 4, fontWeight: '600' }}>{item.label}</Text>
+              <Text style={{ fontSize: 11, color: item.color, marginTop: 4, fontWeight: '700' }}>View List →</Text>
+            </TouchableOpacity>
+          ))}
+        </View>
+      </View>
+      {/* Work Pending */}
+      {(stats.pending + stats.review) > 0 && (
+        <TouchableOpacity
+          style={[DT.section, { backgroundColor: A.warningLight, borderColor: '#FDE68A', borderWidth: 1 }]}
+          onPress={() => onNavigate?.('applications', stats.pending > 0 ? 'pending' : 'under_review')}
+          activeOpacity={0.8}
+        >
+          <View style={[DT.sectHdr, { justifyContent: 'space-between' }]}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+              <AlertTriangle size={16} color={A.warning} />
+              <Text style={[DT.sectTitle, { color: A.warning }]}>Work Pending ({stats.pending + stats.review})</Text>
+            </View>
+            <ChevronRight size={16} color={A.warning} />
+          </View>
+          <Text style={{ color: A.textMid, fontSize: 13, lineHeight: 22 }}>
+            {stats.pending > 0 ? `\u2022 ${stats.pending} application${stats.pending > 1 ? 's' : ''} awaiting initial review\n` : ''}
+            {stats.review > 0 ? `\u2022 ${stats.review} application${stats.review > 1 ? 's' : ''} under review requiring final decision` : ''}
+          </Text>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, marginTop: 6 }}>
+            <Text style={{ fontSize: 12, fontWeight: '700', color: A.warning }}>Review pending applications now</Text>
+            <ChevronRight size={14} color={A.warning} />
+          </View>
+        </TouchableOpacity>
+      )}
+      {/* Recent Activity */}
+      <View style={DT.section}>
+        <View style={DT.sectHdr}><Activity size={16} color={A.primary} /><Text style={DT.sectTitle}>Recent Activity</Text></View>
+        {loading ? <ActivityIndicator color={A.primary} /> :
+          activity.length === 0 ? <Text style={{ color: A.textLight, fontSize: 13 }}>No activity recorded yet.</Text> :
+          activity.map(act => (
+            <View key={act.id} style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 10, paddingVertical: 10, borderBottomWidth: 1, borderBottomColor: A.border }}>
+              <View style={{ width: 8, height: 8, borderRadius: 4, marginTop: 5, backgroundColor: act.action_type === 'approved' ? A.success : act.action_type === 'rejected' ? A.danger : act.action_type === 'review' ? A.review : A.primary }} />
+              <View style={{ flex: 1 }}>
+                <Text style={{ fontSize: 13, color: A.text, fontWeight: '500' }}>{act.description}</Text>
+                <Text style={{ fontSize: 11, color: A.textLight, marginTop: 2 }}>{formatDate(act.created_at)}</Text>
+              </View>
+            </View>
+          ))
+        }
+      </View>
+      {/* Sign Out */}
+      <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8, backgroundColor: A.danger, borderRadius: 12, paddingVertical: 14, marginTop: 8, marginBottom: 16 }} onPress={logout} activeOpacity={0.8}>
+        <LogOut size={18} color="#fff" />
+        <Text style={{ fontSize: 15, fontWeight: '700', color: '#fff' }}>Sign Out of Admin Portal</Text>
+      </TouchableOpacity>
+      <View style={{ height: 80 }} />
+    </ScrollView>
+  );
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// STYLES
+// ═══════════════════════════════════════════════════════════════════════════════
+const S = StyleSheet.create({
+  root: { flex: 1, backgroundColor: A.pageBg },
+  header: { backgroundColor: A.header, paddingTop: Platform.OS === 'ios' ? 50 : 36, paddingBottom: 12, paddingHorizontal: 16, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', elevation: 4, zIndex: 100 },
+  headerLeft: { flexDirection: 'row', alignItems: 'center', gap: 8, flex: 1 },
+  menuBtn: { padding: 4 },
+  headerBrand: { color: '#fff', fontWeight: '800', fontSize: 16 },
+  adminPill: { backgroundColor: A.primary, paddingHorizontal: 6, paddingVertical: 2, borderRadius: 4 },
+  adminPillTxt: { color: '#fff', fontSize: 9, fontWeight: '800', letterSpacing: 0.5 },
+  headerRight: { flexDirection: 'row', alignItems: 'center', gap: 8 },
+  nameTag: { flexDirection: 'row', alignItems: 'center', gap: 4, backgroundColor: 'rgba(59,130,246,0.2)', paddingHorizontal: 8, paddingVertical: 4, borderRadius: 6, maxWidth: 130 },
+  nameTagTxt: { color: '#93C5FD', fontSize: 12, fontWeight: '600' },
+  logoutHdr: { backgroundColor: 'rgba(239,68,68,0.2)', padding: 6, borderRadius: 6 },
+  body: { flex: 1, flexDirection: 'row' },
+  overlay: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.5)', zIndex: 50 },
+  sidebar: { position: 'absolute', top: 0, left: -240, bottom: 0, width: 240, backgroundColor: A.sidebar, zIndex: 60, paddingTop: 16, paddingBottom: 24 },
+  sidebarOpen: { left: 0 },
+  sidebarHdrTxt: { color: '#64748B', fontSize: 11, fontWeight: '700', letterSpacing: 1, paddingHorizontal: 16, paddingBottom: 8, borderBottomWidth: 1, borderBottomColor: 'rgba(255,255,255,0.08)', marginBottom: 8 },
+  navItem: { flexDirection: 'row', alignItems: 'center', paddingHorizontal: 16, paddingVertical: 12, gap: 10, position: 'relative' },
+  navItemActive: { backgroundColor: A.sidebarActiveBg },
+  navLabel: { color: A.sidebarText, fontSize: 14, fontWeight: '600' },
+  navLabelActive: { color: A.primary },
+  navIndicator: { position: 'absolute', right: 0, top: 8, bottom: 8, width: 3, backgroundColor: A.primary, borderTopLeftRadius: 3, borderBottomLeftRadius: 3 },
+  sidebarLogout: { flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 16, paddingVertical: 12, borderTopWidth: 1, borderTopColor: 'rgba(255,255,255,0.08)', marginTop: 8 },
+  sidebarLogoutTxt: { color: '#f87171', fontSize: 14, fontWeight: '600' },
+  main: { flex: 1 },
+  bottomNav: { flexDirection: 'row', backgroundColor: A.sidebar, borderTopWidth: 1, borderTopColor: 'rgba(255,255,255,0.1)', paddingBottom: Platform.OS === 'ios' ? 20 : 4, paddingTop: 8 },
+  bottomNavItem: { flex: 1, alignItems: 'center', gap: 2, paddingVertical: 4 },
+  bottomNavLbl: { fontSize: 9, color: '#64748B', fontWeight: '600', marginTop: 2 },
+  bottomNavLblActive: { color: A.primary },
+});
+
+const DS = StyleSheet.create({
+  scroll: { flex: 1, paddingHorizontal: 16 },
+  pageHdr: { paddingTop: 16, paddingBottom: 12 },
+  pageTitle: { fontSize: 22, fontWeight: '800', color: A.text },
+  pageSub: { fontSize: 13, color: A.textMid, marginTop: 2 },
+  statsGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: 10, marginBottom: 16 },
+  statCard: { backgroundColor: A.card, borderRadius: 12, padding: 14, width: '47%', borderWidth: 1, borderColor: A.border, elevation: 1 },
+  statCardWide: { backgroundColor: A.card, borderRadius: 12, padding: 14, width: '100%', borderWidth: 1, borderColor: A.border, elevation: 1, flexDirection: 'row', alignItems: 'center' },
+  statVal: { fontSize: 24, fontWeight: '800', marginBottom: 2 },
+  statLbl: { fontSize: 12, color: A.textMid, fontWeight: '500' },
+  card: { backgroundColor: A.card, borderRadius: 14, borderWidth: 1, borderColor: A.border, marginBottom: 16, overflow: 'hidden', elevation: 1 },
+  cardHdr: { flexDirection: 'row', alignItems: 'center', gap: 8, padding: 14, borderBottomWidth: 1, borderBottomColor: A.border },
+  cardTitle: { fontSize: 15, fontWeight: '700', color: A.text, flex: 1 },
+  appRow: { flexDirection: 'row', alignItems: 'flex-start', padding: 12, borderBottomWidth: 1, borderBottomColor: A.border },
+  appId: { fontSize: 11, fontWeight: '700', color: A.primary, marginBottom: 2 },
+  appName: { fontSize: 14, fontWeight: '700', color: A.text },
+  appMeta: { fontSize: 12, color: A.textMid, marginTop: 2 },
+  appDate: { fontSize: 11, color: A.textLight, marginTop: 2 },
+  empty: { alignItems: 'center', justifyContent: 'center', padding: 32, gap: 12 },
+  emptyTxt: { fontSize: 14, color: A.textLight },
+});
+
+const AP = StyleSheet.create({
+  searchBar: { flexDirection: 'row', alignItems: 'center', gap: 8, backgroundColor: A.card, borderRadius: 10, borderWidth: 1, borderColor: A.border, paddingHorizontal: 12, paddingVertical: 10, marginBottom: 12 },
+  searchInput: { flex: 1, fontSize: 14, color: A.text },
+  filterTab: { paddingHorizontal: 14, paddingVertical: 7, borderRadius: 20, backgroundColor: A.card, borderWidth: 1, borderColor: A.border, marginRight: 8 },
+  filterTabActive: { backgroundColor: A.primary, borderColor: A.primary },
+  filterTabTxt: { fontSize: 13, fontWeight: '600', color: A.textMid },
+  filterTabTxtActive: { color: '#fff' },
+  appCard: { backgroundColor: A.card, borderRadius: 12, borderWidth: 1, borderColor: A.border, marginBottom: 10, padding: 14, elevation: 1 },
+});
+
+const DT = StyleSheet.create({
+  hdr: { flexDirection: 'row', alignItems: 'center', gap: 10, backgroundColor: A.card, paddingHorizontal: 16, paddingVertical: 14, borderBottomWidth: 1, borderBottomColor: A.border, elevation: 2 },
+  hdrTitle: { fontSize: 17, fontWeight: '800', color: A.text },
+  hdrSub: { fontSize: 12, color: A.textMid, marginTop: 1 },
+  section: { backgroundColor: A.card, borderRadius: 14, borderWidth: 1, borderColor: A.border, padding: 16, marginHorizontal: 16, marginTop: 14, elevation: 1 },
+  sectHdr: { flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 14 },
+  sectTitle: { fontSize: 15, fontWeight: '700', color: A.text },
+});
+
+const CU = StyleSheet.create({
+  card: { backgroundColor: A.card, borderRadius: 12, borderWidth: 1, borderColor: A.border, padding: 14, marginBottom: 10, flexDirection: 'row', alignItems: 'center', gap: 12, elevation: 1 },
+  avatar: { width: 44, height: 44, borderRadius: 22, backgroundColor: A.primaryLight, alignItems: 'center', justifyContent: 'center' },
+  avatarTxt: { fontSize: 18, fontWeight: '800', color: A.primary },
+  name: { fontSize: 15, fontWeight: '700', color: A.text },
 });

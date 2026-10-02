@@ -82,8 +82,18 @@ export type LoanApplication = {
   loan_amount: number;
   interest_rate?: number | null;
   tenure_months?: number | null;
+  purpose?: string | null;
   status: string;
+  // Admin workflow fields
+  admin_status?: 'pending' | 'under_review' | 'approved' | 'rejected';
+  admin_note?: string | null;
+  rejection_reason?: string | null;
+  decided_by?: string | null;
+  decided_at?: string | null;
+  updated_at?: string | null;
   created_at?: string;
+  // Joined from farmer_profiles
+  farmer_name?: string;
 };
 
 export type SchemeApplication = {
@@ -103,5 +113,19 @@ export type AppNotification = {
   message: string;
   type: string;
   is_read: boolean;
+  application_id?: string | null;
+  link_type?: string | null;
+  created_at?: string;
+};
+
+export type AdminActivityLog = {
+  id?: string;
+  admin_id: string;
+  admin_name?: string;
+  action_type: string;
+  description: string;
+  entity_type?: string;
+  entity_id?: string;
+  metadata?: Record<string, any>;
   created_at?: string;
 };

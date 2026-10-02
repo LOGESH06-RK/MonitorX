@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   View,
   Text,
@@ -162,6 +162,14 @@ export function ProfileWizard({
   const [districtSearch, setDistrictSearch] = useState('');
   const [showStateModal, setShowStateModal] = useState(false);
 
+  // Field Refs for Enter Key Navigation
+  const phoneRef = useRef<TextInput>(null);
+  const ageRef = useRef<TextInput>(null);
+  const otherIncomeRef = useRef<TextInput>(null);
+  const existingMonthlyEmiRef = useRef<TextInput>(null);
+  const existingLoansRef = useRef<TextInput>(null);
+  const monthlyExpensesRef = useRef<TextInput>(null);
+
   // Load existing profile values
   useEffect(() => {
     if (profile) {
@@ -276,6 +284,7 @@ export function ProfileWizard({
   };
 
   const handleSave = async () => {
+    if (saving) return;
     if (!validateStep1() || !validateStep2() || !validateStep3() || !validateStep4()) return;
 
     setSaving(true);
@@ -444,6 +453,10 @@ export function ProfileWizard({
                 onChangeText={setFullName}
                 placeholder={language === 'ta' ? 'எ.கா. முத்துக்குமார்' : 'e.g. Muthu Kumar'}
                 placeholderTextColor={Colors.neutral[400]}
+                returnKeyType="next"
+                enterKeyHint="next"
+                blurOnSubmit={false}
+                onSubmitEditing={() => phoneRef.current?.focus()}
               />
             </View>
 
@@ -454,12 +467,17 @@ export function ProfileWizard({
                 <Text style={styles.optionalBadge}>{t('optional')}</Text>
               </View>
               <TextInput
+                ref={phoneRef}
                 style={styles.input}
                 value={phone}
                 onChangeText={setPhone}
                 placeholder="+91"
                 placeholderTextColor={Colors.neutral[400]}
                 keyboardType="phone-pad"
+                returnKeyType="next"
+                enterKeyHint="next"
+                blurOnSubmit={false}
+                onSubmitEditing={() => ageRef.current?.focus()}
               />
             </View>
 
@@ -470,6 +488,7 @@ export function ProfileWizard({
                 <Text style={styles.optionalBadge}>{t('optional')}</Text>
               </View>
               <TextInput
+                ref={ageRef}
                 style={styles.input}
                 value={age}
                 onChangeText={(val) => setAge(val.replace(/\D/g, ''))}
@@ -477,6 +496,10 @@ export function ProfileWizard({
                 placeholderTextColor={Colors.neutral[400]}
                 keyboardType="number-pad"
                 maxLength={2}
+                returnKeyType="next"
+                enterKeyHint="next"
+                blurOnSubmit={true}
+                onSubmitEditing={handleNext}
               />
             </View>
 
@@ -602,6 +625,10 @@ export function ProfileWizard({
                 placeholder="e.g. 3.5"
                 placeholderTextColor={Colors.neutral[400]}
                 keyboardType="decimal-pad"
+                returnKeyType="next"
+                enterKeyHint="next"
+                blurOnSubmit={true}
+                onSubmitEditing={handleNext}
               />
             </View>
 
@@ -648,6 +675,15 @@ export function ProfileWizard({
                   placeholderTextColor={Colors.neutral[400]}
                   value={customFarmingType}
                   onChangeText={setCustomFarmingType}
+                  returnKeyType="done"
+                  enterKeyHint="done"
+                  blurOnSubmit={false}
+                  onSubmitEditing={() => {
+                    if (customFarmingType.trim()) {
+                      setSelectedFarmingTypes([...selectedFarmingTypes, customFarmingType.trim()]);
+                      setCustomFarmingType('');
+                    }
+                  }}
                 />
                 <TouchableOpacity
                   style={styles.addBtn}
@@ -708,6 +744,15 @@ export function ProfileWizard({
                   placeholderTextColor={Colors.neutral[400]}
                   value={customCropInput}
                   onChangeText={setCustomCropInput}
+                  returnKeyType="done"
+                  enterKeyHint="done"
+                  blurOnSubmit={false}
+                  onSubmitEditing={() => {
+                    if (customCropInput.trim() && !selectedCrops.includes(customCropInput.trim())) {
+                      setSelectedCrops([...selectedCrops, customCropInput.trim()]);
+                      setCustomCropInput('');
+                    }
+                  }}
                 />
                 <TouchableOpacity
                   style={styles.addBtn}
@@ -803,6 +848,10 @@ export function ProfileWizard({
                 placeholder="e.g. 250000"
                 placeholderTextColor={Colors.neutral[400]}
                 keyboardType="number-pad"
+                returnKeyType="next"
+                enterKeyHint="next"
+                blurOnSubmit={false}
+                onSubmitEditing={() => otherIncomeRef.current?.focus()}
               />
             </View>
 
@@ -813,12 +862,17 @@ export function ProfileWizard({
                 <Text style={styles.optionalBadge}>{t('optional')}</Text>
               </View>
               <TextInput
+                ref={otherIncomeRef}
                 style={styles.input}
                 value={otherIncome}
                 onChangeText={(val) => setOtherIncome(val.replace(/\D/g, ''))}
                 placeholder="e.g. 50000"
                 placeholderTextColor={Colors.neutral[400]}
                 keyboardType="number-pad"
+                returnKeyType="next"
+                enterKeyHint="next"
+                blurOnSubmit={false}
+                onSubmitEditing={() => existingMonthlyEmiRef.current?.focus()}
               />
             </View>
 
@@ -829,12 +883,17 @@ export function ProfileWizard({
                 <Text style={styles.requiredBadge}>* {t('required')}</Text>
               </View>
               <TextInput
+                ref={existingMonthlyEmiRef}
                 style={styles.input}
                 value={existingMonthlyEmi}
                 onChangeText={(val) => setExistingMonthlyEmi(val.replace(/\D/g, ''))}
                 placeholder="e.g. 5000 (Enter 0 if none)"
                 placeholderTextColor={Colors.neutral[400]}
                 keyboardType="number-pad"
+                returnKeyType="next"
+                enterKeyHint="next"
+                blurOnSubmit={false}
+                onSubmitEditing={() => existingLoansRef.current?.focus()}
               />
               <Text style={styles.fieldHint}>{t('existingMonthlyEmiHint')}</Text>
             </View>
@@ -846,12 +905,17 @@ export function ProfileWizard({
                 <Text style={styles.optionalBadge}>{t('optional')}</Text>
               </View>
               <TextInput
+                ref={existingLoansRef}
                 style={styles.input}
                 value={existingLoans}
                 onChangeText={(val) => setExistingLoans(val.replace(/\D/g, ''))}
                 placeholder="e.g. 150000"
                 placeholderTextColor={Colors.neutral[400]}
                 keyboardType="number-pad"
+                returnKeyType="next"
+                enterKeyHint="next"
+                blurOnSubmit={false}
+                onSubmitEditing={() => monthlyExpensesRef.current?.focus()}
               />
             </View>
 
@@ -862,12 +926,17 @@ export function ProfileWizard({
                 <Text style={styles.optionalBadge}>{t('optional')}</Text>
               </View>
               <TextInput
+                ref={monthlyExpensesRef}
                 style={styles.input}
                 value={monthlyExpenses}
                 onChangeText={(val) => setMonthlyExpenses(val.replace(/\D/g, ''))}
                 placeholder="e.g. 8000"
                 placeholderTextColor={Colors.neutral[400]}
                 keyboardType="number-pad"
+                returnKeyType="next"
+                enterKeyHint="next"
+                blurOnSubmit={true}
+                onSubmitEditing={handleNext}
               />
             </View>
           </View>
@@ -897,6 +966,12 @@ export function ProfileWizard({
                   placeholderTextColor={Colors.neutral[400]}
                   keyboardType="number-pad"
                   maxLength={3}
+                  returnKeyType="done"
+                  enterKeyHint="done"
+                  blurOnSubmit={true}
+                  onSubmitEditing={() => {
+                    if (!saving) handleSave();
+                  }}
                 />
               )}
 
@@ -1070,6 +1145,15 @@ export function ProfileWizard({
                 value={districtSearch}
                 onChangeText={setDistrictSearch}
                 autoFocus
+                returnKeyType="search"
+                enterKeyHint="search"
+                blurOnSubmit={true}
+                onSubmitEditing={() => {
+                  if (filteredDistricts.length > 0) {
+                    setDistrict(filteredDistricts[0]);
+                    setShowDistrictModal(false);
+                  }
+                }}
               />
             </View>
             <ScrollView style={styles.modalList}>

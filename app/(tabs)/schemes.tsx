@@ -1,5 +1,7 @@
 import { useState, useMemo, useCallback } from 'react';
 import { View, Text, StyleSheet, ScrollView, TextInput, TouchableOpacity, FlatList } from 'react-native';
+import { Redirect } from 'expo-router';
+import { useAuth } from '@/lib/auth-context';
 import { useLanguage } from '@/lib/i18n';
 import { useProfile } from '@/lib/profile-context';
 import { Colors } from '@/lib/theme';
@@ -16,7 +18,9 @@ type FilterType = 'all' | 'central' | 'state' | 'recommended';
 
 export default function SchemesScreen() {
   const { t, language } = useLanguage();
+  const { user } = useAuth();
   const { profile } = useProfile();
+  if (user?.role === 'admin') return <Redirect href="/(tabs)/admin" />;
   const [search, setSearch] = useState('');
   const [filter, setFilter] = useState<FilterType>('all');
   const [selectedCategory, setSelectedCategory] = useState<SchemeCategory | null>(null);
@@ -107,6 +111,9 @@ export default function SchemesScreen() {
             placeholderTextColor={Colors.neutral[400]}
             value={search}
             onChangeText={setSearch}
+            returnKeyType="search"
+            enterKeyHint="search"
+            blurOnSubmit={true}
           />
         </View>
         <TouchableOpacity

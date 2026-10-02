@@ -1,5 +1,7 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useRef } from 'react';
 import { View, Text, StyleSheet, ScrollView, TextInput, TouchableOpacity } from 'react-native';
+import { Redirect } from 'expo-router';
+import { useAuth } from '@/lib/auth-context';
 import { useLanguage } from '@/lib/i18n';
 import { Colors } from '@/lib/theme';
 import { Header } from '@/components/Header';
@@ -8,9 +10,14 @@ import { Calculator as CalculatorIcon, TrendingUp } from 'lucide-react-native';
 
 export default function CalculatorScreen() {
   const { t, language } = useLanguage();
+  const { user } = useAuth();
+  if (user?.role === 'admin') return <Redirect href="/(tabs)/admin" />;
   const [amount, setAmount] = useState('100000');
   const [rate, setRate] = useState('7');
   const [tenure, setTenure] = useState('60');
+
+  const rateRef = useRef<TextInput>(null);
+  const tenureRef = useRef<TextInput>(null);
 
   const result = useMemo(() => {
     const principal = parseFloat(amount) || 0;
@@ -48,6 +55,10 @@ export default function CalculatorScreen() {
                 onChangeText={setAmount}
                 placeholder="100000"
                 placeholderTextColor={Colors.neutral[400]}
+                returnKeyType="next"
+                enterKeyHint="next"
+                blurOnSubmit={false}
+                onSubmitEditing={() => rateRef.current?.focus()}
               />
             </View>
             <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.presets}>
@@ -77,12 +88,17 @@ export default function CalculatorScreen() {
             <Text style={styles.inputLabel}>{t('interestRateLabel')}</Text>
             <View style={styles.inputRow}>
               <TextInput
+                ref={rateRef}
                 style={styles.input}
                 keyboardType="numeric"
                 value={rate}
                 onChangeText={setRate}
                 placeholder="7"
                 placeholderTextColor={Colors.neutral[400]}
+                returnKeyType="next"
+                enterKeyHint="next"
+                blurOnSubmit={false}
+                onSubmitEditing={() => tenureRef.current?.focus()}
               />
               <Text style={styles.suffix}>%</Text>
             </View>
@@ -92,12 +108,16 @@ export default function CalculatorScreen() {
             <Text style={styles.inputLabel}>{t('tenureLabel')}</Text>
             <View style={styles.inputRow}>
               <TextInput
+                ref={tenureRef}
                 style={styles.input}
                 keyboardType="numeric"
                 value={tenure}
                 onChangeText={setTenure}
                 placeholder="60"
                 placeholderTextColor={Colors.neutral[400]}
+                returnKeyType="done"
+                enterKeyHint="done"
+                blurOnSubmit={true}
               />
               <Text style={styles.suffix}>{language === 'ta' ? 'மாதம்' : 'mo'}</Text>
             </View>

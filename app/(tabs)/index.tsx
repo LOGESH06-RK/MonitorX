@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
-import { useRouter } from 'expo-router';
+import { useRouter, Redirect } from 'expo-router';
 import { useLanguage } from '@/lib/i18n';
 import { useAuth } from '@/lib/auth-context';
 import { useProfile } from '@/lib/profile-context';
@@ -38,10 +38,6 @@ export default function HomeScreen() {
   const router = useRouter();
   const [unreadCount, setUnreadCount] = useState(0);
 
-  useEffect(() => {
-    loadNotifications();
-  }, []);
-
   const loadNotifications = async () => {
     try {
       const { count } = await supabase
@@ -53,6 +49,16 @@ export default function HomeScreen() {
       // ignore
     }
   };
+
+  useEffect(() => {
+    if (user?.role !== 'admin') loadNotifications();
+  }, [user?.role]);
+
+  // ─── ADMIN GUARD: Redirect admins to Admin Portal immediately ───
+  if (user?.role === 'admin') {
+    return <Redirect href="/(tabs)/admin" />;
+  }
+  // ─────────────────────────────────────────────────────────
 
   const actions: QuickAction[] = [
     {

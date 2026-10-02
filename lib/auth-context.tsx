@@ -182,10 +182,24 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       try {
         const {
           data: { session: existingSession },
+          error: sessionError,
         } = await supabase.auth.getSession();
-        await syncSupabaseUser(existingSession);
-      } catch (err) {
-        console.error('Failed to initialize Supabase session:', err);
+        if (sessionError) {
+          // Invalid or expired refresh token — sign out cleanly
+          console.warn('Stale session detected, signing out:', sessionError.message);
+          await supabase.auth.signOut();
+        } else {
+          await syncSupabaseUser(existingSession);
+        }
+      } catch (err: any) {
+        // Handle network errors or invalid refresh tokens gracefully
+        const errMsg = err?.message || String(err);
+        if (errMsg.includes('Refresh Token') || errMsg.includes('refresh_token') || errMsg.includes('Invalid')) {
+          console.warn('Invalid refresh token, clearing session.');
+          try { await supabase.auth.signOut(); } catch {}
+        } else {
+          console.error('Failed to initialize Supabase session:', err);
+        }
       } finally {
         setIsLoading(false);
       }
@@ -196,6 +210,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange(async (_event, newSession) => {
+      if (_event === 'TOKEN_REFRESHED' && !newSession) {
+        // Refresh token was invalid/expired — sign out cleanly
+        console.warn('Session refresh failed, signing out stale session.');
+        await supabase.auth.signOut();
+        return;
+      }
       await syncSupabaseUser(newSession);
     });
 

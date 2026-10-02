@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback } from 'react';
+import { useState, useMemo, useCallback, useRef } from 'react';
 import {
   View,
   Text,
@@ -11,6 +11,8 @@ import {
   Platform,
   Alert,
 } from 'react-native';
+import { Redirect } from 'expo-router';
+import { useAuth } from '@/lib/auth-context';
 import { useLanguage } from '@/lib/i18n';
 import { useProfile } from '@/lib/profile-context';
 import { Colors } from '@/lib/theme';
@@ -38,7 +40,9 @@ import { runMLPrediction, type MLPredictionResult } from '@/lib/ml-prediction';
 
 export default function LoansScreen() {
   const { t, language } = useLanguage();
+  const { user } = useAuth();
   const { profile } = useProfile();
+  if (user?.role === 'admin') return <Redirect href="/(tabs)/admin" />;
   const [selectedLoan, setSelectedLoan] = useState<LoanProduct | null>(null);
   const [eligibilityResult, setEligibilityResult] = useState<EligibilityResult | null>(null);
   const [showEligibility, setShowEligibility] = useState(false);
@@ -46,6 +50,7 @@ export default function LoansScreen() {
   // FIX: Per-loan amount/tenure state — keyed by loan.id to prevent cross-card contamination
   const [amountByLoan, setAmountByLoan] = useState<Record<string, string>>({});
   const [tenureByLoan, setTenureByLoan] = useState<Record<string, string>>({});
+  const tenureInputRefs = useRef<Record<string, TextInput | null>>({});
 
   const [calculating, setCalculating] = useState(false);
   const [applying, setApplying] = useState(false);
@@ -57,6 +62,7 @@ export default function LoansScreen() {
   const [showMlSection, setShowMlSection] = useState(false);
 
   const handleApplyLoan = async (loan: LoanProduct) => {
+    if (applying) return;
     if (!profile?.id) {
       Alert.alert(
         language === 'ta' ? 'சுயவிவரம் தேவை' : 'Profile Required',
@@ -302,11 +308,20 @@ export default function LoansScreen() {
                     value={amountByLoan[item.id] || ''}
                     onChangeText={(v) => setAmountByLoan((prev) => ({ ...prev, [item.id]: v }))}
                     accessibilityLabel={`Loan amount for ${item.type}`}
+                    returnKeyType="next"
+                    enterKeyHint="next"
+                    blurOnSubmit={false}
+                    onSubmitEditing={() => {
+                      tenureInputRefs.current[item.id]?.focus();
+                    }}
                   />
                 </View>
                 <View style={styles.inputContainer}>
                   <Text style={styles.inputLabel}>{t('tenureLabel')}</Text>
                   <TextInput
+                    ref={(el) => {
+                      tenureInputRefs.current[item.id] = el;
+                    }}
                     style={styles.input}
                     placeholder={`${item.minTenureMonths} mo`}
                     placeholderTextColor={Colors.neutral[400]}
@@ -314,6 +329,12 @@ export default function LoansScreen() {
                     value={tenureByLoan[item.id] || ''}
                     onChangeText={(v) => setTenureByLoan((prev) => ({ ...prev, [item.id]: v }))}
                     accessibilityLabel={`Tenure for ${item.type}`}
+                    returnKeyType="send"
+                    enterKeyHint="send"
+                    blurOnSubmit={true}
+                    onSubmitEditing={() => {
+                      if (!applying) handleApplyLoan(item);
+                    }}
                   />
                 </View>
               </View>
